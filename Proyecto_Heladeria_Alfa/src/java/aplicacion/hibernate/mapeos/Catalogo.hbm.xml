@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08/06/2019 20:22:10 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="aplicacion.hibernate.mapeos.Catalogo" table="Catalogo" catalog="heladeria" optimistic-lock="version">
+        <id name="idCatalogo" type="java.lang.Integer">
+            <column name="idCatalogo" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="producto" class="aplicacion.hibernate.mapeos.Producto" fetch="select">
+            <column name="Producto" not-null="true" />
+        </many-to-one>
+        <many-to-one name="promocion" class="aplicacion.hibernate.mapeos.Promocion" fetch="select">
+            <column name="Promocion" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" />
+        </property>
+        <property name="estado" type="byte">
+            <column name="estado" not-null="true" />
+        </property>
+        <set name="ventas" table="Venta" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Catalogo" not-null="true" />
+            </key>
+            <one-to-many class="aplicacion.hibernate.mapeos.Venta" />
+        </set>
+    </class>
+</hibernate-mapping>

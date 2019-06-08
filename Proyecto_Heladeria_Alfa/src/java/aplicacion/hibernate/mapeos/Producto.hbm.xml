@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08/06/2019 20:22:10 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="aplicacion.hibernate.mapeos.Producto" table="Producto" catalog="heladeria" optimistic-lock="version">
+        <id name="idProducto" type="java.lang.Integer">
+            <column name="idProducto" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="almacen" class="aplicacion.hibernate.mapeos.Almacen" fetch="select">
+            <column name="Almacen" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tipoHelado" class="aplicacion.hibernate.mapeos.TipoHelado" fetch="select">
+            <column name="Tipo-helado" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="45" />
+        </property>
+        <property name="precio" type="java.lang.Double">
+            <column name="precio" precision="22" scale="0" />
+        </property>
+        <property name="tipoHelado_1" type="int">
+            <column name="`Tipo-helado`" not-null="true" />
+        </property>
+        <property name="estado" type="byte">
+            <column name="estado" not-null="true" />
+        </property>
+        <set name="ventaProductos" table="Venta_Producto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Producto_idProducto" not-null="true" />
+            </key>
+            <one-to-many class="aplicacion.hibernate.mapeos.VentaProducto" />
+        </set>
+        <set name="catalogos" table="Catalogo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Producto" not-null="true" />
+            </key>
+            <one-to-many class="aplicacion.hibernate.mapeos.Catalogo" />
+        </set>
+    </class>
+</hibernate-mapping>

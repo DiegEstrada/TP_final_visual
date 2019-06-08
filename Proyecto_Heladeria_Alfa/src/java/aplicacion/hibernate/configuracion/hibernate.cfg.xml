@@ -7,5 +7,14 @@
     <property name="hibernate.connection.url">jdbc:mysql://facultad.c0msve0brisr.us-east-2.rds.amazonaws.com:3306/heladeria?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">maestro</property>
     <property name="hibernate.connection.password">maestro1</property>
+    <mapping resource="aplicacion/hibernate/mapeos/Promocion.hbm.xml"/>
+    <mapping resource="aplicacion/hibernate/mapeos/TipoUsuario.hbm.xml"/>
+    <mapping resource="aplicacion/hibernate/mapeos/Catalogo.hbm.xml"/>
+    <mapping resource="aplicacion/hibernate/mapeos/Venta.hbm.xml"/>
+    <mapping resource="aplicacion/hibernate/mapeos/Almacen.hbm.xml"/>
+    <mapping resource="aplicacion/hibernate/mapeos/Producto.hbm.xml"/>
+    <mapping resource="aplicacion/hibernate/mapeos/VentaProducto.hbm.xml"/>
+    <mapping resource="aplicacion/hibernate/mapeos/Usuario.hbm.xml"/>
+    <mapping resource="aplicacion/hibernate/mapeos/TipoHelado.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

@@ -1,30 +1,29 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 08/06/2019 20:22:10 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="aplicacion.hibernate.mapeos.Venta" table="Venta" catalog="heladeria" optimistic-lock="version">
-        <id name="idVenta" type="int">
-            <column name="idVenta" />
-            <generator class="assigned" />
-        </id>
-        <many-to-one name="catalogo" class="aplicacion.hibernate.mapeos.Catalogo" fetch="select">
-            <column name="Catalogo" not-null="true" />
-        </many-to-one>
-        <many-to-one name="usuarioByCliente" class="aplicacion.hibernate.mapeos.Usuario" fetch="select">
-            <column name="cliente" not-null="true" />
-        </many-to-one>
-        <many-to-one name="usuarioByVendedor" class="aplicacion.hibernate.mapeos.Usuario" fetch="select">
-            <column name="vendedor" not-null="true" />
-        </many-to-one>
-        <property name="fecha" type="string">
-            <column name="Fecha" length="45" />
-        </property>
-        <set name="ventaProductos" table="Venta_Producto" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="Venta_idVenta" not-null="true" />
-            </key>
-            <one-to-many class="aplicacion.hibernate.mapeos.VentaProducto" />
-        </set>
-    </class>
+  <class catalog="heladeria" name="aplicacion.modelo.dominio.Venta" optimistic-lock="version" table="Venta">
+    <id name="idVenta" type="int">
+      <column name="idVenta"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="aplicacion.modelo.dominio.Catalogo" fetch="select" name="catalogo">
+      <column name="Catalogo" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="aplicacion.modelo.dominio.Usuario" fetch="select" name="usuarioByCliente">
+      <column name="cliente" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="aplicacion.modelo.dominio.Usuario" fetch="select" name="usuarioByVendedor">
+      <column name="vendedor" not-null="true"/>
+    </many-to-one>
+    <property name="fecha" type="string">
+      <column length="45" name="Fecha"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="ventaProductos" table="Venta_Producto">
+      <key>
+        <column name="Venta_idVenta" not-null="true"/>
+      </key>
+      <one-to-many class="aplicacion.modelo.dominio.VentaProducto"/>
+    </set>
+  </class>
 </hibernate-mapping>

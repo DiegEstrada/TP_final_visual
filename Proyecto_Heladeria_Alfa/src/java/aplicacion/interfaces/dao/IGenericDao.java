@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package aplicacion.modelo.domino.constante;
+package aplicacion.interfaces.dao;
 
 /**
  *
- * @author Grupo Alfa
+ * @author Alfa
  */
-public class EstadoUsuario {
-   public static final boolean FALSE=false;    
-   public static final boolean TRUE=true;    
+public interface IGenericDao {
+    
 }

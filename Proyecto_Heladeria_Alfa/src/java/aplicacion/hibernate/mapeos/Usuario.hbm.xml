@@ -1,54 +1,53 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 08/06/2019 20:22:10 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="aplicacion.hibernate.mapeos.Usuario" table="Usuario" catalog="heladeria" optimistic-lock="version">
-        <id name="idUsuario" type="java.lang.Integer">
-            <column name="idUsuario" />
-            <generator class="identity" />
-        </id>
-        <many-to-one name="tipoUsuario" class="aplicacion.hibernate.mapeos.TipoUsuario" fetch="select">
-            <column name="Tipo-usuario" />
-        </many-to-one>
-        <property name="nombre" type="string">
-            <column name="nombre" length="45" />
-        </property>
-        <property name="apellido" type="string">
-            <column name="apellido" length="45" />
-        </property>
-        <property name="username" type="string">
-            <column name="username" length="45" />
-        </property>
-        <property name="password" type="string">
-            <column name="password" length="45" />
-        </property>
-        <property name="correo" type="string">
-            <column name="correo" length="45" />
-        </property>
-        <property name="dni" type="string">
-            <column name="dni" length="45" />
-        </property>
-        <property name="fechaDeNacimiento" type="date">
-            <column name="`fecha-de-nacimiento`" length="10" />
-        </property>
-        <property name="estado" type="string">
-            <column name="estado" length="45" />
-        </property>
-        <property name="tipoUsuario_1" type="int">
-            <column name="`Tipo-usuario`" not-null="true" />
-        </property>
-        <set name="ventasForCliente" table="Venta" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="cliente" not-null="true" />
-            </key>
-            <one-to-many class="aplicacion.hibernate.mapeos.Venta" />
-        </set>
-        <set name="ventasForVendedor" table="Venta" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="vendedor" not-null="true" />
-            </key>
-            <one-to-many class="aplicacion.hibernate.mapeos.Venta" />
-        </set>
-    </class>
+  <class catalog="heladeria" name="aplicacion.modelo.dominio.Usuario" optimistic-lock="version" table="Usuario">
+    <id name="idUsuario" type="java.lang.Integer">
+      <column name="idUsuario"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="aplicacion.modelo.dominio.TipoUsuario" fetch="select" name="tipoUsuario">
+      <column name="Tipo-usuario"/>
+    </many-to-one>
+    <property name="nombre" type="string">
+      <column length="45" name="nombre"/>
+    </property>
+    <property name="apellido" type="string">
+      <column length="45" name="apellido"/>
+    </property>
+    <property name="username" type="string">
+      <column length="45" name="username"/>
+    </property>
+    <property name="password" type="string">
+      <column length="45" name="password"/>
+    </property>
+    <property name="correo" type="string">
+      <column length="45" name="correo"/>
+    </property>
+    <property name="dni" type="string">
+      <column length="45" name="dni"/>
+    </property>
+    <property name="fechaDeNacimiento" type="date">
+      <column length="10" name="`fecha-de-nacimiento`"/>
+    </property>
+    <property name="estado" type="string">
+      <column length="45" name="estado"/>
+    </property>
+    <property name="tipoUsuario_1" type="int">
+      <column name="`Tipo-usuario`" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="ventasForCliente" table="Venta">
+      <key>
+        <column name="cliente" not-null="true"/>
+      </key>
+      <one-to-many class="aplicacion.modelo.dominio.Venta"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="ventasForVendedor" table="Venta">
+      <key>
+        <column name="vendedor" not-null="true"/>
+      </key>
+      <one-to-many class="aplicacion.modelo.dominio.Venta"/>
+    </set>
+  </class>
 </hibernate-mapping>

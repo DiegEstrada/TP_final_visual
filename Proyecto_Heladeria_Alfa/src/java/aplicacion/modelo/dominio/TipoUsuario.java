@@ -1,4 +1,4 @@
-package aplicacion.hibernate.mapeos;
+package aplicacion.modelo.dominio;
 // Generated 08/06/2019 20:22:06 by Hibernate Tools 4.3.1
 
 

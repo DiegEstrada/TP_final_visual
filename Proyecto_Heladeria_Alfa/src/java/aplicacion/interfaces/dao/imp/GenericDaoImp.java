@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package aplicacion.modelo.domino.constante;
+package aplicacion.interfaces.dao.imp;
 
 /**
  *
- * @author Grupo Alfa
+ * @author Alfa
  */
-public class TipoUsuario {
-   public static final String ADMIN="ADMIN";
-   public static final String COMUN="COMUN";
+public class GenericDaoImp {
+    
 }

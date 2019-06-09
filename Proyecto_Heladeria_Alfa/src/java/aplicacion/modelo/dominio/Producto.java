@@ -1,7 +1,8 @@
-package aplicacion.hibernate.mapeos;
+package aplicacion.modelo.dominio;
 // Generated 08/06/2019 20:22:06 by Hibernate Tools 4.3.1
 
 
+import aplicacion.modelo.dominio.TipoHelado;
 import java.util.HashSet;
 import java.util.Set;
 

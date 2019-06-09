@@ -1,24 +1,23 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 08/06/2019 20:22:10 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="aplicacion.hibernate.mapeos.VentaProducto" table="Venta_Producto" catalog="heladeria" optimistic-lock="version">
-        <id name="idVentaProducto" type="java.lang.Integer">
-            <column name="`idVenta-Producto`" />
-            <generator class="identity" />
-        </id>
-        <many-to-one name="producto" class="aplicacion.hibernate.mapeos.Producto" fetch="select">
-            <column name="Producto_idProducto" not-null="true" />
-        </many-to-one>
-        <many-to-one name="venta" class="aplicacion.hibernate.mapeos.Venta" fetch="select">
-            <column name="Venta_idVenta" not-null="true" />
-        </many-to-one>
-        <property name="cantidad" type="java.lang.Integer">
-            <column name="cantidad" />
-        </property>
-        <property name="total" type="java.lang.Double">
-            <column name="total" precision="22" scale="0" />
-        </property>
-    </class>
+  <class catalog="heladeria" name="aplicacion.modelo.dominio.VentaProducto" optimistic-lock="version" table="Venta_Producto">
+    <id name="idVentaProducto" type="java.lang.Integer">
+      <column name="`idVenta-Producto`"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="aplicacion.modelo.dominio.Producto" fetch="select" name="producto">
+      <column name="Producto_idProducto" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="aplicacion.modelo.dominio.Venta" fetch="select" name="venta">
+      <column name="Venta_idVenta" not-null="true"/>
+    </many-to-one>
+    <property name="cantidad" type="java.lang.Integer">
+      <column name="cantidad"/>
+    </property>
+    <property name="total" type="java.lang.Double">
+      <column name="total" precision="22" scale="0"/>
+    </property>
+  </class>
 </hibernate-mapping>

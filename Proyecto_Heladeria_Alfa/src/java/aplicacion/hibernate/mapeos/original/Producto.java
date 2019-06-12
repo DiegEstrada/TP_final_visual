@@ -1,7 +1,8 @@
-package aplicacion.modelo.dominio;
+package aplicacion.hibernate.mapeos.original;
 // Generated 08/06/2019 20:22:06 by Hibernate Tools 4.3.1
 
 
+import aplicacion.modelo.dominio.*;
 import aplicacion.modelo.dominio.TipoHelado;
 import java.util.HashSet;
 import java.util.Set;
@@ -18,33 +19,32 @@ public class Producto  implements java.io.Serializable {
      private String nombre;
      private String descripcion;
      private Double precio;
-     private boolean estado;
+     private int tipoHelado_1;
+     private byte estado;
      private Set ventaProductos = new HashSet(0);
      private Set catalogos = new HashSet(0);
 
     public Producto() {
     }
 
-
-    public Producto(Almacen almacen, TipoHelado tipoHelado, String nombre, String descripcion, Double precio,boolean estado) {
+	
+    public Producto(Almacen almacen, int tipoHelado_1, byte estado) {
+        this.almacen = almacen;
+        this.tipoHelado_1 = tipoHelado_1;
+        this.estado = estado;
+    }
+    public Producto(Almacen almacen, TipoHelado tipoHelado, String nombre, String descripcion, Double precio, int tipoHelado_1, byte estado, Set ventaProductos, Set catalogos) {
        this.almacen = almacen;
        this.tipoHelado = tipoHelado;
        this.nombre = nombre;
        this.descripcion = descripcion;
        this.precio = precio;
+       this.tipoHelado_1 = tipoHelado_1;
        this.estado = estado;
-       }
-
-    public Producto(Integer idProducto, Almacen almacen, TipoHelado tipoHelado, String nombre, String descripcion, Double precio, boolean estado) {
-        this.idProducto = idProducto;
-        this.almacen = almacen;
-        this.tipoHelado = tipoHelado;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.precio = precio;
-        this.estado = estado;
+       this.ventaProductos = ventaProductos;
+       this.catalogos = catalogos;
     }
-    
+   
     public Integer getIdProducto() {
         return this.idProducto;
     }
@@ -87,15 +87,38 @@ public class Producto  implements java.io.Serializable {
     public void setPrecio(Double precio) {
         this.precio = precio;
     }
-   
-    public boolean getEstado() {
+    public int getTipoHelado_1() {
+        return this.tipoHelado_1;
+    }
+    
+    public void setTipoHelado_1(int tipoHelado_1) {
+        this.tipoHelado_1 = tipoHelado_1;
+    }
+    public byte getEstado() {
         return this.estado;
     }
     
-    public void setEstado(boolean estado) {
+    public void setEstado(byte estado) {
         this.estado = estado;
     }
-   
+    public Set getVentaProductos() {
+        return this.ventaProductos;
+    }
+    
+    public void setVentaProductos(Set ventaProductos) {
+        this.ventaProductos = ventaProductos;
+    }
+    public Set getCatalogos() {
+        return this.catalogos;
+    }
+    
+    public void setCatalogos(Set catalogos) {
+        this.catalogos = catalogos;
+    }
+
+
+
+
 }
 
 

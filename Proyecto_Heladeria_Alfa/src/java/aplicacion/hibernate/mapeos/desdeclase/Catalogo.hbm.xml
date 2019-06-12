@@ -2,22 +2,23 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 08/06/2019 20:22:10 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="heladeria" name="aplicacion.modelo.dominio.VentaProducto" optimistic-lock="version" table="venta_producto">
-    <id name="idVentaProducto" type="java.lang.Integer">
-      <column name="id_venta_producto"/>
+  <class catalog="heladeria" name="aplicacion.modelo.dominio.Catalogo" optimistic-lock="version" table="catalogos">
+    <id name="idCatalogo" type="java.lang.Integer">
+      <column name="id_catalogo"/>
       <generator class="identity"/>
     </id>
     <many-to-one class="aplicacion.modelo.dominio.Producto" fetch="select" name="producto">
       <column name="id_producto" not-null="true"/>
     </many-to-one>
-    <many-to-one class="aplicacion.modelo.dominio.Venta" fetch="select" name="venta">
-      <column name="id_venta" not-null="true"/>
+    <many-to-one class="aplicacion.modelo.dominio.Promocion" fetch="select" name="promociones">
+      <column name="id_promocion" not-null="true"/>
     </many-to-one>
-    <property name="cantidad" type="java.lang.Integer">
-      <column name="cantidad"/>
+    <property name="nombre" type="string">
+      <column length="20" name="nombre"/>
     </property>
-    <property name="total" type="java.lang.Double">
-      <column name="total" precision="22" scale="0"/>
+    <property name="estado" type="boolean">
+      <column name="estado" not-null="true"/>
     </property>
+    
   </class>
 </hibernate-mapping>

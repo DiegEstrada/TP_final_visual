@@ -10,11 +10,5 @@
     <property name="nombre" type="string">
       <column length="25" name="nombre"/>
     </property>
-    <set fetch="select" inverse="true" lazy="true" name="productos" table="Producto">
-      <key>
-        <column name="id_tipo_helado"/>
-      </key>
-      <one-to-many class="aplicacion.modelo.dominio.Producto"/>
-    </set>
   </class>
 </hibernate-mapping>

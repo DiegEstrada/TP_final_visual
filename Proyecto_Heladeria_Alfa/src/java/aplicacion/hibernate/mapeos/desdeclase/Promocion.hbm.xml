@@ -19,11 +19,6 @@
     <property name="descuento" type="java.lang.Double">
       <column name="descuento" precision="22" scale="0"/>
     </property>
-    <set fetch="select" inverse="true" lazy="true" name="catalogos" table="Catalogo">
-      <key>
-        <column name="id_catalogo" not-null="true"/>
-      </key>
-      <one-to-many class="aplicacion.modelo.dominio.Catalogo"/>
-    </set>    
+    
   </class>
 </hibernate-mapping>

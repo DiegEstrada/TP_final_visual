@@ -22,7 +22,7 @@ public class UsuarioDaoImp extends GenericDaoImp<Usuario, Integer>implements IUs
     @Override
     public List<Usuario> obtenerUsuarios() {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        Criteria criteria =session.createCriteria(Usuario.class);
+        Criteria criteria=session.createCriteria(Usuario.class);
         List<Usuario> usuarios=criteria.list();
         session.close();
         return usuarios;

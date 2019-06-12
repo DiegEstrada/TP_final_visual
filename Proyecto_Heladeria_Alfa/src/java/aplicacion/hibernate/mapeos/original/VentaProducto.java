@@ -1,4 +1,7 @@
-package aplicacion.modelo.dominio;
+package aplicacion.hibernate.mapeos.original;
+// Generated 08/06/2019 20:22:06 by Hibernate Tools 4.3.1
+
+import aplicacion.modelo.dominio.*;
 // Generated 08/06/2019 20:22:06 by Hibernate Tools 4.3.1
 
 
@@ -20,6 +23,10 @@ public class VentaProducto  implements java.io.Serializable {
     }
 
 	
+    public VentaProducto(Producto producto, Venta venta) {
+        this.producto = producto;
+        this.venta = venta;
+    }
     public VentaProducto(Producto producto, Venta venta, Integer cantidad, Double total) {
        this.producto = producto;
        this.venta = venta;

@@ -19,12 +19,6 @@
     <property name="fecha" type="date">
       <column length="10" name="fecha"/>
     </property>
-    <set fetch="select" inverse="true" lazy="true" name="ventaProductos" table="Venta_Producto">
-      <key>
-        <column name="id_venta" not-null="true"/>
-      </key>
-      <one-to-many class="aplicacion.modelo.dominio.VentaProducto"/>
-    </set>
    
   </class>
 </hibernate-mapping>

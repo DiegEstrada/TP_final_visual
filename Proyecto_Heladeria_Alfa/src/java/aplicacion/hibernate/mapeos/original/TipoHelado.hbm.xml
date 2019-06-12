@@ -2,17 +2,17 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 08/06/2019 20:22:10 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="heladeria" name="aplicacion.modelo.dominio.TipoHelado" optimistic-lock="version" table="tipo_helados">
+  <class catalog="heladeria" name="aplicacion.modelo.dominio.TipoHelado" optimistic-lock="version" table="`Tipo-helado`">
     <id name="idTipoHelado" type="java.lang.Integer">
-      <column name="id_tipo_helado"/>
+      <column name="`idTipo-helado`"/>
       <generator class="identity"/>
     </id>
     <property name="nombre" type="string">
-      <column length="25" name="nombre"/>
+      <column length="45" name="nombre"/>
     </property>
     <set fetch="select" inverse="true" lazy="true" name="productos" table="Producto">
       <key>
-        <column name="id_tipo_helado"/>
+        <column name="Tipo-helado"/>
       </key>
       <one-to-many class="aplicacion.modelo.dominio.Producto"/>
     </set>

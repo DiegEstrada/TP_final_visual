@@ -1,7 +1,8 @@
-package aplicacion.modelo.dominio;
+package aplicacion.hibernate.mapeos.original;
 // Generated 08/06/2019 20:22:06 by Hibernate Tools 4.3.1
 
 
+import aplicacion.modelo.dominio.*;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -21,25 +22,19 @@ public class Usuario  implements java.io.Serializable {
      private String correo;
      private String dni;
      private Date fechaDeNacimiento;
-     private Boolean estado;
+     private String estado;
+     private int tipoUsuario_1;
      private Set ventasForCliente = new HashSet(0);
      private Set ventasForVendedor = new HashSet(0);
 
     public Usuario() {
     }
 
-    public Usuario(TipoUsuario tipoUsuario, String nombre, String apellido, String username, String password, String correo, String dni, Date fechaDeNacimiento, Boolean estado) {
-       this.tipoUsuario = tipoUsuario;
-       this.nombre = nombre;
-       this.apellido = apellido;
-       this.username = username;
-       this.password = password;
-       this.correo = correo;
-       this.dni = dni;
-       this.fechaDeNacimiento = fechaDeNacimiento;
-       this.estado = estado;
+	
+    public Usuario(int tipoUsuario_1) {
+        this.tipoUsuario_1 = tipoUsuario_1;
     }
-    public Usuario(Set ventasForCliente, Set ventasForVendedor, TipoUsuario tipoUsuario, String nombre, String apellido, String username, String password, String correo, String dni, Date fechaDeNacimiento, Boolean estado) {
+    public Usuario(TipoUsuario tipoUsuario, String nombre, String apellido, String username, String password, String correo, String dni, Date fechaDeNacimiento, String estado, int tipoUsuario_1, Set ventasForCliente, Set ventasForVendedor) {
        this.tipoUsuario = tipoUsuario;
        this.nombre = nombre;
        this.apellido = apellido;
@@ -49,29 +44,24 @@ public class Usuario  implements java.io.Serializable {
        this.dni = dni;
        this.fechaDeNacimiento = fechaDeNacimiento;
        this.estado = estado;
+       this.tipoUsuario_1 = tipoUsuario_1;
        this.ventasForCliente = ventasForCliente;
-       this.ventasForVendedor= ventasForVendedor;
+       this.ventasForVendedor = ventasForVendedor;
     }
-    
+    public Usuario(TipoUsuario tipoUsuario, String nombre, String apellido, String username, String password, String correo, String dni, Date fechaDeNacimiento, String estado) {
+       this.tipoUsuario = tipoUsuario;
+       this.nombre = nombre;
+       this.apellido = apellido;
+       this.username = username;
+       this.password = password;
+       this.correo = correo;
+       this.dni = dni;
+       this.fechaDeNacimiento = fechaDeNacimiento;
+       this.estado = estado;
+    }
    
     public Integer getIdUsuario() {
         return this.idUsuario;
-    }
-
-    public Set getVentasForCliente() {
-        return ventasForCliente;
-    }
-
-    public void setVentasForCliente(Set ventasForCliente) {
-        this.ventasForCliente = ventasForCliente;
-    }
-
-    public Set getVentasForVendedor() {
-        return ventasForVendedor;
-    }
-
-    public void setVentasForVendedor(Set ventasForVendedor) {
-        this.ventasForVendedor = ventasForVendedor;
     }
     
     public void setIdUsuario(Integer idUsuario) {
@@ -133,13 +123,43 @@ public class Usuario  implements java.io.Serializable {
     public void setFechaDeNacimiento(Date fechaDeNacimiento) {
         this.fechaDeNacimiento = fechaDeNacimiento;
     }
-    public boolean getEstado() {
+    public String getEstado() {
         return this.estado;
     }
     
-    public void setEstado(boolean estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
+    public int getTipoUsuario_1() {
+        return this.tipoUsuario_1;
+    }
+    
+    public void setTipoUsuario_1(int tipoUsuario_1) {
+        this.tipoUsuario_1 = tipoUsuario_1;
+    }
+    public Set getVentasForCliente() {
+        return this.ventasForCliente;
+    }
+    
+    public void setVentasForCliente(Set ventasForCliente) {
+        this.ventasForCliente = ventasForCliente;
+    }
+    public Set getVentasForVendedor() {
+        return this.ventasForVendedor;
+    }
+    
+    public void setVentasForVendedor(Set ventasForVendedor) {
+        this.ventasForVendedor = ventasForVendedor;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "idUsuario=" + idUsuario + ", tipoUsuario=" + tipoUsuario + ", nombre=" + nombre + ", apellido=" + apellido + ", username=" + username + ", password=" + password + ", correo=" + correo + ", dni=" + dni + ", fechaDeNacimiento=" + fechaDeNacimiento + ", estado=" + estado + '}';
+    }
+    
+
+
+
 
 }
 

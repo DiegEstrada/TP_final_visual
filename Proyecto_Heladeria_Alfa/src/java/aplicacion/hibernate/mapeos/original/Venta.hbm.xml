@@ -2,29 +2,28 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 08/06/2019 20:22:10 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="heladeria" name="aplicacion.modelo.dominio.Venta" optimistic-lock="version" table="ventas">
+  <class catalog="heladeria" name="aplicacion.modelo.dominio.Venta" optimistic-lock="version" table="Venta">
     <id name="idVenta" type="int">
-      <column name="id_venta"/>
+      <column name="idVenta"/>
       <generator class="assigned"/>
     </id>
     <many-to-one class="aplicacion.modelo.dominio.Catalogo" fetch="select" name="catalogo">
-      <column name="id_catalogo" not-null="true"/>
+      <column name="Catalogo" not-null="true"/>
     </many-to-one>
     <many-to-one class="aplicacion.modelo.dominio.Usuario" fetch="select" name="cliente">
-      <column name="id_cliente" not-null="true"/>
+      <column name="cliente" not-null="true"/>
     </many-to-one>
     <many-to-one class="aplicacion.modelo.dominio.Usuario" fetch="select" name="vendedor">
-      <column name="id_vendedor" not-null="true"/>
+      <column name="vendedor" not-null="true"/>
     </many-to-one>
-    <property name="fecha" type="date">
-      <column length="10" name="fecha"/>
+    <property name="fecha" type="string">
+      <column length="45" name="Fecha"/>
     </property>
     <set fetch="select" inverse="true" lazy="true" name="ventaProductos" table="Venta_Producto">
       <key>
-        <column name="id_venta" not-null="true"/>
+        <column name="Venta_idVenta" not-null="true"/>
       </key>
       <one-to-many class="aplicacion.modelo.dominio.VentaProducto"/>
     </set>
-   
   </class>
 </hibernate-mapping>

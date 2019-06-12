@@ -1,7 +1,8 @@
-package aplicacion.modelo.dominio;
+package aplicacion.hibernate.mapeos.desdeclase;
 // Generated 08/06/2019 20:22:06 by Hibernate Tools 4.3.1
 
 
+import aplicacion.modelo.dominio.*;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,7 +18,6 @@ public class Venta  implements java.io.Serializable {
      private Usuario cliente;
      private Usuario vendedor;
      private Date fecha;
-     private Set ventaProductos = new HashSet(0);
 
     public Venta() {
     }
@@ -29,14 +29,6 @@ public class Venta  implements java.io.Serializable {
         this.cliente = cliente;
         this.vendedor = vendedor;
         this.fecha = fecha;
-    }
-    public Venta(Set ventaProductos, int idVenta, Catalogo catalogo, Usuario cliente, Usuario vendedor, Date fecha) {
-        this.idVenta = idVenta;
-        this.catalogo = catalogo;
-        this.cliente = cliente;
-        this.vendedor = vendedor;
-        this.fecha = fecha;
-        this.ventaProductos = ventaProductos;
     }
     
     public int getIdVenta() {
@@ -73,30 +65,6 @@ public class Venta  implements java.io.Serializable {
     
     public void setFecha(Date fecha) {
         this.fecha = fecha;
-    }
-
-    public Usuario getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Usuario cliente) {
-        this.cliente = cliente;
-    }
-
-    public Usuario getVendedor() {
-        return vendedor;
-    }
-
-    public void setVendedor(Usuario vendedor) {
-        this.vendedor = vendedor;
-    }
-
-    public Set getVentaProductos() {
-        return ventaProductos;
-    }
-
-    public void setVentaProductos(Set ventaProductos) {
-        this.ventaProductos = ventaProductos;
     }
 }
 

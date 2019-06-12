@@ -1,7 +1,8 @@
-package aplicacion.modelo.dominio;
+package aplicacion.hibernate.mapeos.desdeclase;
 // Generated 08/06/2019 20:22:06 by Hibernate Tools 4.3.1
 
 
+import aplicacion.modelo.dominio.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,13 +14,12 @@ public class TipoUsuario  implements java.io.Serializable {
 
      private Integer idTipoUsuario;
      private String nombre;
-     private Set usuarios = new HashSet(0);
 
     public TipoUsuario() {
     }
+
     public TipoUsuario(String nombre, Set usuarios) {
        this.nombre = nombre;
-       this.usuarios = usuarios;
     }
    
     public Integer getIdTipoUsuario() {
@@ -35,14 +35,6 @@ public class TipoUsuario  implements java.io.Serializable {
     
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public Set getUsuarios() {
-        return usuarios;
-    }
-
-    public void setUsuarios(Set usuarios) {
-        this.usuarios = usuarios;
     }
 }
 

@@ -10,12 +10,5 @@
     <property name="stock" type="java.lang.Integer">
       <column name="stock"/>
     </property>
-    <set fetch="select" inverse="true" lazy="true" name="productos" table="Producto">
-      <key>
-        <column name="id_almacen" not-null="true"/>
-      </key>
-      <one-to-many class="aplicacion.modelo.dominio.Producto"/>
-    </set>    
   </class>
-  
 </hibernate-mapping>

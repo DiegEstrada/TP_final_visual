@@ -1,7 +1,8 @@
-package aplicacion.modelo.dominio;
+package aplicacion.hibernate.mapeos.desdeclase;
 // Generated 08/06/2019 20:22:06 by Hibernate Tools 4.3.1
 
 
+import aplicacion.modelo.dominio.*;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,7 +17,6 @@ public class Promocion  implements java.io.Serializable {
      private Date fechaInicio;
      private Date fechaFin;
      private Double descuento;
-     private Set catalogos = new HashSet(0);
 
     public Promocion() {
     }
@@ -26,14 +26,6 @@ public class Promocion  implements java.io.Serializable {
        this.fechaInicio = fechaInicio;
        this.fechaFin = fechaFin;
        this.descuento = descuento;
-    }
-
-    public Promocion(Integer idPromocion, String nombre, Date fechaInicio, Date fechaFin, Double descuento) {
-        this.idPromocion = idPromocion;
-        this.nombre = nombre;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
-        this.descuento = descuento;
     }
    
     public Integer getIdPromocion() {
@@ -70,14 +62,6 @@ public class Promocion  implements java.io.Serializable {
     
     public void setDescuento(Double descuento) {
         this.descuento = descuento;
-    }
-
-    public Set getCatalogos() {
-        return catalogos;
-    }
-
-    public void setCatalogos(Set catalogos) {
-        this.catalogos = catalogos;
     }
     
 }

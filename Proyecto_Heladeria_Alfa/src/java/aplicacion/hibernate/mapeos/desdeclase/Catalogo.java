@@ -1,7 +1,8 @@
-package aplicacion.modelo.dominio;
+package aplicacion.hibernate.mapeos.desdeclase;
 // Generated 08/06/2019 20:22:06 by Hibernate Tools 4.3.1
 
 
+import aplicacion.modelo.dominio.*;
 import aplicacion.modelo.dominio.Producto;
 import aplicacion.modelo.dominio.Promocion;
 import java.util.HashSet;
@@ -18,7 +19,6 @@ public class Catalogo  implements java.io.Serializable {
      private Promocion promocion;
      private String nombre;
      private boolean estado;
-     private Set ventas = new HashSet(0);
     public Catalogo() {
     }
 
@@ -27,13 +27,6 @@ public class Catalogo  implements java.io.Serializable {
         this.producto = producto;
         this.promocion = promocion;
         this.estado = estado;
-    }
-    public Catalogo(Producto producto, Promocion promocion, String nombre, boolean estado, Set ventas) {
-       this.producto = producto;
-       this.promocion = promocion;
-       this.nombre = nombre;
-       this.estado = estado;
-       this.ventas = ventas;
     }
    
     public Integer getIdCatalogo() {
@@ -72,13 +65,7 @@ public class Catalogo  implements java.io.Serializable {
         this.estado = estado;
     }
 
-    public Set getVentas() {
-        return ventas;
-    }
 
-    public void setVentas(Set ventas) {
-        this.ventas = ventas;
-    }
 
 }
 

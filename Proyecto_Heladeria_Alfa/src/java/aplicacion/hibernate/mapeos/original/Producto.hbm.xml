@@ -2,27 +2,27 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 08/06/2019 20:22:10 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="heladeria" name="aplicacion.modelo.dominio.Producto" optimistic-lock="version" table="productos">
+  <class catalog="heladeria" name="aplicacion.modelo.dominio.Producto" optimistic-lock="version" table="Producto">
     <id name="idProducto" type="java.lang.Integer">
-      <column name="id_producto"/>
+      <column name="idProducto"/>
       <generator class="identity"/>
     </id>
     <many-to-one class="aplicacion.modelo.dominio.Almacen" fetch="select" name="almacen">
       <column name="id_almacen" not-null="true"/>
     </many-to-one>
     <many-to-one class="aplicacion.modelo.dominio.TipoHelado" fetch="select" name="tipoHelado">
-      <column name="id_tipo_helado"/>
+      <column name="id_tipo_alamacen"/>
     </many-to-one>
     <property name="nombre" type="string">
-      <column length="25" name="nombre"/>
+      <column length="45" name="nombre"/>
     </property>
     <property name="descripcion" type="string">
-      <column length="25" name="descripcion"/>
+      <column length="45" name="descripcion"/>
     </property>
     <property name="precio" type="java.lang.Double">
       <column name="precio" precision="22" scale="0"/>
     </property>
-    <property name="estado" type="boolean">
+    <property name="estado" type="byte">
       <column name="estado" not-null="true"/>
     </property>
     <set fetch="select" inverse="true" lazy="true" name="ventaProductos" table="Venta_Producto">
@@ -33,7 +33,7 @@
     </set>
     <set fetch="select" inverse="true" lazy="true" name="catalogos" table="Catalogo">
       <key>
-        <column name="id_catalogo" not-null="true"/>
+        <column name="id_producto" not-null="true"/>
       </key>
       <one-to-many class="aplicacion.modelo.dominio.Catalogo"/>
     </set>

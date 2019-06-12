@@ -1,24 +1,18 @@
-package aplicacion.modelo.dominio;
+package aplicacion.hibernate.mapeos.desdeclase;
 
-import java.util.HashSet;
-import java.util.Set;
+import aplicacion.modelo.dominio.*;
 
 public class Almacen  implements java.io.Serializable {
 
 
      private Integer idAlmacen;
      private Integer stock;
-     private Set productos = new HashSet(0);
 
     public Almacen() {
     }
 
     public Almacen(Integer stock) {
        this.stock = stock;
-    }
-    public Almacen(Integer stock, Set productos) {
-       this.stock = stock;
-       this.productos = productos;
     }
    
     public Integer getIdAlmacen() {
@@ -34,14 +28,6 @@ public class Almacen  implements java.io.Serializable {
     
     public void setStock(Integer stock) {
         this.stock = stock;
-    }
-
-    public Set getProductos() {
-        return productos;
-    }
-
-    public void setProductos(Set productos) {
-        this.productos = productos;
     }
 }
 

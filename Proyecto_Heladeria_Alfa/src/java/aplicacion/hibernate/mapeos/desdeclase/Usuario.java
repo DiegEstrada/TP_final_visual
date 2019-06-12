@@ -1,7 +1,8 @@
-package aplicacion.modelo.dominio;
+package aplicacion.hibernate.mapeos.desdeclase;
 // Generated 08/06/2019 20:22:06 by Hibernate Tools 4.3.1
 
 
+import aplicacion.modelo.dominio.*;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -22,8 +23,6 @@ public class Usuario  implements java.io.Serializable {
      private String dni;
      private Date fechaDeNacimiento;
      private Boolean estado;
-     private Set ventasForCliente = new HashSet(0);
-     private Set ventasForVendedor = new HashSet(0);
 
     public Usuario() {
     }
@@ -39,39 +38,9 @@ public class Usuario  implements java.io.Serializable {
        this.fechaDeNacimiento = fechaDeNacimiento;
        this.estado = estado;
     }
-    public Usuario(Set ventasForCliente, Set ventasForVendedor, TipoUsuario tipoUsuario, String nombre, String apellido, String username, String password, String correo, String dni, Date fechaDeNacimiento, Boolean estado) {
-       this.tipoUsuario = tipoUsuario;
-       this.nombre = nombre;
-       this.apellido = apellido;
-       this.username = username;
-       this.password = password;
-       this.correo = correo;
-       this.dni = dni;
-       this.fechaDeNacimiento = fechaDeNacimiento;
-       this.estado = estado;
-       this.ventasForCliente = ventasForCliente;
-       this.ventasForVendedor= ventasForVendedor;
-    }
-    
    
     public Integer getIdUsuario() {
         return this.idUsuario;
-    }
-
-    public Set getVentasForCliente() {
-        return ventasForCliente;
-    }
-
-    public void setVentasForCliente(Set ventasForCliente) {
-        this.ventasForCliente = ventasForCliente;
-    }
-
-    public Set getVentasForVendedor() {
-        return ventasForVendedor;
-    }
-
-    public void setVentasForVendedor(Set ventasForVendedor) {
-        this.ventasForVendedor = ventasForVendedor;
     }
     
     public void setIdUsuario(Integer idUsuario) {

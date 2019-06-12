@@ -1,4 +1,7 @@
-package aplicacion.modelo.dominio;
+package aplicacion.hibernate.mapeos.desdeclase;
+// Generated 08/06/2019 20:22:06 by Hibernate Tools 4.3.1
+
+import aplicacion.modelo.dominio.*;
 // Generated 08/06/2019 20:22:06 by Hibernate Tools 4.3.1
 
 

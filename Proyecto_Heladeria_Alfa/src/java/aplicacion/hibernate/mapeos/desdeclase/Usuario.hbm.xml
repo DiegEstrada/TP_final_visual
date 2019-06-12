@@ -34,17 +34,5 @@
     <property name="estado" type="string">
       <column length="10" name="estado"/>
     </property>
-    <set fetch="select" inverse="true" lazy="true" name="ventasForCliente" table="Venta">
-      <key>
-        <column name="id_cliente" not-null="true"/>
-      </key>
-      <one-to-many class="aplicacion.modelo.dominio.VentaProducto"/>
-    </set>
-    <set fetch="select" inverse="true" lazy="true" name="ventasForVendedor" table="Venta">
-      <key>
-        <column name="id_vendedor" not-null="true"/>
-      </key>
-      <one-to-many class="aplicacion.modelo.dominio.VentaProducto"/>
-    </set>
   </class>
 </hibernate-mapping>

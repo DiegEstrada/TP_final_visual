@@ -1,5 +1,5 @@
 package aplicacion.modelo.dominio;
-// Generated 08/06/2019 20:22:06 by Hibernate Tools 4.3.1
+// Generated 12/06/2019 18:02:32 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -11,6 +11,7 @@ import java.util.Set;
  */
 public class Promocion  implements java.io.Serializable {
 
+
      private Integer idPromocion;
      private String nombre;
      private Date fechaInicio;
@@ -21,19 +22,12 @@ public class Promocion  implements java.io.Serializable {
     public Promocion() {
     }
 
-    public Promocion(String nombre, Date fechaInicio, Date fechaFin, Double descuento) {
+    public Promocion(String nombre, Date fechaInicio, Date fechaFin, Double descuento, Set catalogos) {
        this.nombre = nombre;
        this.fechaInicio = fechaInicio;
        this.fechaFin = fechaFin;
        this.descuento = descuento;
-    }
-
-    public Promocion(Integer idPromocion, String nombre, Date fechaInicio, Date fechaFin, Double descuento) {
-        this.idPromocion = idPromocion;
-        this.nombre = nombre;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
-        this.descuento = descuento;
+       this.catalogos = catalogos;
     }
    
     public Integer getIdPromocion() {
@@ -71,15 +65,17 @@ public class Promocion  implements java.io.Serializable {
     public void setDescuento(Double descuento) {
         this.descuento = descuento;
     }
-
     public Set getCatalogos() {
-        return catalogos;
+        return this.catalogos;
     }
-
+    
     public void setCatalogos(Set catalogos) {
         this.catalogos = catalogos;
     }
-    
+
+
+
+
 }
 
 

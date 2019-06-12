@@ -1,5 +1,5 @@
 package aplicacion.modelo.dominio;
-// Generated 08/06/2019 20:22:06 by Hibernate Tools 4.3.1
+// Generated 12/06/2019 18:02:32 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -19,11 +19,10 @@ public class TipoHelado  implements java.io.Serializable {
     }
 
     public TipoHelado(String nombre, Set productos) {
-        this.nombre = nombre;
-        this.productos = productos;
+       this.nombre = nombre;
+       this.productos = productos;
     }
-
-    
+   
     public Integer getIdTipoHelado() {
         return this.idTipoHelado;
     }
@@ -38,14 +37,16 @@ public class TipoHelado  implements java.io.Serializable {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
     public Set getProductos() {
-        return productos;
+        return this.productos;
     }
-
+    
     public void setProductos(Set productos) {
         this.productos = productos;
     }
+
+
+
 
 }
 

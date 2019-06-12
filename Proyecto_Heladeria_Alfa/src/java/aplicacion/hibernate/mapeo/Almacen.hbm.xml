@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 08/06/2019 20:22:10 by Hibernate Tools 4.3.1 -->
+<!-- Generated 12/06/2019 18:02:36 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="heladeria" name="aplicacion.modelo.dominio.TipoHelado" optimistic-lock="version" table="tipo_helados">
-    <id name="idTipoHelado" type="java.lang.Integer">
-      <column name="id_tipo_helado"/>
+  <class catalog="heladeria" name="aplicacion.modelo.dominio.Almacen" optimistic-lock="version" table="Almacen">
+    <id name="idAlmacen" type="java.lang.Integer">
+      <column name="id_almacen"/>
       <generator class="identity"/>
     </id>
-    <property name="nombre" type="string">
-      <column length="25" name="nombre"/>
+    <property name="stock" type="java.lang.Integer">
+      <column name="stock"/>
     </property>
     <set fetch="select" inverse="true" lazy="true" name="productos" table="Producto">
       <key>
-        <column name="id_tipo_helado"/>
+        <column name="id_almacen" not-null="true"/>
       </key>
       <one-to-many class="aplicacion.modelo.dominio.Producto"/>
     </set>

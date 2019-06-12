@@ -1,5 +1,5 @@
 package aplicacion.modelo.dominio;
-// Generated 08/06/2019 20:22:06 by Hibernate Tools 4.3.1
+// Generated 12/06/2019 18:02:32 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -21,14 +21,17 @@ public class Usuario  implements java.io.Serializable {
      private String correo;
      private String dni;
      private Date fechaDeNacimiento;
-     private Boolean estado;
-     private Set ventasForCliente = new HashSet(0);
-     private Set ventasForVendedor = new HashSet(0);
+     private byte estado;
+     private Set ventasForIdCliente = new HashSet(0);
+     private Set ventasForIdVendedor = new HashSet(0);
 
     public Usuario() {
     }
 
-    public Usuario(TipoUsuario tipoUsuario, String nombre, String apellido, String username, String password, String correo, String dni, Date fechaDeNacimiento, Boolean estado) {
+	
+    public Usuario(TipoUsuario tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
+    }public Usuario(TipoUsuario tipoUsuario, String nombre, String apellido, String username, String password, String correo, String dni, Date fechaDeNacimiento, byte estado) {
        this.tipoUsuario = tipoUsuario;
        this.nombre = nombre;
        this.apellido = apellido;
@@ -39,7 +42,7 @@ public class Usuario  implements java.io.Serializable {
        this.fechaDeNacimiento = fechaDeNacimiento;
        this.estado = estado;
     }
-    public Usuario(Set ventasForCliente, Set ventasForVendedor, TipoUsuario tipoUsuario, String nombre, String apellido, String username, String password, String correo, String dni, Date fechaDeNacimiento, Boolean estado) {
+    public Usuario(TipoUsuario tipoUsuario, String nombre, String apellido, String username, String password, String correo, String dni, Date fechaDeNacimiento, byte estado, Set ventasForIdCliente, Set ventasForIdVendedor) {
        this.tipoUsuario = tipoUsuario;
        this.nombre = nombre;
        this.apellido = apellido;
@@ -49,29 +52,12 @@ public class Usuario  implements java.io.Serializable {
        this.dni = dni;
        this.fechaDeNacimiento = fechaDeNacimiento;
        this.estado = estado;
-       this.ventasForCliente = ventasForCliente;
-       this.ventasForVendedor= ventasForVendedor;
+       this.ventasForIdCliente = ventasForIdCliente;
+       this.ventasForIdVendedor = ventasForIdVendedor;
     }
-    
    
     public Integer getIdUsuario() {
         return this.idUsuario;
-    }
-
-    public Set getVentasForCliente() {
-        return ventasForCliente;
-    }
-
-    public void setVentasForCliente(Set ventasForCliente) {
-        this.ventasForCliente = ventasForCliente;
-    }
-
-    public Set getVentasForVendedor() {
-        return ventasForVendedor;
-    }
-
-    public void setVentasForVendedor(Set ventasForVendedor) {
-        this.ventasForVendedor = ventasForVendedor;
     }
     
     public void setIdUsuario(Integer idUsuario) {
@@ -133,13 +119,35 @@ public class Usuario  implements java.io.Serializable {
     public void setFechaDeNacimiento(Date fechaDeNacimiento) {
         this.fechaDeNacimiento = fechaDeNacimiento;
     }
-    public boolean getEstado() {
+    public byte getEstado() {
         return this.estado;
     }
     
-    public void setEstado(boolean estado) {
+    public void setEstado(byte estado) {
         this.estado = estado;
     }
+    public Set getVentasForIdCliente() {
+        return this.ventasForIdCliente;
+    }
+    
+    public void setVentasForIdCliente(Set ventasForIdCliente) {
+        this.ventasForIdCliente = ventasForIdCliente;
+    }
+    public Set getVentasForIdVendedor() {
+        return this.ventasForIdVendedor;
+    }
+    
+    public void setVentasForIdVendedor(Set ventasForIdVendedor) {
+        this.ventasForIdVendedor = ventasForIdVendedor;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "idUsuario=" + idUsuario + ", tipoUsuario=" + tipoUsuario + ", nombre=" + nombre + ", apellido=" + apellido + ", username=" + username + ", password=" + password + ", correo=" + correo + ", dni=" + dni + ", fechaDeNacimiento=" + fechaDeNacimiento + ", estado=" + estado + ", ventasForIdCliente=" + ventasForIdCliente + ", ventasForIdVendedor=" + ventasForIdVendedor + '}';
+    }
+
+
+
 
 }
 

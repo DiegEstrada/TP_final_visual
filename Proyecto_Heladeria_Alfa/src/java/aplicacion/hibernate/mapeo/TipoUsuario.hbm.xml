@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 08/06/2019 20:22:10 by Hibernate Tools 4.3.1 -->
+<!-- Generated 12/06/2019 18:02:36 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="heladeria" name="aplicacion.modelo.dominio.TipoUsuario" optimistic-lock="version" table="tipo_usuarios">
+  <class catalog="heladeria" name="aplicacion.modelo.dominio.TipoUsuario" optimistic-lock="version" table="Tipo_usuario">
     <id name="idTipoUsuario" type="java.lang.Integer">
       <column name="id_tipo_usuario"/>
       <generator class="identity"/>
     </id>
     <property name="nombre" type="string">
-      <column length="25" name="nombre"/>
+      <column length="45" name="nombre"/>
     </property>
-    <set fetch="select" inverse="true" lazy="true" name="usuarios" table="Usuario">
+   <!-- <set fetch="select" inverse="true" lazy="true" name="usuarios" table="usuario">
       <key>
-        <column name="id_tipo_usuario"/>
+        <column name="id_tipo_usuario" not-null="true"/>
       </key>
       <one-to-many class="aplicacion.modelo.dominio.Usuario"/>
-    </set>
+    </set> -->
   </class>
 </hibernate-mapping>

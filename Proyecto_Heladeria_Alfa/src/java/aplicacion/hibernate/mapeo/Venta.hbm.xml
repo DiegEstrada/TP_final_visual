@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 08/06/2019 20:22:10 by Hibernate Tools 4.3.1 -->
+<!-- Generated 12/06/2019 18:02:36 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="heladeria" name="aplicacion.modelo.dominio.Venta" optimistic-lock="version" table="ventas">
+  <class catalog="heladeria" name="aplicacion.modelo.dominio.Venta" optimistic-lock="version" table="Venta">
     <id name="idVenta" type="int">
       <column name="id_venta"/>
       <generator class="assigned"/>
@@ -10,14 +10,14 @@
     <many-to-one class="aplicacion.modelo.dominio.Catalogo" fetch="select" name="catalogo">
       <column name="id_catalogo" not-null="true"/>
     </many-to-one>
-    <many-to-one class="aplicacion.modelo.dominio.Usuario" fetch="select" name="cliente">
+    <many-to-one class="aplicacion.modelo.dominio.Usuario" fetch="select" name="usuarioByIdCliente">
       <column name="id_cliente" not-null="true"/>
     </many-to-one>
-    <many-to-one class="aplicacion.modelo.dominio.Usuario" fetch="select" name="vendedor">
+    <many-to-one class="aplicacion.modelo.dominio.Usuario" fetch="select" name="usuarioByIdVendedor">
       <column name="id_vendedor" not-null="true"/>
     </many-to-one>
     <property name="fecha" type="date">
-      <column length="10" name="fecha"/>
+      <column length="10" name="Fecha"/>
     </property>
     <set fetch="select" inverse="true" lazy="true" name="ventaProductos" table="Venta_Producto">
       <key>
@@ -25,6 +25,5 @@
       </key>
       <one-to-many class="aplicacion.modelo.dominio.VentaProducto"/>
     </set>
-   
   </class>
 </hibernate-mapping>

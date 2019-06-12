@@ -30,11 +30,12 @@ public class TestCrearUsuario {
         Criteria criteria =session.createCriteria(TipoUsuario.class);
         List<TipoUsuario> tipoUsuarios=criteria.list();
         TipoUsuario tu = new TipoUsuario();
-        tu= tipoUsuarios.get(0);
+        tu= tipoUsuarios.get(1);
         session.close();
         Boolean bol=true;
+        byte estado=0;
         
-        Usuario usuarioTest= new Usuario(tu, "nom1", "ape1", "usuario1", "usuario1", "matias@gmail.com", "308092", new Date(),true);
+        Usuario usuarioTest= new Usuario(tu, "exito", "ape2", "usuario2", "usuario2", "matias@gmaail.com", "308092", new Date(),estado);
         IUsuarioDao usuarioDao = new UsuarioDaoImp();
         usuarioDao.create(usuarioTest);
         

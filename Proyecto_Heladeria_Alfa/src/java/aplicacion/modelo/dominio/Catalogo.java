@@ -1,9 +1,7 @@
 package aplicacion.modelo.dominio;
-// Generated 08/06/2019 20:22:06 by Hibernate Tools 4.3.1
+// Generated 12/06/2019 18:02:32 by Hibernate Tools 4.3.1
 
 
-import aplicacion.modelo.dominio.Producto;
-import aplicacion.modelo.dominio.Promocion;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,18 +15,19 @@ public class Catalogo  implements java.io.Serializable {
      private Producto producto;
      private Promocion promocion;
      private String nombre;
-     private boolean estado;
+     private byte estado;
      private Set ventas = new HashSet(0);
+
     public Catalogo() {
     }
 
 	
-    public Catalogo(Producto producto, Promocion promocion, boolean estado) {
+    public Catalogo(Producto producto, Promocion promocion, byte estado) {
         this.producto = producto;
         this.promocion = promocion;
         this.estado = estado;
     }
-    public Catalogo(Producto producto, Promocion promocion, String nombre, boolean estado, Set ventas) {
+    public Catalogo(Producto producto, Promocion promocion, String nombre, byte estado, Set ventas) {
        this.producto = producto;
        this.promocion = promocion;
        this.nombre = nombre;
@@ -64,21 +63,23 @@ public class Catalogo  implements java.io.Serializable {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    public boolean getEstado() {
+    public byte getEstado() {
         return this.estado;
     }
     
-    public void setEstado(boolean estado) {
+    public void setEstado(byte estado) {
         this.estado = estado;
     }
-
     public Set getVentas() {
-        return ventas;
+        return this.ventas;
     }
-
+    
     public void setVentas(Set ventas) {
         this.ventas = ventas;
     }
+
+
+
 
 }
 

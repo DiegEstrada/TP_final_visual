@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="heladeria"/>
+  <table-filter match-name="tipo_usuario"/>
+  <table-filter match-name="usuario"/>
+  <table-filter match-name="producto"/>
+  <table-filter match-name="catalogo"/>
+  <table-filter match-name="promocion"/>
+  <table-filter match-name="tipo-helado"/>
+  <table-filter match-name="venta_producto"/>
+  <table-filter match-name="venta"/>
+  <table-filter match-name="almacen"/>
+</hibernate-reverse-engineering>

@@ -1,5 +1,5 @@
 package aplicacion.modelo.dominio;
-// Generated 08/06/2019 20:22:06 by Hibernate Tools 4.3.1
+// Generated 12/06/2019 18:02:32 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -14,8 +14,8 @@ public class Venta  implements java.io.Serializable {
 
      private int idVenta;
      private Catalogo catalogo;
-     private Usuario cliente;
-     private Usuario vendedor;
+     private Usuario usuarioByIdCliente;
+     private Usuario usuarioByIdVendedor;
      private Date fecha;
      private Set ventaProductos = new HashSet(0);
 
@@ -23,22 +23,21 @@ public class Venta  implements java.io.Serializable {
     }
 
 	
-    public Venta(int idVenta, Catalogo catalogo, Usuario cliente, Usuario vendedor, Date fecha) {
+    public Venta(int idVenta, Catalogo catalogo, Usuario usuarioByIdCliente, Usuario usuarioByIdVendedor) {
         this.idVenta = idVenta;
         this.catalogo = catalogo;
-        this.cliente = cliente;
-        this.vendedor = vendedor;
-        this.fecha = fecha;
+        this.usuarioByIdCliente = usuarioByIdCliente;
+        this.usuarioByIdVendedor = usuarioByIdVendedor;
     }
-    public Venta(Set ventaProductos, int idVenta, Catalogo catalogo, Usuario cliente, Usuario vendedor, Date fecha) {
-        this.idVenta = idVenta;
-        this.catalogo = catalogo;
-        this.cliente = cliente;
-        this.vendedor = vendedor;
-        this.fecha = fecha;
-        this.ventaProductos = ventaProductos;
+    public Venta(int idVenta, Catalogo catalogo, Usuario usuarioByIdCliente, Usuario usuarioByIdVendedor, Date fecha, Set ventaProductos) {
+       this.idVenta = idVenta;
+       this.catalogo = catalogo;
+       this.usuarioByIdCliente = usuarioByIdCliente;
+       this.usuarioByIdVendedor = usuarioByIdVendedor;
+       this.fecha = fecha;
+       this.ventaProductos = ventaProductos;
     }
-    
+   
     public int getIdVenta() {
         return this.idVenta;
     }
@@ -53,19 +52,19 @@ public class Venta  implements java.io.Serializable {
     public void setCatalogo(Catalogo catalogo) {
         this.catalogo = catalogo;
     }
-    public Usuario cliente() {
-        return this.cliente;
+    public Usuario getUsuarioByIdCliente() {
+        return this.usuarioByIdCliente;
     }
     
-    public void cliente(Usuario cliente) {
-        this.cliente = cliente;
+    public void setUsuarioByIdCliente(Usuario usuarioByIdCliente) {
+        this.usuarioByIdCliente = usuarioByIdCliente;
     }
-    public Usuario vendedor() {
-        return this.vendedor;
+    public Usuario getUsuarioByIdVendedor() {
+        return this.usuarioByIdVendedor;
     }
     
-    public void vendedor(Usuario vendedor) {
-        this.vendedor = vendedor;
+    public void setUsuarioByIdVendedor(Usuario usuarioByIdVendedor) {
+        this.usuarioByIdVendedor = usuarioByIdVendedor;
     }
     public Date getFecha() {
         return this.fecha;
@@ -74,30 +73,17 @@ public class Venta  implements java.io.Serializable {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-
-    public Usuario getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Usuario cliente) {
-        this.cliente = cliente;
-    }
-
-    public Usuario getVendedor() {
-        return vendedor;
-    }
-
-    public void setVendedor(Usuario vendedor) {
-        this.vendedor = vendedor;
-    }
-
     public Set getVentaProductos() {
-        return ventaProductos;
+        return this.ventaProductos;
     }
-
+    
     public void setVentaProductos(Set ventaProductos) {
         this.ventaProductos = ventaProductos;
     }
+
+
+
+
 }
 
 

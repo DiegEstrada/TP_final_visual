@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./resources/template/template.xhtml">
+
+            <ui:define name="content">
+                <!-- container -->
+	<div class="container">
+
+		<ol class="breadcrumb">
+			<li><a href="inicio.xhtml">Home</a></li>
+			<li class="active">Acceso de Usuario</li>
+		</ol>
+
+		<div class="row">
+			
+			<!-- Article main content -->
+			<article class="col-xs-12 maincontent">
+				<header class="page-header">
+					<h1 class="page-title">Sign in</h1>
+				</header>
+				
+				<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<h3 class="thin text-center">Sign in to your account</h3>
+							<p class="text-center text-muted">Si no tiene cuenta puedes, <a href="registro.xhtml">Registrarse</a> para poder acceder a nuestros beneficios. </p>
+							
+                                                        <h:form id="frmRegistrarUsuario">
+                                                            <p:growl id="msj1"/>
+                                                            <h:panelGrid id="tblUsuario" columns="2">
+                                                            <p:outputLabel id="lblusername" value="Usuario" for="txtusername"/>
+                                                            <p:inputText id="txtusername" value="#" required="true"
+                                                                                                 requiredMessage="Ingrese usuario" maxlength="45"/>
+                                                            <p:outputLabel id="lblpassword" value="Password" for="txtpass"/>
+                                                            <p:password id="txtpass" value="#" required="true"
+                                                                                                 requiredMessage="Ingrese password" maxlength="45"/>
+                                                            <p:commandButton id="btnregistro" value="Registrar"
+                                                                                                     actionListener="#"
+                                                                                                     update="msj1 frmRegistrarUsuario "
+                                                                                                     icon="ui-icon-disk">
+                                                                                        <p:confirm header="Confirmacion" message="¿Estas Seguro?"/>
+                                                                                    </p:commandButton>
+                                                            </h:panelGrid>
+                                                        </h:form>
+							
+							<!--<form>
+								<div class="top-margin">
+									<label>Username/Email <span class="text-danger">*</span></label>
+									<input type="text" class="form-control"/>
+								</div>
+								<div class="top-margin">
+									<label>Password <span class="text-danger">*</span></label>
+									<input type="password" class="form-control"/>
+								</div>
+
+								<hr>
+
+								<div class="row">
+									<div class="col-lg-8">
+										<b><a href="">Forgot password?</a></b>
+									</div>
+									<div class="col-lg-4 text-right">
+										<button class="btn btn-action" type="submit">Sign in</button>
+									</div>
+								</div>
+							</form>-->
+						</div>
+					</div>
+                                </div>	
+			</article>
+			<!-- /Article -->
+		</div>
+	</div>	<!-- /container -->
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

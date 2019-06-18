@@ -29,6 +29,9 @@
                     <p:column id="colDni" headerText="DNI">
                         <h:outputText value="#{usu.dni}" />
                     </p:column>
+                    <p:column id="colEliminar" headerText="Eliminar">
+                        <p:commandButton value="Eliminar" update="frmListadoUsuarios" actionListener="#{crearUsuarioFormBean.eliminarUsuario(usu)}" />
+                    </p:column>
                 </p:dataTable>
                 <p:commandButton value="Crear usuario" action="crearUsuariosAdmi.xhtml" />
             </p:panel>

@@ -61,6 +61,10 @@ public class CrearUsuarioFormBean implements Serializable {
         usuarioDao.create(usuario);
         usuario = new Usuario();
     }
+    public void eliminarUsuario(Usuario usuario){
+        usuarioDao.delete(usuario);
+        obtenerUsuarios();
+    }
 
     public void obtenerUsuarios() {
         listaUsuarios = usuarioDao.obtenerUsuarios();

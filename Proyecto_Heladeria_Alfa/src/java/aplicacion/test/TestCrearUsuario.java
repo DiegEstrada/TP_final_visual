@@ -32,10 +32,9 @@ public class TestCrearUsuario {
         TipoUsuario tu = new TipoUsuario();
         tu= tipoUsuarios.get(1);
         session.close();
-        Boolean bol=true;
-        byte estado=0;
+        byte estado=1;
         
-        Usuario usuarioTest= new Usuario(tu, "exito", "ape2", "usuario2", "usuario2", "matias@gmaail.com", "308092", new Date(),estado);
+        Usuario usuarioTest= new Usuario(tu, "matias", "quiroga", "admi", "admi", "matias@gmaail.com", "308092", new Date(),estado);
         IUsuarioDao usuarioDao = new UsuarioDaoImp();
         usuarioDao.create(usuarioTest);
         

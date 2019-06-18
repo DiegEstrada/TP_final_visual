@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html" 
+      xmlns:p="http://primefaces.org/ui" >
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="frmCrearUsuario">
+            <p:panel>
+                <p:outputLabel value="Crear usuario" />
+                <h:panelGrid columns="2" >
+                    <p:outputLabel id="txtNombre" value="Nombre:" />
+                    <p:inputText id="inputNombre" value="#{crearUsuarioFormBean.usuario.nombre}" />
+                    <p:outputLabel id="txtApellido" value="Apellido:" />
+                    <p:inputText id="inputApellido" value="#{crearUsuarioFormBean.usuario.apellido}" />
+                    <p:outputLabel id="txtFechaDeNacimineto" value="Fecha de Nacimiento:" />
+                    <p:calendar id="calendarFechaDeNacimiento" value="#{crearUsuarioFormBean.usuario.fechaDeNacimiento}"/>
+                    <p:outputLabel id="txtDni" value="DNI:"/>
+                    <p:inputNumber id="inputDni" value="#{crearUsuarioFormBean.usuario.dni}" />
+                    <p:outputLabel id="txtCorreoElectronico" value="Correo electronico:" />
+                    <p:inputText id="inputCorreoElectronico" value="#{crearUsuarioFormBean.usuario.correo}" />
+                    <p:outputLabel id="txtNombreDeUsuario" value="Nombre de usuario:" />
+                    <p:inputText id="inputNombreDeUsuario" value="#{crearUsuarioFormBean.usuario.username}" />
+                    <p:outputLabel id="contraseña" value="Contraseña:" />
+                    <p:inputText id="inputContrasenia" value="#{crearUsuarioFormBean.usuario.password}" />
+                    <p:commandButton id="btnCrearUsuario" value="Crear usuario" 
+                                     action="listadoDeUsuarios.xhtml"
+                                     actionListener="#{crearUsuarioFormBean.crearUsuarioComun()}" />
+                </h:panelGrid>
+            </p:panel>
+        </h:form>
+    </h:body>
+</html>
+

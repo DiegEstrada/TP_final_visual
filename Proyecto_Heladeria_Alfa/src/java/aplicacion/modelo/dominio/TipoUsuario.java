@@ -3,6 +3,7 @@ package aplicacion.modelo.dominio;
 
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -40,6 +41,36 @@ public class TipoUsuario  implements java.io.Serializable {
   //  public void setUsuarios(Set usuarios) {
     //    this.usuarios = usuarios;
     //}
+
+    @Override
+    public String toString() {
+        return "TipoUsuario{" + "idTipoUsuario=" + idTipoUsuario + ", nombre=" + nombre + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 23 * hash + Objects.hashCode(this.idTipoUsuario);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final TipoUsuario other = (TipoUsuario) obj;
+        if (!Objects.equals(this.idTipoUsuario, other.idTipoUsuario)) {
+            return false;
+        }
+        return true;
+    }
 
     
 

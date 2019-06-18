@@ -12,6 +12,7 @@ import java.io.Serializable;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -26,6 +27,20 @@ public class UsuarioDaoImp extends GenericDaoImp<Usuario, Integer>implements IUs
         List<Usuario> usuarios=criteria.list();
         session.close();
         return usuarios;
+    }
+
+    @Override
+    public Usuario  validarUsuario(String username, String password) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Criteria criteria = session.createCriteria(Usuario.class);
+        criteria.add(Restrictions.like("username", username));
+        criteria.add(Restrictions.like("password", password));
+        Usuario usuario = null;
+        if (!criteria.list().isEmpty()) {
+            usuario= (Usuario)criteria.list().get(0);            
+        }
+        session.close();
+        return usuario;        
     }
 
     

@@ -7,6 +7,7 @@ package aplicacion.contralador.beans;
 
 import aplicacion.hibernate.dao.IUsuarioDao;
 import aplicacion.hibernate.dao.imp.UsuarioDaoImp;
+import aplicacion.modelo.dominio.TipoUsuario;
 import aplicacion.modelo.dominio.Usuario;
 import java.io.Serializable;
 import java.util.List;
@@ -23,6 +24,8 @@ public class UsuarioBean implements Serializable{
 
     private IUsuarioDao usuarioDao;
     private Usuario usuario;
+    private List<TipoUsuario> listaTipoDeUsuarios;
+    
 
     /**
      * Creates a new instance of UsuarioBean
@@ -34,6 +37,24 @@ public class UsuarioBean implements Serializable{
 
     public void crearUsuario(Usuario usuarioACrear) {
         usuarioDao.create(usuarioACrear);
+    }
+    public void registrarUsuario(){
+        byte estado=1;
+        TipoUsuario tu = new TipoUsuario();
+        tu.setIdTipoUsuario(1);
+        tu.setNombre("comun");
+        usuario.setEstado(estado);
+        usuario.setTipoUsuario(tu);
+        usuarioDao.create(usuario);
+    }
+     public void registrarUsuarioAdmi(){
+        byte estado=1;
+        TipoUsuario tu = new TipoUsuario();
+        tu.setIdTipoUsuario(2);
+        tu.setNombre("administrador");
+        usuario.setEstado(estado);
+        usuario.setTipoUsuario(tu);
+        usuarioDao.create(usuario);
     }
 
     public List<Usuario> obtenerUsuarios() {
@@ -54,6 +75,14 @@ public class UsuarioBean implements Serializable{
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public List<TipoUsuario> getListaTipoDeUsuarios() {
+        return listaTipoDeUsuarios;
+    }
+
+    public void setListaTipoDeUsuarios(List<TipoUsuario> listaTipoDeUsuarios) {
+        this.listaTipoDeUsuarios = listaTipoDeUsuarios;
     }
 
 }

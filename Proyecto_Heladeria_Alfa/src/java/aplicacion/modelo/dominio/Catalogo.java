@@ -27,6 +27,11 @@ public class Catalogo  implements java.io.Serializable {
         this.promocion = promocion;
         this.estado = estado;
     }
+    public Catalogo(Producto producto, Promocion promocion ,String nombre, byte estado) {
+        this.producto = producto;
+        this.promocion = promocion;
+        this.estado = estado;
+    }
     public Catalogo(Producto producto, Promocion promocion, String nombre, byte estado, Set ventas) {
        this.producto = producto;
        this.promocion = promocion;

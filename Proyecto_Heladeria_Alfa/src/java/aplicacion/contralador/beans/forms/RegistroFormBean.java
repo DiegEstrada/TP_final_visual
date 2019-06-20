@@ -5,12 +5,16 @@
  */
 package aplicacion.contralador.beans.forms;
 
+import aplicacion.contralador.beans.UsuarioBean;
 import aplicacion.hibernate.dao.ITipoUsuarioDao;
 import aplicacion.hibernate.dao.IUsuarioDao;
 import aplicacion.modelo.dominio.TipoUsuario;
 import aplicacion.modelo.dominio.Usuario;
+import java.io.Serializable;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 /**
@@ -19,20 +23,31 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean
 @SessionScoped
-public class RegistroFormBean {
+public class RegistroFormBean implements Serializable {
 
-    private IUsuarioDao usuarioDao;
+    @ManagedProperty(value = "#{usuarioBean}")
+    private UsuarioBean usuarioBean;
     private Usuario usuario;
 
+    @PostConstruct
+    public void init() {
+        usuario = new Usuario();
+    }
+
     public RegistroFormBean() {
+
     }
 
-    public IUsuarioDao getUsuarioDao() {
-        return usuarioDao;
-    }
+    public void registrarUsuario() {
+        byte estado = 1;
+        TipoUsuario tu = new TipoUsuario();
+        tu.setIdTipoUsuario(1);
+        tu.setNombre("comun");
+        usuario.setEstado(estado);
+        usuario.setTipoUsuario(tu);
+        usuarioBean.crearUsuario(usuario);
+        usuario = new Usuario();
 
-    public void setUsuarioDao(IUsuarioDao usuarioDao) {
-        this.usuarioDao = usuarioDao;
     }
 
     public Usuario getUsuario() {
@@ -41,6 +56,14 @@ public class RegistroFormBean {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public UsuarioBean getUsuarioBean() {
+        return usuarioBean;
+    }
+
+    public void setUsuarioBean(UsuarioBean usuarioBean) {
+        this.usuarioBean = usuarioBean;
     }
 
 }

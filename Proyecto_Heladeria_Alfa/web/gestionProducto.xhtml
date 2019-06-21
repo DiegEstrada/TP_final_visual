@@ -1,0 +1,212 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./resources/template/template.xhtml">
+
+            <ui:define name="content">
+                <!-- container -->
+                <div class="container">
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+
+                    <ol class="breadcrumb">
+                        <li><a href="inicio.xhtml">Home</a></li>
+                        <li class="active">Gestion de Producto</li>
+                    </ol>
+
+                    <div class="row">
+
+                        <!-- Article main content -->
+                        <article class="col-xs-12 maincontent">
+                            <header class="page-header">
+                                <h1 class="page-title">Gestion de Producto</h1>
+                            </header>
+
+                            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <h3 class="thin text-center">Registrar producto</h3>
+                                        <h:form id="frmRegistrarProducto" >
+                                            <p:growl id="msj1"/>
+                                            <h:panelGrid id="tblProducto" columns="2">
+                                                <p:outputLabel id="lblnombre" value="Nombre" for="txtNombre"/>
+                                                <p:inputText id="txtNombre" value="" 
+                                                             required="true"  requiredMessage="Ingrese Nombre" maxlength="45" />
+                                                <p:outputLabel id="lbldescripcion" value="Descripcion" for="txtdescripcion"/>
+                                                <p:inputText id="txtdescripcion" value="" required="true"
+                                                             requiredMessage="Ingrese Descripcion" maxlength="45"/>
+                                                <p:outputLabel id="lblprecio" value="Precio" for="txtPrecio"/>
+                                                <p:inputNumber id="txtPrecio" value="" required="true"
+                                                               requiredMessage="Ingrese precio" maxlength="45" decimalPlaces="2" thousandSeparator="."/>
+                                                <p:outputLabel id="lbltipo" value="Tipo de Helado" for="txtTipo"/>
+                                                <p:selectOneMenu id="txtTipo" value="" required="true" 
+                                                                 requiredMessage="Seleccion tipo" converter="omnifaces.SelectItemsConverter" >
+                                                    <f:selectItem  itemLabel="Seleccione..." itemValue=""/>
+                                                    <f:selectItems value="" var="t"
+                                                                   itemLabel="#{t.id} - #{t.nombre}" itemValue="#{t}"/>
+                                                </p:selectOneMenu>
+                                                <p:outputLabel id="lblalmacen" value="Almacen" for="txtAlmacen"/>
+                                                <p:selectOneMenu id="txtAlmacen" value="" required="true" 
+                                                                 requiredMessage="Seleccione" converter="omnifaces.SelectItemsConverter" >
+                                                    <f:selectItem  itemLabel="Seleccione..." itemValue=""/>
+                                                    <f:selectItems value="" var="a"
+                                                                   itemLabel="#{a.id} - #{a.stock}" itemValue="#{a}"/>
+                                                </p:selectOneMenu>
+
+                                                <p:commandButton id="btnregistro" value="Registrar"
+
+
+                                                                 update="msj1 frmRegistrarProducto "
+                                                                 icon="ui-icon-disk">
+                                                    <p:confirm header="Confirmacion" message="¿Estas Seguro?"/>
+                                                </p:commandButton>
+                                            </h:panelGrid>
+                                        </h:form>
+
+                                        <h:form id="frmDlgConf">
+                                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                                <p:commandButton value="SI" type="button" styleClass="ui-confirmdialog-yes" icon="" />
+                                                <p:commandButton value="NO" type="button" styleClass="ui-confirmdialog-no" icon="" />
+                                            </p:confirmDialog>      
+                                        </h:form>          
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <!-- /Article -->
+
+
+                        <!--INICIO LISTA DE LIBROS-->
+
+                        <!-- <h:form id="frmListaProducto" >
+                             <h3 class="thin text-center">Productos</h3>
+                             <center>
+                                 <p:panelGrid columns="15"> 
+                                     <p:commandButton id="OrdenarDescendente" 
+                                                      icon="ui-icon-arrowthick-1-s"
+                                                      value="Ordenar "
+ 
+                                                      update="tbldatos"
+                                                      />
+                                     <p:commandButton id="OrdenarAscendente" 
+                                                      icon="ui-icon-arrowthick-1-n"
+                                                      value="Ordenar "
+                                                      update="tbldatos"/>
+                                     <p:outputLabel />
+                                     <p:outputLabel />
+                                     <p:outputLabel />
+                                     <p:outputLabel />
+                                     <p:outputLabel />
+                                     <p:outputLabel />
+                                     <p:outputLabel />
+                                     <p:outputLabel />
+                                     <p:outputLabel />
+                                     <p:outputLabel />
+                                     <p:inputText id="txtBuscar" 
+                                                  value=""
+                                                  maxlength="1"/>
+                                     <p:commandButton id="btnBuscar"
+                                                    
+                                                      value="Buscar"
+                                                      update="tbldatos"/>
+ 
+                                     <p:commandButton id="btnRestaurar"
+                                                      
+                                                      value="Restaurar"
+                                                      update="tbldatos"/>
+                                 </p:panelGrid>
+                             </center>
+                             <p:dataTable id="tbldatos" value=""
+                                          style="width:1245px;"
+                                          emptyMessage=" "
+                                          var="p">
+                                 <p:column headerText="Id Producto">
+                                     <p:outputLabel value="#{p.idProducto}"/>
+                                 </p:column>
+                                 <p:column headerText="Nombre">
+                                     <p:outputLabel value="#{p.nombre}"/>
+                                 </p:column>
+                                 <p:column headerText="Descripcion">
+                                     <p:outputLabel value="#{p.descripcion}"/>
+                                 </p:column>
+                                 <p:column headerText="Precio">
+                                     <p:outputLabel value="#{p.precio}"/>
+                                 </p:column>
+                                 <p:column headerText="Almacen">
+                                     <p:outputLabel value="#{a.almacen.idAlmacen} - #{p.almacen.stock}"/>
+                                 </p:column>
+                                 <p:column headerText="Tipo de Helado">
+                                     <p:outputLabel value="#{p.tipoHelado.nombre}"/>
+                                 </p:column>
+                                 <p:column >
+                                     <p:commandButton value="Modificar"   oncomplete="PF('dlg').show();" update="dialogo"/>
+                                 </p:column>
+                                 <p:column >
+                                     <p:commandButton         value="Eliminar "
+                                                              
+                                                              update="dialogo tbldatos" >
+                                         <p:confirm header="Confirmacion" message="¿Estas Seguro?"/>
+                                     </p:commandButton>    
+                                 </p:column>
+ 
+                             </p:dataTable>
+                         </h:form>-->
+                        <!--FIN LISTA DE LIBROS-->
+
+
+
+                        <!--INICIO DIALOG MODIFICAR-->
+                        <h:form id ="dialogo">
+                            <p:growl id="msj2"/>
+                            <p:dialog id="dlgProducto" header="Modificar" widgetVar="dlg" height="400" modal="true">
+                                <h:panelGrid columns="2" cellpadding="6">
+                                    <p:outputLabel id="lblnombre" value="Nombre" for="txtNombre"/>
+                                    <p:inputText id="txtNombre" value="" 
+                                                 required="true"  requiredMessage="Ingrese Nombre" maxlength="45" />
+                                    <p:outputLabel id="lbldescripcion" value="Descripcion" for="txtdescripcion"/>
+                                    <p:inputText id="txtdescripcion" value="" required="true"
+                                                 requiredMessage="Ingrese Descripcion" maxlength="45"/>
+                                    <p:outputLabel id="lblprecio" value="Precio" for="txtPrecio"/>
+                                    <p:inputNumber id="txtPrecio" value="" required="true"
+                                                   requiredMessage="Ingrese precio" maxlength="45" decimalPlaces="2" thousandSeparator="."/>
+                                    <p:outputLabel id="lbltipo" value="Tipo de Helado" for="txtTipo"/>
+                                    <p:selectOneMenu id="txtTipo" value="" required="true" 
+                                                     requiredMessage="Seleccion tipo" converter="omnifaces.SelectItemsConverter" >
+                                        <f:selectItem  itemLabel="Seleccione..." itemValue=""/>
+                                        <f:selectItems value="" var="t"
+                                                       itemLabel="#{t.id} - #{t.nombre}" itemValue="#{t}"/>
+                                    </p:selectOneMenu>
+                                    <p:outputLabel id="lblalmacen" value="Almacen" for="txtAlmacen"/>
+                                    <p:selectOneMenu id="txtAlmacen" value="" required="true" 
+                                                     requiredMessage="Seleccione" converter="omnifaces.SelectItemsConverter" >
+                                        <f:selectItem  itemLabel="Seleccione..." itemValue=""/>
+                                        <f:selectItems value="" var="a"
+                                                       itemLabel="#{a.id} - #{a.stock}" itemValue="#{a}"/>
+                                    </p:selectOneMenu>
+                                </h:panelGrid>
+                                <p:commandButton  id="btnGuardar" value="Guardar" icon="ui-icon-disk"  
+                                                  update="msj2 " 
+                                                  onclick="PF('dlg').hide()"
+                                                  iconPos="ui-icon-check" >
+                                    <p:confirm header="Confirmacion" message="¿Estas Seguro?"/>
+                                </p:commandButton>
+                                <p:commandButton  id="btnCancelar" value="Cancelar" icon="ui-icon-close" immediate="true" onclick="PF('dlg').hide()"/>
+
+                            </p:dialog>
+                        </h:form>
+                        <!--INICIO DIALOG MODIFICAR-->
+                    </div>
+                </div>	<!-- /container -->
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

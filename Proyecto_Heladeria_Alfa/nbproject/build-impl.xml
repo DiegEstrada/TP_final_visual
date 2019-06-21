@@ -1014,7 +1014,7 @@ exists or setup the property manually. For example like this:
         <copyfiles files="${libs.MySQLDriver.classpath}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copyfiles files="${libs.PrimeFaces_6.2.classpath}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copyfiles files="${libs.omnifaces-1.10.classpath}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copyfiles files="${libs.jctl.classpath}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <!--<copyfiles files="${libs.jctl.classpath}" todir="${build.web.dir}/WEB-INF/lib"/>-->
     </target>
     <target depends="init" if="dist.ear.dir" name="-clean-webinf-lib">
         <delete dir="${build.web.dir}/WEB-INF/lib"/>

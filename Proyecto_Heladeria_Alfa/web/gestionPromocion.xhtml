@@ -1,0 +1,193 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./resources/template/template.xhtml">
+
+            <ui:define name="content">
+                <!-- container -->
+                <div class="container">
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+
+                    <ol class="breadcrumb">
+                        <li><a href="inicio.xhtml">Home</a></li>
+                        <li class="active">Gestion promociones</li>
+                    </ol>
+
+                    <div class="row">
+
+                        <!-- Article main content -->
+                        <article class="col-xs-12 maincontent">
+                            <header class="page-header">
+                                <h1 class="page-title">Gestion de Promocion</h1>
+                            </header>
+
+                            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <h3 class="thin text-center">Registrar promocion</h3>
+                                        <h:form id="frmRegistrarPromocion" >
+                                            <p:growl id="msj1"/>
+                                            <h:panelGrid id="tblProducto" columns="2">
+                                                <p:outputLabel id="lblnombre" value="Nombre" for="txtNombre"/>
+                                                <p:inputText id="txtNombre" value="" 
+                                                             required="true"  requiredMessage="Ingrese Nombre" maxlength="45" />
+                                                <p:outputLabel value="Fecha Inicio de Promocion" for="fechaInicio"/>
+                                                <p:calendar id="fechaInicio" value="" required="true"
+                                                            locale="es"
+                                                            requiredMessage="Ingrese una fecha" effect="fold"/>
+                                                <p:outputLabel value="Fecha Fin de Promocion" for="fechaFin"/>
+                                                <p:calendar id="fechaFin" value="" required="true"
+                                                            locale="es"
+                                                            requiredMessage="Ingrese una fecha" effect="fold"/>
+                                                <p:outputLabel value="Descuento" for="descuento"/>
+                                                <p:inputNumber id="descuento" value="" required="true"
+                                                               decimalPlaces="0" requiredMessage="ingrese descuento" />
+
+                                                <p:commandButton id="btnregistro" value="Registrar"
+
+
+                                                                 update="msj1 frmRegistrarPromocion "
+                                                                 icon="ui-icon-disk">
+                                                    <p:confirm header="Confirmacion" message="¿Estas Seguro?"/>
+                                                </p:commandButton>
+                                            </h:panelGrid>
+                                        </h:form>
+
+                                        <h:form id="frmDlgConf">
+                                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                                <p:commandButton value="SI" type="button" styleClass="ui-confirmdialog-yes" icon="" />
+                                                <p:commandButton value="NO" type="button" styleClass="ui-confirmdialog-no" icon="" />
+                                            </p:confirmDialog>      
+                                        </h:form>          
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <!-- /Article -->
+
+
+                        <!--INICIO LISTA PROMOCION-->
+
+                        <!-- <h:form id="frmListaPromocion" >
+                             <h3 class="thin text-center">Promociones</h3>
+                             <center>
+                                 <p:panelGrid columns="15"> 
+                                     <p:commandButton id="OrdenarDescendente" 
+                                                      icon="ui-icon-arrowthick-1-s"
+                                                      value="Ordenar "
+ 
+                                                      update="tbldatos"
+                                                      />
+                                     <p:commandButton id="OrdenarAscendente" 
+                                                      icon="ui-icon-arrowthick-1-n"
+                                                      value="Ordenar "
+                                                      update="tbldatos"/>
+                                     <p:outputLabel />
+                                     <p:outputLabel />
+                                     <p:outputLabel />
+                                     <p:outputLabel />
+                                     <p:outputLabel />
+                                     <p:outputLabel />
+                                     <p:outputLabel />
+                                     <p:outputLabel />
+                                     <p:outputLabel />
+                                     <p:outputLabel />
+                                     <p:inputText id="txtBuscar" 
+                                                  value=""
+                                                  maxlength="1"/>
+                                     <p:commandButton id="btnBuscar"
+                                                    
+                                                      value="Buscar"
+                                                      update="tbldatos"/>
+ 
+                                     <p:commandButton id="btnRestaurar"
+                                                      
+                                                      value="Restaurar"
+                                                      update="tbldatos"/>
+                                 </p:panelGrid>
+                             </center>
+                             <p:dataTable id="tbldatos" value=""
+                                          style="width:1245px;"
+                                          emptyMessage=" "
+                                          var="p">
+                                 <p:column headerText="Id Promocion">
+                                     <p:outputLabel value="#{p.idPromocion}"/>
+                                 </p:column>
+                                 <p:column headerText="Nombre">
+                                     <p:outputLabel value="#{p.nombre}"/>
+                                 </p:column>
+                                 <p:column headerText="Fecha Inicio">
+                                     <p:outputLabel value="#{p.fechaInicio}"/>
+                                 </p:column>
+                                 <p:column headerText="Fecha Fin">
+                                     <p:outputLabel value="#{p.fechaFin}"/>
+                                 </p:column>
+                                 <p:column headerText="descuento">
+                                     <p:outputLabel value="#{p.descuento}"/>
+                                 </p:column>
+                         
+                                     <p:commandButton value="Modificar"   oncomplete="PF('dlg').show();" update="dialogo"/>
+                                 </p:column>
+                                 <p:column >
+                                     <p:commandButton         value="Eliminar "
+                                                              
+                                                              update="dialogo tbldatos" >
+                                         <p:confirm header="Confirmacion" message="¿Estas Seguro?"/>
+                                     </p:commandButton>    
+                                 </p:column>
+ 
+                             </p:dataTable>
+                         </h:form>-->
+                        <!--FIN LISTA DE LIBROS-->
+
+
+
+                        <!--INICIO DIALOG MODIFICAR-->
+                        <h:form id ="dialogo">
+                            <p:growl id="msj2"/>
+                            <p:dialog id="dlgPromocion" header="Modificar" widgetVar="dlg" height="400" modal="true">
+                                <h:panelGrid columns="2" cellpadding="6">
+                                                <p:outputLabel id="lblnombre" value="Nombre" for="txtNombre"/>
+                                                <p:inputText id="txtNombre" value="" 
+                                                             required="true"  requiredMessage="Ingrese Nombre" maxlength="45" />
+                                                <p:outputLabel value="Fecha Inicio de Promocion" for="fechaInicio"/>
+                                                <p:calendar id="fechaInicio" value="" required="true"
+                                                            locale="es"
+                                                            requiredMessage="Ingrese una fecha" effect="fold"/>
+                                                <p:outputLabel value="Fecha Fin de Promocion" for="fechaFin"/>
+                                                <p:calendar id="fechaFin" value="" required="true"
+                                                            locale="es"
+                                                            requiredMessage="Ingrese una fecha" effect="fold"/>
+                                                <p:outputLabel value="Descuento" for="descuento"/>
+                                                <p:inputNumber id="descuento" value="" required="true"
+                                                               decimalPlaces="0" requiredMessage="ingrese descuento" />
+                                </h:panelGrid>
+                                <p:commandButton  id="btnGuardar" value="Guardar" icon="ui-icon-disk"  
+                                                  update="msj2 " 
+                                                  onclick="PF('dlg').hide()"
+                                                  iconPos="ui-icon-check" >
+                                    <p:confirm header="Confirmacion" message="¿Estas Seguro?"/>
+                                </p:commandButton>
+                                <p:commandButton  id="btnCancelar" value="Cancelar" icon="ui-icon-close" immediate="true" onclick="PF('dlg').hide()"/>
+
+                            </p:dialog>
+                        </h:form>
+                        <!--INICIO DIALOG MODIFICAR-->
+                    </div>
+                </div>	<!-- /container -->
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -11,13 +11,13 @@
         <!--<h:outputStylesheet name="resources/css/default.css"/>
         <h:outputStylesheet name="resources/css/cssLayout.css"/>-->
         
-        <link rel="shortcut icon" href="./resources/assets/images/gt_favicon.png"/>
-	<link rel="stylesheet" href="./resources/assets/css/bootstrap.min.css"/>
-	<link rel="stylesheet" href="./resources/assets/css/font-awesome.min.css"/>
+        <link rel="shortcut icon" href="resources/assets/images/gt_favicon.png"/>
+	<link rel="stylesheet" href="resources/assets/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="resources/assets/css/font-awesome.min.css"/>
 
 	<!-- Custom styles for our template -->
-	<link rel="stylesheet" href="./resources/assets/css/bootstrap-theme.css" media="screen" />
-	<link rel="stylesheet" href="./resources/assets/css/main.css"/>
+	<link rel="stylesheet" href="resources/assets/css/bootstrap-theme.css" media="screen" />
+	<link rel="stylesheet" href="resources/assets/css/main.css"/>
         <title>heladeria-alfa</title>
     </h:head>
 
@@ -31,20 +31,23 @@
 			<div class="navbar-header">
 				<!-- Button for smallest screens -->
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-                                <a class="navbar-brand" href="inicio.xhtml"><img style="width: 70px;height: 50px"  id="logo" src="./resources/assets/images/logo1.jpg" alt="logo alfa"/></a>
+                                <a class="navbar-brand" href="inicio.xhtml"><img style="width: 70px;height: 50px"  id="logo" src="resources/assets/images/logo1.jpg" alt="logo alfa"/></a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right">
 					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#">Acerca de</a></li>
+					
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Gestion <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Productos</a></li>
-							<li class="active"><a href="#"></a></li>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Gestiones <b class="caret"></b></a>
+                                                <ul class="dropdown-menu">
+							<li class="active" ><a  href="gestionDeUsuarios.xhtml">Usuarios</a></li>						
+							<li><a href="gestionProducto.xhtml">Productos</a></li>						
+							<li><a href="gestionPromocion.xhtml">Promociones</a></li>						
+							<li><a href="gestionCatalogo.xhtml">Catalogo</a></li>	
 						</ul>
 					</li>
-					<li><a href="contact.html">Contacto</a></li>
+					<li><a href="#">Contacto</a></li>
+                                        <li><a href="#">Acerca de</a></li>
 					<li><a class="btn" href="login.xhtml">SIGN IN / SIGN UP</a></li>
 				</ul>
 			</div><!--/.nav-collapse -->
@@ -128,9 +131,9 @@
         <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-	<script src="./resources/assets/js/headroom.min.js"></script>
-	<script src="./resources/assets/js/jQuery.headroom.min.js"></script>
-	<script src="./resources/assets/js/template.js"></script>
+	<script src="resources/assets/js/headroom.min.js"></script>
+	<script src="resources/assets/js/jQuery.headroom.min.js"></script>
+        <script src="resources/assets/js/template.js"></script>
     </h:body>
 
 </html>

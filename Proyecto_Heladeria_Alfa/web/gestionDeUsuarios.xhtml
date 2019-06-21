@@ -11,100 +11,111 @@
         <ui:composition template="./resources/template/template.xhtml">
 
             <ui:define name="content">
-                <h3>.</h3>
-                <h3>.</h3>
-                <h3>Listado de usuarios</h3>
+                <!-- container -->
+                <div class="container">
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
 
-                <h:form id="frmListadoUsuarios">
-                    <p:growl id="msjs"/>
-                    <p:panel>
-                        <p:dataTable id="tblListaUsuarios" var="usu" value="#{gestionUsuariosFormBean.listaUsuarios}" >
-                            <p:column id="colID" headerText="Id">
-                                <h:outputText value="#{usu.idUsuario}" />
-                            </p:column>
-                            <p:column id="colNombreApellido" headerText="Nombre y Apellido">
-                                <h:outputText value="#{usu.nombre} #{usu.apellido}" />
-                            </p:column>
-                            <p:column id="colCorreo" headerText="Correo electronico">
-                                <h:outputText value="#{usu.correo}" />
-                            </p:column>
-                            <p:column id="colUsuario" headerText="Nombre de Usuario">
-                                <h:outputText value="#{usu.username}" />
-                            </p:column>
-                            <p:column id="colFechaDeNacimiento" headerText="Nacimiento">
-                                <p:outputLabel value="#{usu.fechaDeNacimiento}" />
-                            </p:column>
-                            <p:column id="colDni" headerText="DNI">
-                                <h:outputText value="#{usu.dni}" />
-                            </p:column>
-                            <p:column id="colEliminar" headerText="Eliminar">
-                                <p:commandButton id="btnEliminar"
-                                                 value="Eliminar"
-                                                 update="frmListadoUsuarios:tblListaUsuarios frmListadoUsuarios:msjs"
-                                                 actionListener="#{gestionUsuariosFormBean.usuarioBean.eliminarUsuario(usu)}">
-                                    <p:confirm header="Confirmacion" message="¿Estas Seguro?"/>
-                                </p:commandButton>
-                            </p:column>
-                        </p:dataTable>
-                        <p:commandButton value="Crear usuario"  onclick="PF('dlgAgregar').show();" />
-                    </p:panel>
-                </h:form>
+                    <ol class="breadcrumb">
+                        <li><a href="inicio.xhtml">Home</a></li>
+                        <li class="active">Gestion de Producto</li>
+                    </ol>
+                    <h3>Listado de usuarios</h3>
 
-                <h:form id="frmAltaUsuario">
-                    <p:dialog header="Agregar un usuario" widgetVar="dlgAgregar" showEffect="explode" hideEffect="explode" >
-                        <h:form id="frmLibro" >
-                            <p:growl id="msj1"/>
-                            <h:panelGrid id="tblAgregarUsuario" columns="2">
-                                <p:outputLabel id="lblnombre" value="Nombre" for="txtNombre"/>
-                                <p:inputText id="txtNombre" value="#{gestionUsuariosFormBean.usuario.nombre}" required="true"
-                                             requiredMessage="Ingrese nombre" maxlength="13"/>
-                                <p:outputLabel id="lblApellido" value="Apellido" for="txtApellido"/>
-                                <p:inputText id="txtApellido" value="#{gestionUsuariosFormBean.usuario.apellido}" required="true"
-                                             requiredMessage="Ingrese Apellido" maxlength="30"/>
-                                <p:outputLabel id="lblDni" value="DNI" for="txtDni"/>
-                                <p:inputNumber id="txtDni" value="#{gestionUsuariosFormBean.usuario.dni}" required="true"
-                                               requiredMessage="Ingrese el DNI"
-                                               decimalPlaces="0" thousandSeparator=" "/>
-                                <p:outputLabel id="lblusername" value="Nombre de usuario" for="txtusername"/>
-                                <p:inputText id="txtusername" value="#{gestionUsuariosFormBean.usuario.username}" required="true"
-                                             requiredMessage="Ingrese el usuario"/>
-                                <p:outputLabel id="lblpassword" value="Password" for="txtpass"/>
-                                <p:password id="txtpass" value="#{gestionUsuariosFormBean.usuario.password}" required="true"
-                                            requiredMessage="Ingrese password" maxlength="45"/>
-                                <p:outputLabel id="lblcorreo" value="Correo" for="txtcorreo"/>
-                                <p:inputText id="txtcorreo" value="#{gestionUsuariosFormBean.usuario.correo}" required="true"
-                                             requiredMessage="Ingrese correo electronico" maxlength="45"/>
-                                <p:outputLabel id="lblTipoUsuario" value="Usuario" for="txtTipoUsuario"/>
-                                <p:selectOneRadio id="txtTipoUsuario" value="#{gestionUsuariosFormBean.usuario.tipoUsuario}" 
-                                                 converter="omnifaces.SelectItemsConverter">
-                                    <f:selectItems value="#{gestionUsuariosFormBean.listaTipoDeUsuarios}" var="tipo"
-                                                   itemLabel="#{tipo.nombre}"
-                                                   itemValue="#{tipo}">
-                                    </f:selectItems>
-                                </p:selectOneRadio>
-                                <p:outputLabel id="lblFecha" value="Fecha De Nacimiento" for="fecha"/>
-                                <p:calendar id="fecha" value="#{gestionUsuariosFormBean.usuario.fechaDeNacimiento}" required="true"
-                                            locale="es"
-                                            requiredMessage="Ingrese fecha de nacimiento" effect="fold"/>
+                    <h:form id="frmListadoUsuarios">
+                        <p:growl id="msjs"/>
+                        <p:panel>
+                            <p:dataTable id="tblListaUsuarios" var="usu" value="#{gestionUsuariosFormBean.listaUsuarios}" >
+                                <p:column id="colID" headerText="Id">
+                                    <h:outputText value="#{usu.idUsuario}" />
+                                </p:column>
+                                <p:column id="colNombreApellido" headerText="Nombre y Apellido">
+                                    <h:outputText value="#{usu.nombre} #{usu.apellido}" />
+                                </p:column>
+                                <p:column id="colCorreo" headerText="Correo electronico">
+                                    <h:outputText value="#{usu.correo}" />
+                                </p:column>
+                                <p:column id="colUsuario" headerText="Nombre de Usuario">
+                                    <h:outputText value="#{usu.username}" />
+                                </p:column>
+                                <p:column id="colFechaDeNacimiento" headerText="Nacimiento">
+                                    <p:outputLabel value="#{usu.fechaDeNacimiento}" />
+                                </p:column>
+                                <p:column id="colDni" headerText="DNI">
+                                    <h:outputText value="#{usu.dni}" />
+                                </p:column>
+                                <p:column id="colEliminar" headerText="Eliminar">
+                                    <p:commandButton id="btnEliminar"
+                                                     value="Eliminar"
+                                                     update="frmListadoUsuarios:tblListaUsuarios frmListadoUsuarios:msjs"
+                                                     actionListener="#{gestionUsuariosFormBean.usuarioBean.eliminarUsuario(usu)}">
+                                        <p:confirm header="Confirmacion" message="¿Estas Seguro?"/>
+                                    </p:commandButton>
+                                </p:column>
+                            </p:dataTable>
+                            <p:commandButton value="Crear usuario"  onclick="PF('dlgAgregar').show();" />
+                        </p:panel>
+                    </h:form>
 
-                                <p:commandButton id="btnregistro" value="Registrar"
-                                                 actionListener="#{gestionUsuariosFormBean.crearUsuario()}"
-                                                 update="frmListadoUsuarios:tblListaUsuarios"
-                                                 icon="ui-icon-disk">
-                                    <p:confirm header="Confirmacion" message="¿Estas Seguro?"/>
-                                </p:commandButton>
-                                <p:commandButton  id="btnCancelar" value="Cancelar" icon="ui-icon-close" immediate="true" onclick="PF('dlgAgregar').hide()"/>
-                            </h:panelGrid>
-                        </h:form>
-                    </p:dialog> 
-                </h:form>
+                    <h:form id="frmAltaUsuario">
+                        <p:dialog header="Agregar un usuario" widgetVar="dlgAgregar" showEffect="explode" hideEffect="explode" >
+                            <h:form id="frmLibro" >
+                                <p:growl id="msj1"/>
+                                <h:panelGrid id="tblAgregarUsuario" columns="2">
+                                    <p:outputLabel id="lblnombre" value="Nombre" for="txtNombre"/>
+                                    <p:inputText id="txtNombre" value="#{gestionUsuariosFormBean.usuario.nombre}" required="true"
+                                                 requiredMessage="Ingrese nombre" maxlength="13"/>
+                                    <p:outputLabel id="lblApellido" value="Apellido" for="txtApellido"/>
+                                    <p:inputText id="txtApellido" value="#{gestionUsuariosFormBean.usuario.apellido}" required="true"
+                                                 requiredMessage="Ingrese Apellido" maxlength="30"/>
+                                    <p:outputLabel id="lblDni" value="DNI" for="txtDni"/>
+                                    <p:inputNumber id="txtDni" value="#{gestionUsuariosFormBean.usuario.dni}" required="true"
+                                                   requiredMessage="Ingrese el DNI"
+                                                   decimalPlaces="0" thousandSeparator=" "/>
+                                    <p:outputLabel id="lblusername" value="Nombre de usuario" for="txtusername"/>
+                                    <p:inputText id="txtusername" value="#{gestionUsuariosFormBean.usuario.username}" required="true"
+                                                 requiredMessage="Ingrese el usuario"/>
+                                    <p:outputLabel id="lblpassword" value="Password" for="txtpass"/>
+                                    <p:password id="txtpass" value="#{gestionUsuariosFormBean.usuario.password}" required="true"
+                                                requiredMessage="Ingrese password" maxlength="45"/>
+                                    <p:outputLabel id="lblcorreo" value="Correo" for="txtcorreo"/>
+                                    <p:inputText id="txtcorreo" value="#{gestionUsuariosFormBean.usuario.correo}" required="true"
+                                                 requiredMessage="Ingrese correo electronico" maxlength="45"/>
+                                    <p:outputLabel id="lblTipoUsuario" value="Usuario" for="txtTipoUsuario"/>
+                                    <p:selectOneRadio id="txtTipoUsuario" value="#{gestionUsuariosFormBean.usuario.tipoUsuario}" 
+                                                      converter="omnifaces.SelectItemsConverter">
+                                        <f:selectItems value="#{gestionUsuariosFormBean.listaTipoDeUsuarios}" var="tipo"
+                                                       itemLabel="#{tipo.nombre}"
+                                                       itemValue="#{tipo}">
+                                        </f:selectItems>
+                                    </p:selectOneRadio>
+                                    <p:outputLabel id="lblFecha" value="Fecha De Nacimiento" for="fecha"/>
+                                    <p:calendar id="fecha" value="#{gestionUsuariosFormBean.usuario.fechaDeNacimiento}" required="true"
+                                                locale="es"
+                                                requiredMessage="Ingrese fecha de nacimiento" effect="fold"/>
 
-                <h:form id="frmDlgConf">
-                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                        <p:commandButton value="SI" type="button" styleClass="ui-confirmdialog-yes" icon="" />
-                        <p:commandButton value="NO" type="button" styleClass="ui-confirmdialog-no" icon="" />
-                    </p:confirmDialog>      
-                </h:form>
+                                    <p:commandButton id="btnregistro" value="Registrar"
+                                                     actionListener="#{gestionUsuariosFormBean.crearUsuario()}"
+                                                     update="frmListadoUsuarios:tblListaUsuarios"
+                                                     icon="ui-icon-disk">
+                                        <p:confirm header="Confirmacion" message="¿Estas Seguro?"/>
+                                    </p:commandButton>
+                                    <p:commandButton  id="btnCancelar" value="Cancelar" icon="ui-icon-close" immediate="true" onclick="PF('dlgAgregar').hide()"/>
+                                </h:panelGrid>
+                            </h:form>
+                        </p:dialog> 
+                    </h:form>
+
+                    <h:form id="frmDlgConf">
+                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                            <p:commandButton value="SI" type="button" styleClass="ui-confirmdialog-yes" icon="" />
+                            <p:commandButton value="NO" type="button" styleClass="ui-confirmdialog-no" icon="" />
+                        </p:confirmDialog>      
+                    </h:form>
+
+                </div>
             </ui:define>
 
         </ui:composition>

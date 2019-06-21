@@ -1,0 +1,203 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./resources/template/template.xhtml">
+
+            <ui:define name="content">
+                <!-- container -->
+                <div class="container">
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+
+                    <ol class="breadcrumb">
+                        <li><a href="inicio.xhtml">Home</a></li>
+                        <li class="active">Gestion de Catalogo</li>
+                    </ol>
+
+                    <div class="row">
+
+                        <!-- Article main content -->
+                        <article class="col-xs-12 maincontent">
+                            <header class="page-header">
+                                <h1 class="page-title">Gestion de Catalogo</h1>
+                            </header>
+
+                            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <h3 class="thin text-center">Registrar Catalogo</h3>
+                                        <h:form id="frmRegistrarCatalogo" >
+                                            <p:growl id="msj1"/>
+                                            <h:panelGrid id="tblCatalogo" columns="2">
+                                                <p:outputLabel id="lblnombre" value="Nombre" for="txtNombre"/>
+                                                <p:inputText id="txtNombre" value="" required="true"
+                                                             requiredMessage="Ingrese Nombre" maxlength="45"/>
+                                                <p:outputLabel id="lblproducto" value="Producto" for="txtProducto"/>
+                                                <p:selectOneMenu id="txtProducto" value="" required="true" 
+                                                                 requiredMessage="Seleccione" converter="omnifaces.SelectItemsConverter" >
+                                                    <f:selectItem  itemLabel="Seleccione..." itemValue=""/>
+                                                    <f:selectItems value="" var="p"
+                                                                   itemLabel="#{p.idProducto} - #{p.nombre}" itemValue="#{p}"/>
+                                                </p:selectOneMenu>
+                                                <p:outputLabel id="lblpromocion" value="Promocion" for="txtPromocion"/>
+                                                <p:selectOneMenu id="txtPromocion" value="" required="true" 
+                                                                 requiredMessage="Seleccione" converter="omnifaces.SelectItemsConverter" >
+                                                    <f:selectItem  itemLabel="Seleccione..." itemValue=""/>
+                                                    <f:selectItems value="" var="pro"
+                                                                   itemLabel="#{pro.idPromocion} - #{pro.nombre}" itemValue="#{pro}"/>
+                                                </p:selectOneMenu>
+                                                <p:outputLabel id="lblestado" value="Estado" for="txtEstado"/>
+                                                <p:inputText id="txtEstado" value="" required="true"
+                                                             requiredMessage="Ingrese estado" maxlength="45"/>
+                                               
+                                                <p:commandButton id="btnregistro" value="Registrar"
+
+
+                                                                 update="msj1 frmRegistrarCatalogo "
+                                                                 icon="ui-icon-disk">
+                                                    <p:confirm header="Confirmacion" message="¿Estas Seguro?"/>
+                                                </p:commandButton>
+                                            </h:panelGrid>
+                                        </h:form>
+
+                                        <h:form id="frmDlgConf">
+                                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                                <p:commandButton value="SI" type="button" styleClass="ui-confirmdialog-yes" icon="" />
+                                                <p:commandButton value="NO" type="button" styleClass="ui-confirmdialog-no" icon="" />
+                                            </p:confirmDialog>      
+                                        </h:form>          
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <!-- /Article -->
+
+
+                        <!--INICIO LISTA DE LIBROS-->
+
+                        <!-- <h:form id="frmListaProducto" >
+                             <h3 class="thin text-center">Productos</h3>
+                             <center>
+                                 <p:panelGrid columns="15"> 
+                                     <p:commandButton id="OrdenarDescendente" 
+                                                      icon="ui-icon-arrowthick-1-s"
+                                                      value="Ordenar "
+ 
+                                                      update="tbldatos"
+                                                      />
+                                     <p:commandButton id="OrdenarAscendente" 
+                                                      icon="ui-icon-arrowthick-1-n"
+                                                      value="Ordenar "
+                                                      update="tbldatos"/>
+                                     <p:outputLabel />
+                                     <p:outputLabel />
+                                     <p:outputLabel />
+                                     <p:outputLabel />
+                                     <p:outputLabel />
+                                     <p:outputLabel />
+                                     <p:outputLabel />
+                                     <p:outputLabel />
+                                     <p:outputLabel />
+                                     <p:outputLabel />
+                                     <p:inputText id="txtBuscar" 
+                                                  value=""
+                                                  maxlength="1"/>
+                                     <p:commandButton id="btnBuscar"
+                                                    
+                                                      value="Buscar"
+                                                      update="tbldatos"/>
+ 
+                                     <p:commandButton id="btnRestaurar"
+                                                      
+                                                      value="Restaurar"
+                                                      update="tbldatos"/>
+                                 </p:panelGrid>
+                             </center>
+                             <p:dataTable id="tbldatos" value=""
+                                          style="width:1245px;"
+                                          emptyMessage=" "
+                                          var="p">
+                                 <p:column headerText="Id Catalogo">
+                                     <p:outputLabel value="#{c.idCatalogo}"/>
+                                 </p:column>
+                                 <p:column headerText="Nombre">
+                                     <p:outputLabel value="#{c.nombre}"/>
+                                 </p:column>
+                                 <p:column headerText="Producto">
+                                     <p:outputLabel value="#{c.producto.nombre}"/>
+                                 </p:column>
+                                 <p:column headerText="Promocion">
+                                     <p:outputLabel value="#{c.promocion.nombre}"/>
+                                 </p:column>
+                           
+                                 <p:column >
+                                     <p:commandButton value="Modificar"   oncomplete="PF('dlg').show();" update="dialogo"/>
+                                 </p:column>
+                                 <p:column >
+                                     <p:commandButton         value="Eliminar "
+                                                              
+                                                              update="dialogo tbldatos" >
+                                         <p:confirm header="Confirmacion" message="¿Estas Seguro?"/>
+                                     </p:commandButton>    
+                                 </p:column>
+ 
+                             </p:dataTable>
+                         </h:form>-->
+                        <!--FIN LISTA DE LIBROS-->
+
+
+
+                        <!--INICIO DIALOG MODIFICAR-->
+                        <h:form id ="dialogo">
+                            <p:growl id="msj2"/>
+                            <p:dialog id="dlgCatalogo" header="Modificar" widgetVar="dlg" height="400" modal="true">
+                                <h:panelGrid columns="2" cellpadding="6">
+                                     <p:outputLabel id="lblnombre" value="Nombre" for="txtNombre"/>
+                                                <p:inputText id="txtNombre" value="" required="true"
+                                                             requiredMessage="Ingrese Nombre" maxlength="45"/>
+                                                <p:outputLabel id="lblproducto" value="Producto" for="txtProducto"/>
+                                                <p:selectOneMenu id="txtProducto" value="" required="true" 
+                                                                 requiredMessage="Seleccione" converter="omnifaces.SelectItemsConverter" >
+                                                    <f:selectItem  itemLabel="Seleccione..." itemValue=""/>
+                                                    <f:selectItems value="" var="p"
+                                                                   itemLabel="#{p.idProducto} - #{p.nombre}" itemValue="#{p}"/>
+                                                </p:selectOneMenu>
+                                                <p:outputLabel id="lblpromocion" value="Promocion" for="txtPromocion"/>
+                                                <p:selectOneMenu id="txtPromocion" value="" required="true" 
+                                                                 requiredMessage="Seleccione" converter="omnifaces.SelectItemsConverter" >
+                                                    <f:selectItem  itemLabel="Seleccione..." itemValue=""/>
+                                                    <f:selectItems value="" var="pro"
+                                                                   itemLabel="#{pro.idPromocion} - #{pro.nombre}" itemValue="#{pro}"/>
+                                                </p:selectOneMenu>
+                                                <p:outputLabel id="lblestado" value="Estado" for="txtEstado"/>
+                                                <p:inputText id="txtEstado" value="" required="true"
+                                                             requiredMessage="Ingrese estado" maxlength="45"/>
+                                </h:panelGrid>
+                                <p:commandButton  id="btnGuardar" value="Guardar" icon="ui-icon-disk"  
+                                                  update="msj2 " 
+                                                  onclick="PF('dlg').hide()"
+                                                  iconPos="ui-icon-check" >
+                                    <p:confirm header="Confirmacion" message="¿Estas Seguro?"/>
+                                </p:commandButton>
+                                <p:commandButton  id="btnCancelar" value="Cancelar" icon="ui-icon-close" immediate="true" onclick="PF('dlg').hide()"/>
+
+                            </p:dialog>
+                        </h:form>
+                        <!--INICIO DIALOG MODIFICAR-->
+                    </div>
+                </div>	<!-- /container -->
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

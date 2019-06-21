@@ -5,7 +5,6 @@
  */
 package aplicacion.hibernate.dao;
 
-import aplicacion.modelo.dominio.Producto;
 import aplicacion.modelo.dominio.Promocion;
 import java.util.List;
 

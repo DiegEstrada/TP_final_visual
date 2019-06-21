@@ -17,10 +17,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
-/**
- *
- * @author LENOVO
- */
+
 @ManagedBean
 @SessionScoped
 public class RegistroFormBean implements Serializable {

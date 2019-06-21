@@ -7,10 +7,7 @@ package aplicacion.hibernate.dao;
 
 import aplicacion.modelo.dominio.Almacen;
 
-/**
- *
- * @author LENOVO
- */
+
 public interface IAlmacenDao extends IGenericDao<Almacen, Integer>{
     
 }

@@ -12,7 +12,6 @@ import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-
 /**
  *
  * @author LENOVO
@@ -51,4 +50,6 @@ public class CatalogoBean implements Serializable {
         this.catalogoDao = catalogoDao;
     }
 
+    
+    
 }

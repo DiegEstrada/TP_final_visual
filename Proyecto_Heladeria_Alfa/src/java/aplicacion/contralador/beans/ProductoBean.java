@@ -45,4 +45,6 @@ public class ProductoBean {
         this.productoDao = productoDao;
     }
     
+    
+    
 }

@@ -8,10 +8,7 @@ package aplicacion.hibernate.dao;
 import aplicacion.modelo.dominio.TipoHelado;
 import java.util.List;
 
-/**
- *
- * @author LENOVO
- */
+
 public interface ITipoHeladoDao {
     public List<TipoHelado> obtenerTipoHelados();
 }

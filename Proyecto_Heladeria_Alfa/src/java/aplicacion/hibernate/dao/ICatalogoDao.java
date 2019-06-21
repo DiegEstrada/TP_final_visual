@@ -8,10 +8,7 @@ package aplicacion.hibernate.dao;
 import aplicacion.modelo.dominio.Catalogo;
 import java.util.List;
 
-/**
- *
- * @author LENOVO
- */
+
 public interface ICatalogoDao extends IGenericDao<Catalogo,Integer>{
     public List<Catalogo> obtenerCatalogos();
     

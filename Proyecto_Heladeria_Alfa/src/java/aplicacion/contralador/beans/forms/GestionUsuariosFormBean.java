@@ -21,10 +21,6 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import org.primefaces.event.RowEditEvent;
 
-/**
- *
- * @author LENOVO
- */
 @ManagedBean
 @SessionScoped
 public class GestionUsuariosFormBean implements Serializable{

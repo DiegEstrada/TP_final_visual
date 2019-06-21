@@ -48,7 +48,6 @@ public class GestionCatalogosFormBean implements Serializable {
 
     public GestionCatalogosFormBean() {
     }
-
     public void crearCatalogo() {
         byte estado = 1;
         catalogo.setEstado(estado);
@@ -56,7 +55,6 @@ public class GestionCatalogosFormBean implements Serializable {
         catalogo = new Catalogo();
         obtenerListaDeCatalogos();
     }
-
     public void obtenerListaDeCatalogos() {
         catalogos = catalogoBean.obtenerCatalogos();
     }

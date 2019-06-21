@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./resources/template/template.xhtml">
+
+            <ui:define name="content">
+                <header id="head">
+                    <p style="color: #000;font-size: 30px" class="tagline">Gestion de Catalogos</p>
+
+
+                </header>
+                <h:form id="frmCatalogo">
+                    <p:growl id="msgs" showDetail="true"/>
+
+                    <p:dataTable id="tblGestionCatalogos" var="cat" value="#{gestionCatalogosFormBean.catalogos}" editable="true" style="margin-bottom:20px">
+                        <f:facet name="header">
+                            Catalogos
+                        </f:facet>
+
+                        <p:ajax event="rowEdit" listener="#{dtEditView}" update=":frmCatalogo:msgs" />
+                        <p:ajax event="rowEditCancel" listener="#{dtEditView.onRowCancel}" update=":frmCatalogo:msgs" />
+
+                        <p:column headerText="Nombre">
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{cat.nombre}" /></f:facet>
+                                <f:facet name="input"><p:inputText id="modelInput" value="#{cat.nombre}" style="width:100%"/></f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column headerText="Producto">
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{cat.producto.nombre}" /></f:facet>
+                                <f:facet name="input">
+                                    <h:selectOneMenu value="#{cat.producto}" style="width:100%"
+                                                     converter="omnifaces.SelectItemsConverter">
+                                        <f:selectItems value="#{gestionCatalogosFormBean.productos}" var="pro" itemLabel="#{pro.nombre}" itemValue="#{pro}" />
+                                    </h:selectOneMenu>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column headerText="Promocion">
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{cat.promocion.nombre} -#{cat.promocion.descuento}%" /></f:facet>
+                                <f:facet name="input">
+                                    <h:selectOneMenu value="#{cat.promocion}" style="width:100%"
+                                                     converter="omnifaces.SelectItemsConverter">
+                                        <f:selectItems value="#{gestionCatalogosFormBean.promociones}" var="prom" itemLabel="#{prom.nombre} -#{prom.descuento}%" itemValue="#{prom}" />
+                                    </h:selectOneMenu>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column style="width:35px">
+                            <p:rowEditor />
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

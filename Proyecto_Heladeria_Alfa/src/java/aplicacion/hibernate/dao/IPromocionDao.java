@@ -6,13 +6,13 @@
 package aplicacion.hibernate.dao;
 
 import aplicacion.modelo.dominio.Producto;
+import aplicacion.modelo.dominio.Promocion;
 import java.util.List;
 
 /**
  *
  * @author LENOVO
  */
-public interface IProductoDao extends IGenericDao<Producto, Integer>{
-    public List<Producto> obtenerProductos();
-    
+public interface IPromocionDao extends IGenericDao<Promocion, Integer>{
+    public List<Promocion> obtenerPromociones();
 }

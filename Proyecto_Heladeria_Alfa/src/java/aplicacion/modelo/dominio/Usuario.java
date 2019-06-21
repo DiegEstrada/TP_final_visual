@@ -4,6 +4,7 @@ package aplicacion.modelo.dominio;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -139,6 +140,31 @@ public class Usuario  implements java.io.Serializable {
     
     public void setVentasForIdVendedor(Set ventasForIdVendedor) {
         this.ventasForIdVendedor = ventasForIdVendedor;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 79 * hash + Objects.hashCode(this.idUsuario);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Usuario other = (Usuario) obj;
+        if (!Objects.equals(this.idUsuario, other.idUsuario)) {
+            return false;
+        }
+        return true;
     }
 
     @Override

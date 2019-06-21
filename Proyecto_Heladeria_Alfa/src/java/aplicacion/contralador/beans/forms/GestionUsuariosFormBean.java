@@ -36,7 +36,6 @@ public class GestionUsuariosFormBean implements Serializable{
     private TipoUsuarioBean tipoUsuarioBean;
     
     private List<Usuario> listaUsuarios;
-    private IUsuarioDao usuarioDao;
     private Usuario usuario;
     private List<TipoUsuario> listaTipoDeUsuarios;
     private ITipoUsuarioDao tipoUsuarioDao;
@@ -84,14 +83,6 @@ public class GestionUsuariosFormBean implements Serializable{
     public void onRowCancel(RowEditEvent event) {
         FacesMessage msg = new FacesMessage("Edicion cancelada", "");
         FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
-
-    public IUsuarioDao getUsuarioDao() {
-        return usuarioDao;
-    }
-
-    public void setUsuarioDao(IUsuarioDao usuarioDao) {
-        this.usuarioDao = usuarioDao;
     }
 
     public Usuario getUsuario() {

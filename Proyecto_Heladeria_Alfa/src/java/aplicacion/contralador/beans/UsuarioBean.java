@@ -23,8 +23,6 @@ import javax.faces.bean.SessionScoped;
 public class UsuarioBean implements Serializable{
 
     private IUsuarioDao usuarioDao;
-    private Usuario usuario;
-    private List<TipoUsuario> listaTipoDeUsuarios;
     
 
     /**
@@ -32,7 +30,6 @@ public class UsuarioBean implements Serializable{
      */
     public UsuarioBean() {
         usuarioDao = new UsuarioDaoImp();
-        usuario = new Usuario();
     }
 
     public void crearUsuario(Usuario usuarioACrear) {
@@ -47,47 +44,13 @@ public class UsuarioBean implements Serializable{
     public List<Usuario> obtenerUsuarios() {
         return usuarioDao.obtenerUsuarios();
     }
-    public void registrarUsuario(){
-        byte estado=1;
-        TipoUsuario tu = new TipoUsuario();
-        tu.setIdTipoUsuario(1);
-        tu.setNombre("comun");
-        usuario.setEstado(estado);
-        usuario.setTipoUsuario(tu);
-        usuarioDao.create(usuario);
-    }
-     public void registrarUsuarioAdmi(){
-        byte estado=1;
-        TipoUsuario tu = new TipoUsuario();
-        tu.setIdTipoUsuario(2);
-        tu.setNombre("administrador");
-        usuario.setEstado(estado);
-        usuario.setTipoUsuario(tu);
-        usuarioDao.create(usuario);
-    }
-
+    
     public IUsuarioDao getUsuarioDao() {
         return usuarioDao;
     }
 
     public void setUsuarioDao(IUsuarioDao usuarioDao) {
         this.usuarioDao = usuarioDao;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    public List<TipoUsuario> getListaTipoDeUsuarios() {
-        return listaTipoDeUsuarios;
-    }
-
-    public void setListaTipoDeUsuarios(List<TipoUsuario> listaTipoDeUsuarios) {
-        this.listaTipoDeUsuarios = listaTipoDeUsuarios;
     }
 
 }

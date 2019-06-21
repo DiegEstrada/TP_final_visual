@@ -6,8 +6,14 @@
 package aplicacion.test;
 
 import aplicacion.hibernate.dao.ICatalogoDao;
+import aplicacion.hibernate.dao.IProductoDao;
+import aplicacion.hibernate.dao.IPromocionDao;
 import aplicacion.hibernate.dao.imp.CatalogoDaoImp;
+import aplicacion.hibernate.dao.imp.ProductoDaoImp;
+import aplicacion.hibernate.dao.imp.PromocionDaoImp;
 import aplicacion.modelo.dominio.Catalogo;
+import aplicacion.modelo.dominio.Producto;
+import aplicacion.modelo.dominio.Promocion;
 
 /**
  *
@@ -21,7 +27,15 @@ public class TestCrearCatalogo {
     
     public static void main(String[] args) {
         ICatalogoDao catalogoDao=new CatalogoDaoImp();
-        Catalogo catalogo;
+        IProductoDao productoDao= new ProductoDaoImp();
+        IPromocionDao promocionDao= new PromocionDaoImp();
+        byte estado=1;
+        Catalogo catalogo= new Catalogo();
+        catalogo.setNombre("Agua fresa");
+        catalogo.setProducto(productoDao.obtenerProductos().get(0));
+        catalogo.setPromocion(promocionDao.obtenerPromociones().get(0));
+        catalogo.setEstado(estado);
+        catalogoDao.create(catalogo);
         
     }
     

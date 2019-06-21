@@ -3,6 +3,7 @@ package aplicacion.modelo.dominio;
 
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -103,6 +104,36 @@ public class Producto  implements java.io.Serializable {
     
     public void setCatalogos(Set catalogos) {
         this.catalogos = catalogos;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 89 * hash + Objects.hashCode(this.idProducto);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Producto other = (Producto) obj;
+        if (!Objects.equals(this.idProducto, other.idProducto)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Producto{" + "idProducto=" + idProducto + ", almacen=" + almacen + ", tipoHelado=" + tipoHelado + ", nombre=" + nombre + ", descripcion=" + descripcion + ", precio=" + precio + ", estado=" + estado + ", ventaProductos=" + ventaProductos + ", catalogos=" + catalogos + '}';
     }
 
 

@@ -4,6 +4,7 @@ package aplicacion.modelo.dominio;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -71,6 +72,36 @@ public class Promocion  implements java.io.Serializable {
     
     public void setCatalogos(Set catalogos) {
         this.catalogos = catalogos;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 67 * hash + Objects.hashCode(this.idPromocion);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Promocion other = (Promocion) obj;
+        if (!Objects.equals(this.idPromocion, other.idPromocion)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Promocion{" + "idPromocion=" + idPromocion + ", nombre=" + nombre + ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + ", descuento=" + descuento + ", catalogos=" + catalogos + '}';
     }
 
 

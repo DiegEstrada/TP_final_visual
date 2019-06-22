@@ -41,16 +41,16 @@
                                                             <p:growl id="msj1"/>
                                                             <h:panelGrid id="tblUsuario" columns="2">
                                                             <p:outputLabel id="lblusername" value="Usuario" for="txtusername"/>
-                                                            <p:inputText id="txtusername" value="" required="true"
+                                                            <p:inputText id="txtusername" value="#{logueoFormBean.nombreUsuario}" required="true"
                                                                                                  requiredMessage="Ingrese usuario" maxlength="45"/>
                                                             <p:outputLabel id="lblpassword" value="Password" for="txtpass"/>
-                                                            <p:password id="txtpass" value="#" required="true"
+                                                            <p:password id="txtpass" value="#{logueoFormBean.password}" required="true"
                                                                                                  requiredMessage="Ingrese password" maxlength="45"/>
-                                                            <p:commandButton id="btnregistro" value="Ingresar"
-                                                                                                     actionListener="#"
+                                                            <p:commandButton id="btnregistro" value="Iniciar Sesion"
+                                                                             action="#{logueoFormBean.validarUsuario()}"
                                                                                                      update="msj1 frmRegistrarUsuario "
-                                                                                                     icon="ui-icon-disk">
-                                                                                        <p:confirm header="Confirmacion" message="¿Estas Seguro?"/>
+                                                                                                     icon="ui-icon-pers">
+                                                                                        <!--<p:confirm header="Confirmacion" message="¿Estas Seguro?"/>-->
                                                                                     </p:commandButton>
                                                             </h:panelGrid>
                                                         </h:form>

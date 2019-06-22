@@ -56,15 +56,14 @@
                                                 <p:inputText id="txtcorreo" value="#{usuarioFormBean.nuevoUsuario.correo}" required="true"
                                                              requiredMessage="Ingrese correo electronico" maxlength="45"/>
                                                 <p:outputLabel id="lblFecha" value="Fecha De Nacimiento" for="fecha"/>
-                                                <p:calendar id="fecha" value="#{usuarioFormBean.nuevoUsuario.fechaDeNacimiento}" required="true"
-                                                            locale="es"
-                                                            requiredMessage="Ingrese fecha" effect="fold"/>
+                                                
+                                                <p:calendar id="fecha" value="#{usuarioFormBean.nuevoUsuario.fechaDeNacimiento}" />
 
                                                 <p:commandButton id="btnregistro" value="Registrar"
                                                                  actionListener="#{usuarioFormBean.agregarUnUsuarioAdministrador()}"
                                                                  action="login.xhtml"
                                                                  update="msj1 frmRegistrarUsuario "
-                                                                 icon="ui-icon-disk">
+                                                                 >
                                                     <!--<p:confirm header="Confirmacion" message="¿Estas Seguro?"/>-->
                                                 </p:commandButton>
                                             </h:panelGrid>

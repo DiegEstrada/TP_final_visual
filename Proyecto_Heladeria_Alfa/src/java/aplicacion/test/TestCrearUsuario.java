@@ -26,18 +26,24 @@ public class TestCrearUsuario {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       Session session = HibernateUtil.getSessionFactory().openSession();
-        Criteria criteria =session.createCriteria(TipoUsuario.class);
-        List<TipoUsuario> tipoUsuarios=criteria.list();
+        //Session session = HibernateUtil.getSessionFactory().openSession();
+        //Criteria criteria =session.createCriteria(TipoUsuario.class);
+        //List<TipoUsuario> tipoUsuarios=criteria.list();
         TipoUsuario tu = new TipoUsuario();
-        tu= tipoUsuarios.get(1);
-        session.close();
+        //tu= tipoUsuarios.get(1);
+        tu.setIdTipoUsuario(2);
+        tu.setNombre("administrador");        
+        //session.close();
+        
         byte estado=1;
         
-        Usuario usuarioTest= new Usuario(tu, "matias", "quiroga", "admi", "admi", "matias@gmaail.com", "308092", new Date(),estado);
+        Usuario usuarioTest= new Usuario(tu, "ricardo", "condori", "ricardo", "ricardo", "ricardogmail.com", "39200033", new Date(),estado);
         IUsuarioDao usuarioDao = new UsuarioDaoImp();
         usuarioDao.create(usuarioTest);
         
+        System.out.println("NOMBRE DEL USUARIO: "+usuarioDao.obtenerUsuarios().get(usuarioDao.obtenerUsuarios().size()-1).getUsername());
+        System.out.println("NOMBRE DEL USUARIO: "+usuarioDao.obtenerUsuarios().get(usuarioDao.obtenerUsuarios().size()-1).getPassword());
+
     }
     
 }

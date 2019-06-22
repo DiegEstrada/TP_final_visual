@@ -1,0 +1,164 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./resources/template/template.xhtml">
+
+            <ui:define name="content">
+                <!-- container -->
+                <div class="container">
+
+                    <ol class="breadcrumb">
+                        <li><a href="index.html">Home</a></li>
+                        <li class="active">Registrarse</li>
+                    </ol>
+
+                    <div class="row">
+
+                        <!-- Article main content -->
+                        <article class="col-xs-12 maincontent">
+                            <header class="page-header">
+                                <h1 class="page-title">Registrarse</h1>
+                            </header>
+
+                            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <h3 class="thin text-center">Registrar una nueva cuenta</h3>
+                                        <p class="text-center text-muted">Si ya posee una cuenta ingrese <a href="login.xhtml">aqui</a>. </p>
+
+                                        <h:form id="frmRegistrarUsuario" >
+                                            <p:growl id="msj1"/>
+                                            <h:panelGrid id="tblUsuario" columns="2">
+                                                <p:outputLabel id="lblnombre" value="Nombre" for="txtNombre"/>
+                                                <p:inputText id="txtNombre" value="#{usuarioFormBean.usuario.nombre}" 
+                                                             required="true"  requiredMessage="Ingrese Nombre" maxlength="45" />
+                                                <p:outputLabel id="lblapellido" value="Apellido" for="txtApellido"/>
+                                                <p:inputText id="txtApellido" value="#{usuarioFormBean.usuario.apellido}" required="true"
+                                                             requiredMessage="Ingrese Apellido" maxlength="45"/>
+
+                                                <p:outputLabel id="lbldni" value="DNI" for="txtDni"/>
+                                                <p:inputNumber id="txtDni" value="#{usuarioFormBean.usuario.dni}" required="true"
+                                                               requiredMessage="Ingrese DNI"
+                                                               decimalPlaces="0" thousandSeparator=" "/>
+                                                <p:outputLabel id="lblusername" value="Usuario" for="txtusername"/>
+                                                <p:inputText id="txtusername" value="#{usuarioFormBean.usuario.username}" required="true"
+                                                             requiredMessage="Ingrese usuario" maxlength="45"/>
+                                                <p:outputLabel id="lblpassword" value="Password" for="txtpass"/>
+                                                <p:password id="txtpass" value="#{usuarioFormBean.usuario.password}" required="true"
+                                                            requiredMessage="Ingrese password" maxlength="45"/>
+                                                <p:outputLabel id="lblcorreo" value="Correo" for="txtcorreo"/>
+                                                <p:inputText id="txtcorreo" value="#{usuarioFormBean.usuario.correo}" required="true"
+                                                             requiredMessage="Ingrese correo electronico" maxlength="45"/>
+                                                <p:outputLabel id="lblFecha" value="Fecha De Nacimiento" for="fecha"/>
+                                                <p:calendar id="fecha" value="#{usuarioFormBean.usuario.fechaDeNacimiento}" required="true"
+                                                            locale="es"
+                                                            requiredMessage="Ingrese fecha" effect="fold"/>
+
+                                                <p:commandButton id="btnregistro" value="Registrar"
+                                                                 actionListener="#{usuarioFormBean.registrarUnUsuarioComun()}"
+                                                                 action="login.xhtml"
+                                                                 update="msj1 frmRegistrarUsuario "
+                                                                 icon="ui-icon-disk">
+                                                    <p:confirm header="Confirmacion" message="¿Estas Seguro?"/>
+                                                </p:commandButton>
+                                            </h:panelGrid>
+                                        </h:form>
+
+                                        <h:form id="frmDlgConf">
+                                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                                <p:commandButton value="SI" type="button" styleClass="ui-confirmdialog-yes" icon="" />
+                                                <p:commandButton value="NO" type="button" styleClass="ui-confirmdialog-no" icon="" />
+                                            </p:confirmDialog>      
+                                        </h:form>
+                                        
+                                        <script>
+                                            PrimeFaces.locales['es'] = {
+                                                closeText: 'Cerrar',
+                                                prevText: 'Anterior',
+                                                nextText: 'Siguiente',
+                                                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                                                monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                                                dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                                                dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+                                                dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+                                                weekHeader: 'Semana',
+                                                firstDay: 1,
+                                                isRTL: false,
+                                                showMonthAfterYear: false,
+                                                yearSuffix: '',
+                                                timeOnlyTitle: 'Sólo hora',
+                                                timeText: 'Tiempo',
+                                                hourText: 'Hora',
+                                                minuteText: 'Minuto',
+                                                secondText: 'Segundo',
+                                                currentText: 'Fecha actual',
+                                                ampm: false,
+                                                month: 'Mes',
+                                                week: 'Semana',
+                                                day: 'Día',
+                                                allDayText: 'Todo el día'
+                                            };
+
+                                        </script>
+
+                                        <!--<form>
+                                                <div class="top-margin">
+                                                        <label>First Name</label>
+                                                        <input type="text" class="form-control">
+                                                </div>
+                                                <div class="top-margin">
+                                                        <label>Last Name</label>
+                                                        <input type="text" class="form-control">
+                                                </div>
+                                                <div class="top-margin">
+                                                        <label>Email Address <span class="text-danger">*</span></label>
+                                                        <input type="text" class="form-control">
+                                                </div>
+
+                                                <div class="row top-margin">
+                                                        <div class="col-sm-6">
+                                                                <label>Password <span class="text-danger">*</span></label>
+                                                                <input type="text" class="form-control">
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                                <label>Confirm Password <span class="text-danger">*</span></label>
+                                                                <input type="text" class="form-control">
+                                                        </div>
+                                                </div>
+
+                                                <hr>
+
+                                                <div class="row">
+                                                        <div class="col-lg-8">
+                                                                <label class="checkbox">
+                                                                        <input type="checkbox"> 
+                                                                        I've read the <a href="page_terms.html">Terms and Conditions</a>
+                                                                </label>                        
+                                                        </div>
+                                                        <div class="col-lg-4 text-right">
+                                                                <button class="btn btn-action" type="submit">Register</button>
+                                                        </div>
+                                                </div>
+                                        </form>-->
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </article>
+                        <!-- /Article -->
+
+                    </div>
+                </div>	<!-- /container -->
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

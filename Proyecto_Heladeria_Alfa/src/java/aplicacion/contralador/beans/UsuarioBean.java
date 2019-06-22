@@ -39,10 +39,12 @@ public class UsuarioBean implements Serializable{
         usuarioDao.update(usuarioAModificar);
     }
     public void eliminarUsuario(Usuario usuarioAEliminar){
+        byte inactivo=0;
+        usuarioAEliminar.setEstado(inactivo);
         usuarioDao.delete(usuarioAEliminar);
     }
     
-    public void registrarUsuarioComun(Usuario newUsuario){
+    /*public void registrarUsuarioComun(Usuario newUsuario){
         byte estado=1;
         TipoUsuario tipoUsuario = new TipoUsuario();
         tipoUsuario.setIdTipoUsuario(1);
@@ -60,7 +62,7 @@ public class UsuarioBean implements Serializable{
         newUsuario.setEstado(estado);
         newUsuario.setTipoUsuario(tipoUsuario);
         usuarioDao.create(newUsuario);
-    }
+    }*/
     
     public List<Usuario> obtenerUsuarios() {
         return usuarioDao.obtenerUsuarios();

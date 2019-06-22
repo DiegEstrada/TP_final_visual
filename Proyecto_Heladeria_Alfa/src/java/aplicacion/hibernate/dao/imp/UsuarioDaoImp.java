@@ -9,6 +9,7 @@ import aplicacion.hibernate.dao.IUsuarioDao;
 import aplicacion.hibernate.configuracion.HibernateUtil;
 import aplicacion.modelo.dominio.Usuario;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -22,11 +23,19 @@ public class UsuarioDaoImp extends GenericDaoImp<Usuario, Integer>implements IUs
 
     @Override
     public List<Usuario> obtenerUsuarios() {
+        List<Usuario> usuariosActivos=new ArrayList<>();
         Session session = HibernateUtil.getSessionFactory().openSession();
         Criteria criteria=session.createCriteria(Usuario.class);
         List<Usuario> usuarios=criteria.list();
         session.close();
-        return usuarios;
+        
+        for(int x=0;x<usuarios.size();x++){
+          if(usuarios.get(x).getEstado()==1){
+          usuariosActivos.add(x, usuarios.get(x));
+          }
+        }
+        
+        return usuariosActivos;
     }
 
     @Override

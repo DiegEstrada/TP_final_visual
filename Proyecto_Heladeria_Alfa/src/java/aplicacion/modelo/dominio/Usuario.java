@@ -139,7 +139,10 @@ public class Usuario  implements java.io.Serializable {
         this.ventasForIdVendedor = ventasForIdVendedor;
     }
 
-    @Override
+    
+    
+    
+  /*  @Override
     public int hashCode() {
         int hash = 5;
         hash = 79 * hash + Objects.hashCode(this.idUsuario);
@@ -167,7 +170,9 @@ public class Usuario  implements java.io.Serializable {
     @Override
     public String toString() {
         return "Usuario{" + "idUsuario=" + idUsuario + ", tipoUsuario=" + tipoUsuario + ", nombre=" + nombre + ", apellido=" + apellido + ", username=" + username + ", password=" + password + ", correo=" + correo + ", dni=" + dni + ", fechaDeNacimiento=" + fechaDeNacimiento + ", estado=" + estado + ", ventasForIdCliente=" + ventasForIdCliente + ", ventasForIdVendedor=" + ventasForIdVendedor + '}';
-    }
+    }*/
+    
+    
 
 
 

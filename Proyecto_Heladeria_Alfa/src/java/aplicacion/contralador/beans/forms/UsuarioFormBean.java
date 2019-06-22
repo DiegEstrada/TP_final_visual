@@ -5,8 +5,11 @@
  */
 package aplicacion.contralador.beans.forms;
 
+import aplicacion.contralador.beans.TipoUsuarioBean;
 import aplicacion.contralador.beans.UsuarioBean;
+import aplicacion.modelo.dominio.TipoUsuario;
 import aplicacion.modelo.dominio.Usuario;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
@@ -21,26 +24,30 @@ public class UsuarioFormBean {
 
     @ManagedProperty(value="#{usuarioBean}")
     private UsuarioBean usuarioBean;
+    
+    @ManagedProperty(value = "#{tipoUsuarioBean}")
+    private TipoUsuarioBean tipoUsuarioBean;
+    
     private Usuario nuevoUsuario;
     /**
      * Creates a new instance of UsuarioFormBean
      */
     public UsuarioFormBean() {
-        usuarioBean=new UsuarioBean();
+        
         nuevoUsuario=new Usuario();
     }
 
-    public void agregarUnUsuarioComun(){
+    public void crearNuevoUsuario(){
+    usuarioBean.crearUsuario(nuevoUsuario);
+    }
+    /*public void agregarUnUsuarioComun(){
     usuarioBean.registrarUsuarioComun(nuevoUsuario);
     }
     
     public void agregarUnUsuarioAdministrador(){
     usuarioBean.registrarUsuarioAdministrador(nuevoUsuario);
-    }
-    
-    
-    
-    
+    }*/
+ 
     
     public UsuarioBean getUsuarioBean() {
         return usuarioBean;
@@ -56,6 +63,14 @@ public class UsuarioFormBean {
 
     public void setNuevoUsuario(Usuario nuevoUsuario) {
         this.nuevoUsuario = nuevoUsuario;
+    }
+
+    public TipoUsuarioBean getTipoUsuarioBean() {
+        return tipoUsuarioBean;
+    }
+
+    public void setTipoUsuarioBean(TipoUsuarioBean tipoUsuarioBean) {
+        this.tipoUsuarioBean = tipoUsuarioBean;
     }
     
     

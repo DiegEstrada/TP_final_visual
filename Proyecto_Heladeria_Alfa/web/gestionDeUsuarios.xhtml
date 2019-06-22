@@ -55,7 +55,7 @@
                                     </p:commandButton>
                                 </p:column>
                             </p:dataTable>
-                            <p:commandButton value="Crear usuario"  onclick="PF('dlgAgregar').show();" />
+                            <p:commandButton value="Crear usuario Administrador"  onclick="PF('dlgAgregar').show();" />
                         </p:panel>
                     </h:form>
 
@@ -65,39 +65,39 @@
                                 <p:growl id="msj1"/>
                                 <h:panelGrid id="tblAgregarUsuario" columns="2">
                                     <p:outputLabel id="lblnombre" value="Nombre" for="txtNombre"/>
-                                    <p:inputText id="txtNombre" value="#{gestionUsuariosFormBean.usuario.nombre}" required="true"
+                                    <p:inputText id="txtNombre" value="#{usuarioFormBean.nuevoUsuario.nombre}" required="true"
                                                  requiredMessage="Ingrese nombre" maxlength="13"/>
                                     <p:outputLabel id="lblApellido" value="Apellido" for="txtApellido"/>
-                                    <p:inputText id="txtApellido" value="#{gestionUsuariosFormBean.usuario.apellido}" required="true"
+                                    <p:inputText id="txtApellido" value="#{usuarioFormBean.nuevoUsuario.apellido}" required="true"
                                                  requiredMessage="Ingrese Apellido" maxlength="30"/>
                                     <p:outputLabel id="lblDni" value="DNI" for="txtDni"/>
-                                    <p:inputNumber id="txtDni" value="#{gestionUsuariosFormBean.usuario.dni}" required="true"
+                                    <p:inputNumber id="txtDni" value="#{usuarioFormBean.nuevoUsuario.dni}" required="true"
                                                    requiredMessage="Ingrese el DNI"
                                                    decimalPlaces="0" thousandSeparator=" "/>
                                     <p:outputLabel id="lblusername" value="Nombre de usuario" for="txtusername"/>
-                                    <p:inputText id="txtusername" value="#{gestionUsuariosFormBean.usuario.username}" required="true"
+                                    <p:inputText id="txtusername" value="#{usuarioFormBean.nuevoUsuario.username}" required="true"
                                                  requiredMessage="Ingrese el usuario"/>
                                     <p:outputLabel id="lblpassword" value="Password" for="txtpass"/>
-                                    <p:password id="txtpass" value="#{gestionUsuariosFormBean.usuario.password}" required="true"
+                                    <p:password id="txtpass" value="#{usuarioFormBean.nuevoUsuario.password}" required="true"
                                                 requiredMessage="Ingrese password" maxlength="45"/>
                                     <p:outputLabel id="lblcorreo" value="Correo" for="txtcorreo"/>
-                                    <p:inputText id="txtcorreo" value="#{gestionUsuariosFormBean.usuario.correo}" required="true"
+                                    <p:inputText id="txtcorreo" value="#{usuarioFormBean.nuevoUsuario.correo}" required="true"
                                                  requiredMessage="Ingrese correo electronico" maxlength="45"/>
                                     <p:outputLabel id="lblTipoUsuario" value="Usuario" for="txtTipoUsuario"/>
-                                    <p:selectOneRadio id="txtTipoUsuario" value="#{gestionUsuariosFormBean.usuario.tipoUsuario}" 
+                                    <p:selectOneMenu id="txtTipoUsuario" value="#{usuarioFormBean.nuevoUsuario.tipoUsuario}" 
                                                       converter="omnifaces.SelectItemsConverter">
-                                        <f:selectItems value="#{gestionUsuariosFormBean.listaTipoDeUsuarios}" var="tipo"
+                                        <f:selectItems value="#{usuarioFormBean.tipoUsuarioBean.obtenerTiposDeUsuarios()}" var="tipo"
                                                        itemLabel="#{tipo.nombre}"
                                                        itemValue="#{tipo}">
                                         </f:selectItems>
-                                    </p:selectOneRadio>
+                                    </p:selectOneMenu>
                                     <p:outputLabel id="lblFecha" value="Fecha De Nacimiento" for="fecha"/>
-                                    <p:calendar id="fecha" value="#{gestionUsuariosFormBean.usuario.fechaDeNacimiento}" required="true"
+                                    <p:calendar id="fecha" value="#{usuarioFormBean.nuevoUsuario.fechaDeNacimiento}" required="true"
                                                 locale="es"
                                                 requiredMessage="Ingrese fecha de nacimiento" effect="fold"/>
 
                                     <p:commandButton id="btnregistro" value="Registrar"
-                                                     actionListener="#{gestionUsuariosFormBean.crearUsuario()}"
+                                                     actionListener="#{usuarioFormBean.crearNuevoUsuario()}"
                                                      update="frmListadoUsuarios:tblListaUsuarios"
                                                      icon="ui-icon-disk">
                                         <p:confirm header="Confirmacion" message="¿Estas Seguro?"/>

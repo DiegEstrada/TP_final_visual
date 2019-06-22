@@ -31,6 +31,39 @@ public class TipoUsuario  implements java.io.Serializable {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    
+    
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 37 * hash + Objects.hashCode(this.idTipoUsuario);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final TipoUsuario other = (TipoUsuario) obj;
+        if (!Objects.equals(this.idTipoUsuario, other.idTipoUsuario)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "TipoUsuario{" + "idTipoUsuario=" + idTipoUsuario + ", nombre=" + nombre + '}';
+    }    
+    
+    
    // public Set getUsuarios() {
      //   return this.usuarios;
     //}
@@ -39,7 +72,7 @@ public class TipoUsuario  implements java.io.Serializable {
     //    this.usuarios = usuarios;
     //}
 
-    @Override
+   /* @Override
     public String toString() {
         return "TipoUsuario{" + "idTipoUsuario=" + idTipoUsuario + ", nombre=" + nombre + '}';
     }
@@ -68,7 +101,7 @@ public class TipoUsuario  implements java.io.Serializable {
         }
         return true;
     }
-
+*/
     
 
 

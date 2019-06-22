@@ -20,10 +20,12 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class TipoUsuarioBean implements Serializable{
+    private List<TipoUsuario> listaDeTipos;
     ITipoUsuarioDao tipoUsuarioDao;
     
     public TipoUsuarioBean() {
         tipoUsuarioDao= new TipoUsuarioDaoImp();
+        listaDeTipos = tipoUsuarioDao.obtenerTipoUsuarios();
     }
     public List<TipoUsuario> obtenerTiposDeUsuarios(){
         return tipoUsuarioDao.obtenerTipoUsuarios();
@@ -35,6 +37,14 @@ public class TipoUsuarioBean implements Serializable{
 
     public void setTipoUsuarioDao(ITipoUsuarioDao tipoUsuarioDao) {
         this.tipoUsuarioDao = tipoUsuarioDao;
+    }
+
+    public List<TipoUsuario> getListaDeTipos() {
+        return listaDeTipos;
+    }
+
+    public void setListaDeTipos(List<TipoUsuario> listaDeTipos) {
+        this.listaDeTipos = listaDeTipos;
     }
     
 }

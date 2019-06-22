@@ -40,7 +40,7 @@ public class LogueoFormBean implements Serializable {
         usuario = logueoBean.ValidarUnUsuario(nombreUsuario, password);
         if (usuario != null) {
             if (usuario.getTipoUsuario().getIdTipoUsuario().equals(2)) { // indica usuario administrador
-                irPagina = "creacionAdmin";//?faces-redirect=true";
+                irPagina = "paginaAdmin";//?faces-redirect=true";
                 //FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario Valido", "Usuario Valido");
                 //FacesContext.getCurrentInstance().addMessage(null, facesMessage);
                 //FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuarioValido", usuario);
@@ -48,7 +48,7 @@ public class LogueoFormBean implements Serializable {
 
         
         if (usuario.getTipoUsuario().getIdTipoUsuario().equals(1)) { //1 indica usuario comun
-            irPagina = "catalogo";//?faces-redirect=true";
+            irPagina = "paginaComun";//?faces-redirect=true";
             //FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario Valido", "Usuario Valido");
             //FacesContext.getCurrentInstance().addMessage(null, facesMessage);
             //FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuarioValido", usuario);

@@ -31,13 +31,13 @@ public class TestCrearUsuario {
         //List<TipoUsuario> tipoUsuarios=criteria.list();
         TipoUsuario tu = new TipoUsuario();
         //tu= tipoUsuarios.get(1);
-        tu.setIdTipoUsuario(2);
-        tu.setNombre("administrador");        
+        tu.setIdTipoUsuario(1);
+        tu.setNombre("comun");        
         //session.close();
         
         byte estado=1;
         
-        Usuario usuarioTest= new Usuario(tu, "ricardo", "condori", "ricardo", "ricardo", "ricardogmail.com", "39200033", new Date(),estado);
+        Usuario usuarioTest= new Usuario(tu, "jose", "lopez", "ricardo", "jose", "josegmail.com", "39200034", new Date(),estado);
         IUsuarioDao usuarioDao = new UsuarioDaoImp();
         usuarioDao.create(usuarioTest);
         

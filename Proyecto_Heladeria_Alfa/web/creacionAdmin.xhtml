@@ -36,36 +36,36 @@
                                             <p:growl id="msj1"/>
                                             <h:panelGrid id="tblUsuario" columns="2">
                                                 <p:outputLabel id="lblnombre" value="Nombre" for="txtNombre"/>
-                                                <p:inputText id="txtNombre" value="#{usuarioFormBean.usuario.nombre}" 
+                                                <p:inputText id="txtNombre" value="#{usuarioFormBean.nuevoUsuario.nombre}" 
                                                              required="true"  requiredMessage="Ingrese Nombre" maxlength="45" />
                                                 <p:outputLabel id="lblapellido" value="Apellido" for="txtApellido"/>
-                                                <p:inputText id="txtApellido" value="#{usuarioFormBean.usuario.apellido}" required="true"
+                                                <p:inputText id="txtApellido" value="#{usuarioFormBean.nuevoUsuario.apellido}" required="true"
                                                              requiredMessage="Ingrese Apellido" maxlength="45"/>
 
                                                 <p:outputLabel id="lbldni" value="DNI" for="txtDni"/>
-                                                <p:inputNumber id="txtDni" value="#{usuarioFormBean.usuario.dni}" required="true"
+                                                <p:inputNumber id="txtDni" value="#{usuarioFormBean.nuevoUsuario.dni}" required="true"
                                                                requiredMessage="Ingrese DNI"
                                                                decimalPlaces="0" thousandSeparator=" "/>
                                                 <p:outputLabel id="lblusername" value="Usuario" for="txtusername"/>
-                                                <p:inputText id="txtusername" value="#{usuarioFormBean.usuario.username}" required="true"
+                                                <p:inputText id="txtusername" value="#{usuarioFormBean.nuevoUsuario.username}" required="true"
                                                              requiredMessage="Ingrese usuario" maxlength="45"/>
                                                 <p:outputLabel id="lblpassword" value="Password" for="txtpass"/>
-                                                <p:password id="txtpass" value="#{usuarioFormBean.usuario.password}" required="true"
+                                                <p:password id="txtpass" value="#{usuarioFormBean.nuevoUsuario.password}" required="true"
                                                             requiredMessage="Ingrese password" maxlength="45"/>
                                                 <p:outputLabel id="lblcorreo" value="Correo" for="txtcorreo"/>
-                                                <p:inputText id="txtcorreo" value="#{usuarioFormBean.usuario.correo}" required="true"
+                                                <p:inputText id="txtcorreo" value="#{usuarioFormBean.nuevoUsuario.correo}" required="true"
                                                              requiredMessage="Ingrese correo electronico" maxlength="45"/>
                                                 <p:outputLabel id="lblFecha" value="Fecha De Nacimiento" for="fecha"/>
-                                                <p:calendar id="fecha" value="#{usuarioFormBean.usuario.fechaDeNacimiento}" required="true"
+                                                <p:calendar id="fecha" value="#{usuarioFormBean.nuevoUsuario.fechaDeNacimiento}" required="true"
                                                             locale="es"
                                                             requiredMessage="Ingrese fecha" effect="fold"/>
 
                                                 <p:commandButton id="btnregistro" value="Registrar"
-                                                                 actionListener="#{usuarioFormBean.registrarUnUsuarioAdministrador()}"
+                                                                 actionListener="#{usuarioFormBean.agregarUnUsuarioAdministrador()}"
                                                                  action="login.xhtml"
                                                                  update="msj1 frmRegistrarUsuario "
                                                                  icon="ui-icon-disk">
-                                                    <p:confirm header="Confirmacion" message="¿Estas Seguro?"/>
+                                                    <!--<p:confirm header="Confirmacion" message="¿Estas Seguro?"/>-->
                                                 </p:commandButton>
                                             </h:panelGrid>
                                         </h:form>

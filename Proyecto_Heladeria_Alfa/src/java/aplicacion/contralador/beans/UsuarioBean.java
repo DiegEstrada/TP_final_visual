@@ -41,6 +41,27 @@ public class UsuarioBean implements Serializable{
     public void eliminarUsuario(Usuario usuarioAEliminar){
         usuarioDao.delete(usuarioAEliminar);
     }
+    
+    public void registrarUsuarioComun(Usuario newUsuario){
+        byte estado=1;
+        TipoUsuario tipoUsuario = new TipoUsuario();
+        tipoUsuario.setIdTipoUsuario(1);
+        tipoUsuario.setNombre("comun");
+        newUsuario.setEstado(estado);
+        newUsuario.setTipoUsuario(tipoUsuario);
+        usuarioDao.create(newUsuario);
+    }
+    
+    public void registrarUsuarioAdministrador(Usuario newUsuario){
+        byte estado=1;
+        TipoUsuario tipoUsuario = new TipoUsuario();
+        tipoUsuario.setIdTipoUsuario(2);
+        tipoUsuario.setNombre("administrador");
+        newUsuario.setEstado(estado);
+        newUsuario.setTipoUsuario(tipoUsuario);
+        usuarioDao.create(newUsuario);
+    }
+    
     public List<Usuario> obtenerUsuarios() {
         return usuarioDao.obtenerUsuarios();
     }
@@ -53,4 +74,5 @@ public class UsuarioBean implements Serializable{
         this.usuarioDao = usuarioDao;
     }
 
+    
 }

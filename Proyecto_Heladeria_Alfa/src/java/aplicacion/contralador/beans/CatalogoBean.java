@@ -13,6 +13,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
+
 /**
  *
  * @author LENOVO
@@ -22,9 +23,11 @@ import javax.faces.bean.ViewScoped;
 public class CatalogoBean implements Serializable {
 
     private ICatalogoDao catalogoDao;
+    private Catalogo catalogo;
 
     public CatalogoBean() {
         catalogoDao = new CatalogoDaoImp();
+        catalogo = new Catalogo();
     }
 
     public void crearCatalogo(Catalogo catalogoACrear) {
@@ -51,6 +54,13 @@ public class CatalogoBean implements Serializable {
         this.catalogoDao = catalogoDao;
     }
 
+    public Catalogo getCatalogo() {
+        return catalogo;
+    }
+
+    public void setCatalogo(Catalogo catalogo) {
+        this.catalogo = catalogo;
+    }
     
-    
+
 }

@@ -10,11 +10,11 @@
     <property name="nombre" type="string">
       <column length="45" name="nombre"/>
     </property>
-   <!-- <set fetch="select" inverse="true" lazy="true" name="usuarios" table="usuario">
+    <set fetch="join" inverse="true" lazy="true" name="usuarios" table="usuario">
       <key>
         <column name="id_tipo_usuario" not-null="true"/>
       </key>
       <one-to-many class="aplicacion.modelo.dominio.Usuario"/>
-    </set> -->
+    </set> 
   </class>
 </hibernate-mapping>

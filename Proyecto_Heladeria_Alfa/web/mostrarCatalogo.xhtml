@@ -7,30 +7,24 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
-
-        <ui:composition template="./resources/template/template.xhtml">
-
-            <ui:define name="content">
-                <h:form>
-                    <p:carousel value="#{mostrarCatalogoFormBean}" headerText="Responsive" var="catalogo" itemStyle="text-align:center" responsive="true">
+<h:form>
+                    <p:carousel value="#{mostrarCatalogoFormBean.catalogos}" headerText="Responsive" var="catalogo" itemStyle="text-align:center" responsive="true">
                         <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                             <f:facet name="header">
                                 <p:graphicImage name="../resources/assets/images/helado1"/> 
                             </f:facet>
-
+                            <p:separator/>
                             <h:outputText value="Nombre:" />
-                            <h:outputText value="#{catalogoBean.catalogo.producto.nombre}" />
-
+                            <h:outputText value="#{catalogo.producto.nombre}" />
+                            <p:separator/>
                             <h:outputText value="Tipo de Helado" />
-                            <h:outputText value="#{catalogoBean.catalogo.producto.tipoHelado}" />
-
+                            <h:outputText value="#{catalogo.producto.tipoHelado.nombre}" />
+                            <p:separator/>
                             <h:outputText value="Precio" />
-                            <h:outputText value="#{catalogoBean.catalogo.producto.precio}" />
-
-                            <h:outputText value="Estado" />
-                            <h:outputText value="$#{catalogoBean.catalogo.producto.estado}" />
+                            <h:outputText value="#{catalogo.producto.precio}" />
+                            <p:separator/>
                         </p:panelGrid>
-                         <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+                         <!--><p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                             <f:facet name="header">
                                 <p:graphicImage name="../resources/assets/images/helado2"/> 
                             </f:facet>
@@ -165,13 +159,9 @@
 
                             <h:outputText value="Estado" />
                             <h:outputText value="$#{catalogoBean.catalogo.producto.estado}" />
-                        </p:panelGrid>
+                        </p:panelGrid>-->
 
                      </p:carousel>
                 </h:form>
-            </ui:define>
-
-        </ui:composition>
-
     </body>
 </html>

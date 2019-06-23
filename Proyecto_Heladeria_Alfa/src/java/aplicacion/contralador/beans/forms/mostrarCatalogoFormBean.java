@@ -31,8 +31,8 @@ public class mostrarCatalogoFormBean  implements Serializable{
         
         @PostConstruct
         public void init() {
-        catalogo = new Catalogo();
-        catalogoBean.crearCatalogo(catalogo);
+        //catalogo = new Catalogo();
+        //catalogoBean.crearCatalogo(catalogo);
         obtenerListaDeCatalogos();
         }      
 
@@ -41,6 +41,7 @@ public class mostrarCatalogoFormBean  implements Serializable{
      */
     public mostrarCatalogoFormBean() {
          catalogos = new ArrayList<>(); 
+         catalogo=new Catalogo();
     }
 
     public CatalogoBean getCatalogoBean() {

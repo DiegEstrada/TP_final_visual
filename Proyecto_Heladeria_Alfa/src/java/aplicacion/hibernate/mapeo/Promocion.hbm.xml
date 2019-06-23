@@ -19,7 +19,7 @@
     <property name="descuento" type="java.lang.Double">
       <column name="descuento" precision="22" scale="0"/>
     </property>
-    <set fetch="select" inverse="true" lazy="true" name="catalogos" table="Catalogo">
+    <set fetch="join" inverse="true" lazy="true" name="catalogos" table="Catalogo">
       <key>
         <column name="id_promocion" not-null="true"/>
       </key>

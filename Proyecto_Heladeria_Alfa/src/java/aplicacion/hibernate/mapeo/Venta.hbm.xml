@@ -7,13 +7,13 @@
       <column name="id_venta"/>
       <generator class="assigned"/>
     </id>
-    <many-to-one class="aplicacion.modelo.dominio.Catalogo" fetch="select" name="catalogo">
+    <many-to-one class="aplicacion.modelo.dominio.Catalogo" fetch="join" name="catalogo">
       <column name="id_catalogo" not-null="true"/>
     </many-to-one>
-    <many-to-one class="aplicacion.modelo.dominio.Usuario" fetch="select" name="usuarioByIdCliente">
+    <many-to-one class="aplicacion.modelo.dominio.Usuario" fetch="join" name="usuarioByIdCliente">
       <column name="id_cliente" not-null="true"/>
     </many-to-one>
-    <many-to-one class="aplicacion.modelo.dominio.Usuario" fetch="select" name="usuarioByIdVendedor">
+    <many-to-one class="aplicacion.modelo.dominio.Usuario" fetch="join" name="usuarioByIdVendedor">
       <column name="id_vendedor" not-null="true"/>
     </many-to-one>
     <property name="fecha" type="date">

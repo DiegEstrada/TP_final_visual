@@ -7,10 +7,10 @@
       <column name="id_venta_producto"/>
       <generator class="identity"/>
     </id>
-    <many-to-one class="aplicacion.modelo.dominio.Producto" fetch="select" name="producto">
+    <many-to-one class="aplicacion.modelo.dominio.Producto" fetch="join" name="producto">
       <column name="id_producto" not-null="true"/>
     </many-to-one>
-    <many-to-one class="aplicacion.modelo.dominio.Venta" fetch="select" name="venta">
+    <many-to-one class="aplicacion.modelo.dominio.Venta" fetch="join" name="venta">
       <column name="id_venta" not-null="true"/>
     </many-to-one>
     <property name="cantidad" type="java.lang.Integer">

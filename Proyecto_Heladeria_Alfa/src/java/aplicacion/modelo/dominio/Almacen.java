@@ -11,14 +11,14 @@ public class Almacen  implements java.io.Serializable {
 
      private Integer idAlmacen;
      private Integer stock;
-     private Set productos = new HashSet(0);
+    // private Set productos = new HashSet(0);
 
     public Almacen() {
     }
 
     public Almacen(Integer stock, Set productos) {
        this.stock = stock;
-       this.productos = productos;
+  //     this.productos = productos;
     }
    
     public Integer getIdAlmacen() {
@@ -35,13 +35,13 @@ public class Almacen  implements java.io.Serializable {
     public void setStock(Integer stock) {
         this.stock = stock;
     }
-    public Set getProductos() {
+  /*  public Set getProductos() {
         return this.productos;
     }
     
     public void setProductos(Set productos) {
         this.productos = productos;
-    }
+    }  */
 
     @Override
     public int hashCode() {
@@ -70,7 +70,7 @@ public class Almacen  implements java.io.Serializable {
 
     @Override
     public String toString() {
-        return "Almacen{" + "idAlmacen=" + idAlmacen + ", stock=" + stock + ", productos=" + productos + '}';
+        return "Almacen{" + "idAlmacen=" + idAlmacen + ", stock=" + stock + ", productos=" + '}';
     }
 
 

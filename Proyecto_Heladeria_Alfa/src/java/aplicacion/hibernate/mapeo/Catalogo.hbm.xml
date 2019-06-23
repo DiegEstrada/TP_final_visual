@@ -7,10 +7,10 @@
       <column name="idCatalogo"/>
       <generator class="identity"/>
     </id>
-    <many-to-one class="aplicacion.modelo.dominio.Producto" fetch="select" name="Producto">
+    <many-to-one class="aplicacion.modelo.dominio.Producto" fetch="join" name="Producto">
       <column name="id_producto" not-null="true"/>
     </many-to-one>
-    <many-to-one class="aplicacion.modelo.dominio.Promocion" fetch="select" name="Promocion">
+    <many-to-one class="aplicacion.modelo.dominio.Promocion" fetch="join" name="Promocion">
       <column name="id_promocion" not-null="true"/>
     </many-to-one>
     <property name="nombre" type="string">

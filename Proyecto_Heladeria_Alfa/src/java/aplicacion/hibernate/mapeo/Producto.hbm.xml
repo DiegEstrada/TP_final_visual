@@ -7,10 +7,10 @@
       <column name="id_producto"/>
       <generator class="identity"/>
     </id>
-    <many-to-one class="aplicacion.modelo.dominio.Almacen" fetch="select" name="almacen">
+    <many-to-one class="aplicacion.modelo.dominio.Almacen" fetch="join" name="almacen">
       <column name="id_almacen" not-null="true"/>
     </many-to-one>
-    <many-to-one class="aplicacion.modelo.dominio.TipoHelado" fetch="select" name="tipoHelado">
+    <many-to-one class="aplicacion.modelo.dominio.TipoHelado" fetch="join" name="tipoHelado">
       <column name="id_tipo_helado" not-null="true"/>
     </many-to-one>
     <property name="nombre" type="string">
@@ -25,13 +25,13 @@
     <property name="estado" type="byte">
       <column name="estado" not-null="true"/>
     </property>
-    <set fetch="select" inverse="true" lazy="true" name="ventaProductos" table="Venta_Producto">
+    <set fetch="join" inverse="true" lazy="true" name="ventaProductos" table="Venta_Producto">
       <key>
         <column name="id_producto" not-null="true"/>
       </key>
       <one-to-many class="aplicacion.modelo.dominio.VentaProducto"/>
     </set>
-    <set fetch="select" inverse="true" lazy="true" name="catalogos" table="Catalogo">
+    <set fetch="join" inverse="true" lazy="true" name="catalogos" table="Catalogo">
       <key>
         <column name="id_producto" not-null="true"/>
       </key>

@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <!--<h:outputStylesheet name="./../css/default.css"/>
+        <h:outputStylesheet name="./../css/cssLayout.css"/>-->
+         <meta name="viewport"    content="width=device-width, initial-scale=1.0"/>
+	 <meta name="description" content=""/>
+         <link rel="shortcut icon" href="../resources/assets/images/gt_favicon.png"/>
+	<link rel="stylesheet" href="../resources/assets/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="../resources/assets/css/font-awesome.min.css"/>
+
+	<!-- Custom styles for our template -->
+	<link rel="stylesheet" href="../resources/assets/css/bootstrap-theme.css" media="screen" />
+	<link rel="stylesheet" href="../resources/assets/css/main.css"/>
+        <title>HELADERIA ALFA</title>
+    </h:head>
+
+    <h:body>
+
+        <div id="top">
+            <ui:insert name="top">
+                <!-- Fixed navbar -->
+	<div class="navbar navbar-inverse navbar-fixed-top headroom" >
+		<div class="container">
+			<div class="navbar-header">
+				<!-- Button for smallest screens -->
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                                <a class="navbar-brand" href="inicioPrincipal.xhtml"><img style="width: 70px;height: 50px"  id="logo" src="../resources/assets/images/logo1.jpg" alt="logo alfa"/></a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav pull-right">
+					<li class="active"><a href="#">Home</a></li>
+					<li><a href="#">Contacto</a></li>
+                                        <li><a href="#">Acerca de</a></li>
+					<li><a class="btn" href="login.xhtml">Iniciar Seccion/ Registrarse</a></li>
+				</ul>
+			</div><!--/.nav-collapse -->
+		</div>
+	</div> 
+	<!-- /.navbar -->
+            </ui:insert>
+        </div>
+
+        <div id="content" class="center_content">
+            <ui:insert name="content">Content</ui:insert>
+        </div>
+
+        <div id="bottom">
+            <ui:insert name="bottom">
+                <footer id="footer" class="top-space">
+
+		<div class="footer1">
+			<div class="container">
+				<div class="row">
+					
+					<div class="col-md-3 widget">
+						<h3 class="widget-title">Contacto</h3>
+						<div class="widget-body">
+                                                    <p>+234 23 9873237
+                                                        <br/>
+                                                        <a href="mailto:#">alfa.heladeria@gmail.com</a>
+                                                        <br/>
+							    234 San Martin, Jujuy, Argentina.
+                                                            
+                                                    </p>   	
+						</div>
+					</div>
+
+					<div class="col-md-3 widget">
+						<h3 class="widget-title">Redes Sociales</h3>
+						<div class="widget-body">
+							<p class="follow-me-icons">
+								<a href=""><i class="fa fa-twitter fa-2"></i></a>
+								<a href=""><i class="fa fa-youtube fa-2"></i></a>
+								<a href=""><i class="fa fa-facebook fa-2"></i></a>
+							</p>	
+						</div>
+					</div>
+				</div> <!-- /row of widgets -->
+			</div>
+		</div>
+
+		<div class="footer2">
+			<div class="container">
+				<div class="row">
+					
+					<div class="col-md-6 widget">
+						<div class="widget-body">
+							<p class="simplenav">
+								<a href="inicioPrincipal.xhtml">Home</a> | 
+								<a href="#">Acerca de </a>
+								<a href="#">Contacto</a> |
+								<b><a href="registro.xhtml">Registrarse</a></b>
+							</p>
+						</div>
+					</div>
+
+					<div class="col-md-6 widget">
+						<div class="widget-body">
+							<p class="text-right">
+								Copyright &copy; 2019, Alfa. 
+							</p>
+						</div>
+					</div>
+
+				</div> <!-- /row of widgets -->
+			</div>
+		</div>
+
+	</footer>
+            </ui:insert>
+        </div>
+
+        <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script src="../resources/assets/js/headroom.min.js"></script>
+	<script src="../resources/assets/js/jQuery.headroom.min.js"></script>
+        <script src="../resources/assets/js/template.js"></script>
+    </h:body>
+
+</html>

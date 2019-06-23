@@ -9,18 +9,20 @@ import aplicacion.contralador.beans.TipoUsuarioBean;
 import aplicacion.contralador.beans.UsuarioBean;
 import aplicacion.modelo.dominio.TipoUsuario;
 import aplicacion.modelo.dominio.Usuario;
+import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 
 /**
  *
- * @author mi pc
+ * @author Grupo Alfa
  */
 @ManagedBean
 @SessionScoped
-public class UsuarioFormBean {
+public class UsuarioFormBean implements Serializable{
 
     @ManagedProperty(value="#{usuarioBean}")
     private UsuarioBean usuarioBean;
@@ -33,8 +35,8 @@ public class UsuarioFormBean {
      * Creates a new instance of UsuarioFormBean
      */
     public UsuarioFormBean() {
-        
         nuevoUsuario=new Usuario();
+        
     }
 
     public void crearNuevoUsuario(){

@@ -40,24 +40,32 @@ public class LogueoFormBean implements Serializable {
         usuario = logueoBean.ValidarUnUsuario(nombreUsuario, password);
         if (usuario != null) {
             if (usuario.getTipoUsuario().getIdTipoUsuario().equals(2)) { // indica usuario administrador
-                irPagina = "paginaAdmin";//?faces-redirect=true";
-                //FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario Valido", "Usuario Valido");
-                //FacesContext.getCurrentInstance().addMessage(null, facesMessage);
-                //FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuarioValido", usuario);
-            }
 
-        
-        if (usuario.getTipoUsuario().getIdTipoUsuario().equals(1)) { //1 indica usuario comun
-            irPagina = "paginaComun";//?faces-redirect=true";
-            //FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario Valido", "Usuario Valido");
-            //FacesContext.getCurrentInstance().addMessage(null, facesMessage);
-            //FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuarioValido", usuario);
-        }
+                FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario Valido", "Usuario Valido");
+                FacesContext.getCurrentInstance().addMessage(null, facesMessage);
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuarioValido", usuario);
+                irPagina = "/administrador/inicioAdmin?faces-redirect=true";
+            } else if (usuario.getTipoUsuario().getIdTipoUsuario().equals(1)) {
+
+                FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario Valido", "Usuario Valido");
+                FacesContext.getCurrentInstance().addMessage(null, facesMessage);
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuarioValido", usuario);
+                irPagina = "/client/inicioClient?faces-redirect=true";
+            } else if (usuario.getTipoUsuario().getIdTipoUsuario().equals(3)) {
+
+                FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario Valido", "Usuario Valido");
+                FacesContext.getCurrentInstance().addMessage(null, facesMessage);
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuarioValido", usuario);
+                irPagina = "/empleado/inicioEmp?faces-redirect=true";
+            } else {
+                FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario Invalido", "Usuario Invalido");
+                FacesContext.getCurrentInstance().addMessage(null, facesMessage);
+            }
         }
         return irPagina;
     }
 
-    public String obtenerNombreUsuarioValido() {
+    public String getNombreUsuarioValido() {
         Usuario usuario = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuarioValido");
         return usuario.getUsername();
     }
@@ -67,7 +75,7 @@ public class LogueoFormBean implements Serializable {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_INFO, "Sesion cerrada", "Sesion Cerrada");
         FacesContext.getCurrentInstance().addMessage(null, fm);
-        irPagina = "/inicio?faces-redirect=true";
+        irPagina = "/principal/inicioPrincipal?faces-redirect=true";
         return irPagina;
     }
 
@@ -79,23 +87,6 @@ public class LogueoFormBean implements Serializable {
         return sesionValida;
     }
 
-    public boolean verificarAdministrador() {
-        boolean tipoUsuario = false;
-        Usuario usuario = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuarioValido");
-        if (usuario.getTipoUsuario().getNombre().equals("administrador")) {
-            tipoUsuario = true;
-        }
-        return tipoUsuario;
-    }
-
-    public boolean verificarComun() {
-        boolean tipoUsuario = false;
-        Usuario usuario = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuarioValido");
-        if (usuario.getTipoUsuario().getNombre().equals("comun")) {
-            tipoUsuario = true;
-        }
-        return tipoUsuario;
-    }
 
     public LogueoBean getLogueoBean() {
         return logueoBean;

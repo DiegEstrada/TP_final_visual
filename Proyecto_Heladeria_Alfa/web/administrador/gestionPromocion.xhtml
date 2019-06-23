@@ -8,7 +8,7 @@
 
     <body>
 
-        <ui:composition template="./resources/template/template.xhtml">
+        <ui:composition template="./../resources/template/template.xhtml">
 
             <ui:define name="content">
                 <!-- container -->
@@ -20,7 +20,7 @@
 
                     <ol class="breadcrumb">
                         <li><a href="inicio.xhtml">Home</a></li>
-                        <li class="active">Gestion de Catalogo</li>
+                        <li class="active">Gestion promociones</li>
                     </ol>
 
                     <div class="row">
@@ -28,41 +28,35 @@
                         <!-- Article main content -->
                         <article class="col-xs-12 maincontent">
                             <header class="page-header">
-                                <h1 class="page-title">Gestion de Catalogo</h1>
+                                <h1 class="page-title">Gestion de Promocion</h1>
                             </header>
 
                             <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
                                 <div class="panel panel-default">
                                     <div class="panel-body">
-                                        <h3 class="thin text-center">Registrar Catalogo</h3>
-                                        <h:form id="frmRegistrarCatalogo" >
+                                        <h3 class="thin text-center">Registrar promocion</h3>
+                                        <h:form id="frmRegistrarPromocion" >
                                             <p:growl id="msj1"/>
-                                            <h:panelGrid id="tblCatalogo" columns="2">
+                                            <h:panelGrid id="tblProducto" columns="2">
                                                 <p:outputLabel id="lblnombre" value="Nombre" for="txtNombre"/>
-                                                <p:inputText id="txtNombre" value="" required="true"
-                                                             requiredMessage="Ingrese Nombre" maxlength="45"/>
-                                                <p:outputLabel id="lblproducto" value="Producto" for="txtProducto"/>
-                                                <p:selectOneMenu id="txtProducto" value="" required="true" 
-                                                                 requiredMessage="Seleccione" converter="omnifaces.SelectItemsConverter" >
-                                                    <f:selectItem  itemLabel="Seleccione..." itemValue=""/>
-                                                    <f:selectItems value="" var="p"
-                                                                   itemLabel="#{p.idProducto} - #{p.nombre}" itemValue="#{p}"/>
-                                                </p:selectOneMenu>
-                                                <p:outputLabel id="lblpromocion" value="Promocion" for="txtPromocion"/>
-                                                <p:selectOneMenu id="txtPromocion" value="" required="true" 
-                                                                 requiredMessage="Seleccione" converter="omnifaces.SelectItemsConverter" >
-                                                    <f:selectItem  itemLabel="Seleccione..." itemValue=""/>
-                                                    <f:selectItems value="" var="pro"
-                                                                   itemLabel="#{pro.idPromocion} - #{pro.nombre}" itemValue="#{pro}"/>
-                                                </p:selectOneMenu>
-                                                <p:outputLabel id="lblestado" value="Estado" for="txtEstado"/>
-                                                <p:inputText id="txtEstado" value="" required="true"
-                                                             requiredMessage="Ingrese estado" maxlength="45"/>
-                                               
+                                                <p:inputText id="txtNombre" value="" 
+                                                             required="true"  requiredMessage="Ingrese Nombre" maxlength="45" />
+                                                <p:outputLabel value="Fecha Inicio de Promocion" for="fechaInicio"/>
+                                                <p:calendar id="fechaInicio" value="" required="true"
+                                                            locale="es"
+                                                            requiredMessage="Ingrese una fecha" effect="fold"/>
+                                                <p:outputLabel value="Fecha Fin de Promocion" for="fechaFin"/>
+                                                <p:calendar id="fechaFin" value="" required="true"
+                                                            locale="es"
+                                                            requiredMessage="Ingrese una fecha" effect="fold"/>
+                                                <p:outputLabel value="Descuento" for="descuento"/>
+                                                <p:inputNumber id="descuento" value="" required="true"
+                                                               decimalPlaces="0" requiredMessage="ingrese descuento" />
+
                                                 <p:commandButton id="btnregistro" value="Registrar"
 
 
-                                                                 update="msj1 frmRegistrarCatalogo "
+                                                                 update="msj1 frmRegistrarPromocion "
                                                                  icon="ui-icon-disk">
                                                     <p:confirm header="Confirmacion" message="¿Estas Seguro?"/>
                                                 </p:commandButton>
@@ -82,10 +76,10 @@
                         <!-- /Article -->
 
 
-                        <!--INICIO LISTA DE LIBROS-->
+                        <!--INICIO LISTA PROMOCION-->
 
-                        <!-- <h:form id="frmListaProducto" >
-                             <h3 class="thin text-center">Productos</h3>
+                        <!-- <h:form id="frmListaPromocion" >
+                             <h3 class="thin text-center">Promociones</h3>
                              <center>
                                  <p:panelGrid columns="15"> 
                                      <p:commandButton id="OrdenarDescendente" 
@@ -126,20 +120,22 @@
                                           style="width:1245px;"
                                           emptyMessage=" "
                                           var="p">
-                                 <p:column headerText="Id Catalogo">
-                                     <p:outputLabel value="#{c.idCatalogo}"/>
+                                 <p:column headerText="Id Promocion">
+                                     <p:outputLabel value="#{p.idPromocion}"/>
                                  </p:column>
                                  <p:column headerText="Nombre">
-                                     <p:outputLabel value="#{c.nombre}"/>
+                                     <p:outputLabel value="#{p.nombre}"/>
                                  </p:column>
-                                 <p:column headerText="Producto">
-                                     <p:outputLabel value="#{c.producto.nombre}"/>
+                                 <p:column headerText="Fecha Inicio">
+                                     <p:outputLabel value="#{p.fechaInicio}"/>
                                  </p:column>
-                                 <p:column headerText="Promocion">
-                                     <p:outputLabel value="#{c.promocion.nombre}"/>
+                                 <p:column headerText="Fecha Fin">
+                                     <p:outputLabel value="#{p.fechaFin}"/>
                                  </p:column>
-                           
-                                 <p:column >
+                                 <p:column headerText="descuento">
+                                     <p:outputLabel value="#{p.descuento}"/>
+                                 </p:column>
+                         
                                      <p:commandButton value="Modificar"   oncomplete="PF('dlg').show();" update="dialogo"/>
                                  </p:column>
                                  <p:column >
@@ -159,28 +155,22 @@
                         <!--INICIO DIALOG MODIFICAR-->
                         <h:form id ="dialogo">
                             <p:growl id="msj2"/>
-                            <p:dialog id="dlgCatalogo" header="Modificar" widgetVar="dlg" height="400" modal="true">
+                            <p:dialog id="dlgPromocion" header="Modificar" widgetVar="dlg" height="400" modal="true">
                                 <h:panelGrid columns="2" cellpadding="6">
-                                     <p:outputLabel id="lblnombre" value="Nombre" for="txtNombre"/>
-                                                <p:inputText id="txtNombre" value="" required="true"
-                                                             requiredMessage="Ingrese Nombre" maxlength="45"/>
-                                                <p:outputLabel id="lblproducto" value="Producto" for="txtProducto"/>
-                                                <p:selectOneMenu id="txtProducto" value="" required="true" 
-                                                                 requiredMessage="Seleccione" converter="omnifaces.SelectItemsConverter" >
-                                                    <f:selectItem  itemLabel="Seleccione..." itemValue=""/>
-                                                    <f:selectItems value="" var="p"
-                                                                   itemLabel="#{p.idProducto} - #{p.nombre}" itemValue="#{p}"/>
-                                                </p:selectOneMenu>
-                                                <p:outputLabel id="lblpromocion" value="Promocion" for="txtPromocion"/>
-                                                <p:selectOneMenu id="txtPromocion" value="" required="true" 
-                                                                 requiredMessage="Seleccione" converter="omnifaces.SelectItemsConverter" >
-                                                    <f:selectItem  itemLabel="Seleccione..." itemValue=""/>
-                                                    <f:selectItems value="" var="pro"
-                                                                   itemLabel="#{pro.idPromocion} - #{pro.nombre}" itemValue="#{pro}"/>
-                                                </p:selectOneMenu>
-                                                <p:outputLabel id="lblestado" value="Estado" for="txtEstado"/>
-                                                <p:inputText id="txtEstado" value="" required="true"
-                                                             requiredMessage="Ingrese estado" maxlength="45"/>
+                                                <p:outputLabel id="lblnombre" value="Nombre" for="txtNombre"/>
+                                                <p:inputText id="txtNombre" value="" 
+                                                             required="true"  requiredMessage="Ingrese Nombre" maxlength="45" />
+                                                <p:outputLabel value="Fecha Inicio de Promocion" for="fechaInicio"/>
+                                                <p:calendar id="fechaInicio" value="" required="true"
+                                                            locale="es"
+                                                            requiredMessage="Ingrese una fecha" effect="fold"/>
+                                                <p:outputLabel value="Fecha Fin de Promocion" for="fechaFin"/>
+                                                <p:calendar id="fechaFin" value="" required="true"
+                                                            locale="es"
+                                                            requiredMessage="Ingrese una fecha" effect="fold"/>
+                                                <p:outputLabel value="Descuento" for="descuento"/>
+                                                <p:inputNumber id="descuento" value="" required="true"
+                                                               decimalPlaces="0" requiredMessage="ingrese descuento" />
                                 </h:panelGrid>
                                 <p:commandButton  id="btnGuardar" value="Guardar" icon="ui-icon-disk"  
                                                   update="msj2 " 

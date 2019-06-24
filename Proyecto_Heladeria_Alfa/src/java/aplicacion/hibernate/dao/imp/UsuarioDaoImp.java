@@ -28,14 +28,15 @@ public class UsuarioDaoImp extends GenericDaoImp<Usuario, Integer>implements IUs
         Criteria criteria=session.createCriteria(Usuario.class);
         List<Usuario> usuarios=criteria.list();
         session.close();
-        
+        /*
         for(int x=0;x<usuarios.size();x++){
           if(usuarios.get(x).getEstado()==1){
           usuariosActivos.add(x, usuarios.get(x));
           }
         }
         
-        return usuariosActivos;
+        return usuariosActivos; */
+       return usuarios;
     }
 
     @Override

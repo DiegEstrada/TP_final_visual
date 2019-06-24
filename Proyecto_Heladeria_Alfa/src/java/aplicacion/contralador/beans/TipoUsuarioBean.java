@@ -21,7 +21,7 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class TipoUsuarioBean implements Serializable{
     private List<TipoUsuario> listaDeTipos;
-    ITipoUsuarioDao tipoUsuarioDao;
+    private ITipoUsuarioDao tipoUsuarioDao;
     
     public TipoUsuarioBean() {
         tipoUsuarioDao= new TipoUsuarioDaoImp();

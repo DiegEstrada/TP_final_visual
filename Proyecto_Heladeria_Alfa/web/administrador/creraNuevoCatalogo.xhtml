@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../resources/template/template.xhtml">
+
+            <ui:define name="content">
+                <!-- container -->
+                <div class="container">
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+
+                    <ol class="breadcrumb">
+                        <li><a href="inicio.xhtml">Home</a></li>
+                        <li class="active">Gestion de Catalogo</li>
+                    </ol>
+
+                    <div class="row">
+
+                        <!-- Article main content -->
+                        <article class="col-xs-12 maincontent">
+                            <header class="page-header">
+                                <h1 class="page-title">Gestion de Catalogo</h1>
+                            </header>
+
+                            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+
+                                        <h:form id="frmNuevoCatalogo" >
+                                            <p:growl id="msj1"/>
+                                            <h:panelGrid id="tblNuevoCatalogo" columns="2">
+                                                <p:outputLabel id="lblnombre" value="Nombre" for="txtNombre"/>
+                                                <p:inputText id="txtNombre" value="#{gestionCatalogosFormBean.catalogoBean.catalogo.nombre}" required="true"
+                                                             requiredMessage="Ingrese nombre" maxlength="13"/>
+                                                <p:outputLabel id="lblProducto" value="Producto" for="txtProducto"/>
+                                                <p:selectOneMenu id="txtProducto" value="#{gestionCatalogosFormBean.catalogoBean.catalogo.producto}" 
+                                                                 converter="omnifaces.SelectItemsConverter">
+                                                    <f:selectItems value="#{gestionCatalogosFormBean.productos}" var="prod"
+                                                                   itemLabel="#{prod.nombre}"
+                                                                   itemValue="#{prod}">
+                                                    </f:selectItems>
+                                                </p:selectOneMenu>
+                                                <p:outputLabel id="lblPromocion" value="Promocion" for="txtPromocion"/>
+                                                <p:selectOneMenu id="txtPromocion" value="#{gestionCatalogosFormBean.catalogoBean.catalogo.promocion}" 
+                                                                 converter="omnifaces.SelectItemsConverter">
+                                                    <f:selectItems value="#{gestionCatalogosFormBean.promociones}" var="prom"
+                                                                   itemLabel="#{prom.nombre} -#{prom.descuento}%"
+                                                                   itemValue="#{prom}">
+                                                    </f:selectItems>
+                                                </p:selectOneMenu>
+
+                                                <p:commandButton id="btnregistro" value="Registrar"
+                                                                 actionListener="#{gestionCatalogosFormBean.crearCatalogo()}"
+                                                                 icon="ui-icon-disk"
+                                                                 action="/administrador/gestionCatalogo?faces-redirect=true">
+                                                </p:commandButton>
+                                                <p:commandButton  id="btnCancelar" value="Cancelar" icon="ui-icon-close" 
+                                                                  action="/administrador/gestionCatalogo?faces-redirect=true"/>
+                                            </h:panelGrid>
+                                        </h:form>
+                                        <h:form id="frmDlgConf">
+                                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                                <p:commandButton value="SI" type="button" styleClass="ui-confirmdialog-yes" icon="" />
+                                                <p:commandButton value="NO" type="button" styleClass="ui-confirmdialog-no" icon="" />
+                                            </p:confirmDialog>      
+                                        </h:form>   
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>	<!-- /container -->
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

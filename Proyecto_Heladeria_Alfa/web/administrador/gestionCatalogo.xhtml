@@ -35,38 +35,60 @@
                                 <div class="panel panel-default">
                                     <div class="panel-body">
                                         <h3 class="thin text-center">Registrar Catalogo</h3>
-                                        <h:form id="frmRegistrarCatalogo" >
-                                            <p:growl id="msj1"/>
-                                            <h:panelGrid id="tblCatalogo" columns="2">
-                                                <p:outputLabel id="lblnombre" value="Nombre" for="txtNombre"/>
-                                                <p:inputText id="txtNombre" value="" required="true"
-                                                             requiredMessage="Ingrese Nombre" maxlength="45"/>
-                                                <p:outputLabel id="lblproducto" value="Producto" for="txtProducto"/>
-                                                <p:selectOneMenu id="txtProducto" value="" required="true" 
-                                                                 requiredMessage="Seleccione" converter="omnifaces.SelectItemsConverter" >
-                                                    <f:selectItem  itemLabel="Seleccione..." itemValue=""/>
-                                                    <f:selectItems value="" var="p"
-                                                                   itemLabel="#{p.idProducto} - #{p.nombre}" itemValue="#{p}"/>
-                                                </p:selectOneMenu>
-                                                <p:outputLabel id="lblpromocion" value="Promocion" for="txtPromocion"/>
-                                                <p:selectOneMenu id="txtPromocion" value="" required="true" 
-                                                                 requiredMessage="Seleccione" converter="omnifaces.SelectItemsConverter" >
-                                                    <f:selectItem  itemLabel="Seleccione..." itemValue=""/>
-                                                    <f:selectItems value="" var="pro"
-                                                                   itemLabel="#{pro.idPromocion} - #{pro.nombre}" itemValue="#{pro}"/>
-                                                </p:selectOneMenu>
-                                                <p:outputLabel id="lblestado" value="Estado" for="txtEstado"/>
-                                                <p:inputText id="txtEstado" value="" required="true"
-                                                             requiredMessage="Ingrese estado" maxlength="45"/>
-                                               
-                                                <p:commandButton id="btnregistro" value="Registrar"
+                                        <h:form id="frmCatalogo">
+                                            <p:growl id="msgs" showDetail="true"/>
 
+                                            <p:dataTable id="tblGestionCatalogos" var="cat" value="#{gestionCatalogosFormBean.catalogos}" editable="true" style="margin-bottom:20px">
+                                                <f:facet name="header">
+                                                    Catalogos
+                                                </f:facet>
 
-                                                                 update="msj1 frmRegistrarCatalogo "
-                                                                 icon="ui-icon-disk">
-                                                    <p:confirm header="Confirmacion" message="¿Estas Seguro?"/>
-                                                </p:commandButton>
-                                            </h:panelGrid>
+                                                <p:ajax event="rowEdit" listener="#{gestionCatalogosFormBean.onRowEdit}" update=":frmCatalogo:msgs" />
+                                                <p:ajax event="rowEditCancel" listener="#{gestionCatalogosFormBean.onRowCancel}" update=":frmCatalogo:msgs" />
+
+                                                <p:column headerText="Nombre">
+                                                    <p:cellEditor>
+                                                        <f:facet name="output"><h:outputText value="#{cat.nombre}" /></f:facet>
+                                                        <f:facet name="input"><p:inputText id="modelInput" value="#{cat.nombre}" style="width:100%"/></f:facet>
+                                                    </p:cellEditor>
+                                                </p:column>
+
+                                                <p:column headerText="Producto">
+                                                    <p:cellEditor>
+                                                        <f:facet name="output"><h:outputText value="#{cat.producto.nombre}" /></f:facet>
+                                                        <f:facet name="input">
+                                                            <h:selectOneMenu value="#{cat.producto}" style="width:100%"
+                                                                             converter="omnifaces.SelectItemsConverter">
+                                                                <f:selectItems value="#{gestionCatalogosFormBean.productos}" var="pro" itemLabel="#{pro.nombre}" itemValue="#{pro}" />
+                                                            </h:selectOneMenu>
+                                                        </f:facet>
+                                                    </p:cellEditor>
+                                                </p:column>
+                                                <p:column headerText="Promocion">
+                                                    <p:cellEditor>
+                                                        <f:facet name="output"><h:outputText value="#{cat.promocion.nombre} -#{cat.promocion.descuento}%" /></f:facet>
+                                                        <f:facet name="input">
+                                                            <h:selectOneMenu value="#{cat.promocion}" style="width:100%"
+                                                                             converter="omnifaces.SelectItemsConverter">
+                                                                <f:selectItems value="#{gestionCatalogosFormBean.promociones}" var="prom" itemLabel="#{prom.nombre} -#{prom.descuento}%" itemValue="#{prom}" />
+                                                            </h:selectOneMenu>
+                                                        </f:facet>
+                                                    </p:cellEditor>
+                                                </p:column>
+                                                <p:column >
+                                                    <p:commandButton icon="ui-icon-trash"
+                                                                     actionListener="#{gestionCatalogosFormBean.eliminarCatalogo(cat)}"
+                                                                     update="frmCatalogo:tblGestionCatalogos"/>
+                                                </p:column>
+
+                                                <p:column style="width:35px">
+                                                    <p:rowEditor />
+                                                </p:column>
+                                            </p:dataTable>
+                                            <p:commandButton id="btnCrearCatalogo"
+                                                             value="Crear catalogo"
+                                                             action="/administrador/creraNuevoCatalogo?faces-redirect=true"/>
+
                                         </h:form>
 
                                         <h:form id="frmDlgConf">
@@ -161,26 +183,26 @@
                             <p:growl id="msj2"/>
                             <p:dialog id="dlgCatalogo" header="Modificar" widgetVar="dlg" height="400" modal="true">
                                 <h:panelGrid columns="2" cellpadding="6">
-                                     <p:outputLabel id="lblnombre" value="Nombre" for="txtNombre"/>
-                                                <p:inputText id="txtNombre" value="" required="true"
-                                                             requiredMessage="Ingrese Nombre" maxlength="45"/>
-                                                <p:outputLabel id="lblproducto" value="Producto" for="txtProducto"/>
-                                                <p:selectOneMenu id="txtProducto" value="" required="true" 
-                                                                 requiredMessage="Seleccione" converter="omnifaces.SelectItemsConverter" >
-                                                    <f:selectItem  itemLabel="Seleccione..." itemValue=""/>
-                                                    <f:selectItems value="" var="p"
-                                                                   itemLabel="#{p.idProducto} - #{p.nombre}" itemValue="#{p}"/>
-                                                </p:selectOneMenu>
-                                                <p:outputLabel id="lblpromocion" value="Promocion" for="txtPromocion"/>
-                                                <p:selectOneMenu id="txtPromocion" value="" required="true" 
-                                                                 requiredMessage="Seleccione" converter="omnifaces.SelectItemsConverter" >
-                                                    <f:selectItem  itemLabel="Seleccione..." itemValue=""/>
-                                                    <f:selectItems value="" var="pro"
-                                                                   itemLabel="#{pro.idPromocion} - #{pro.nombre}" itemValue="#{pro}"/>
-                                                </p:selectOneMenu>
-                                                <p:outputLabel id="lblestado" value="Estado" for="txtEstado"/>
-                                                <p:inputText id="txtEstado" value="" required="true"
-                                                             requiredMessage="Ingrese estado" maxlength="45"/>
+                                    <p:outputLabel id="lblnombre" value="Nombre" for="txtNombre"/>
+                                    <p:inputText id="txtNombre" value="" required="true"
+                                                 requiredMessage="Ingrese Nombre" maxlength="45"/>
+                                    <p:outputLabel id="lblproducto" value="Producto" for="txtProducto"/>
+                                    <p:selectOneMenu id="txtProducto" value="" required="true" 
+                                                     requiredMessage="Seleccione" converter="omnifaces.SelectItemsConverter" >
+                                        <f:selectItem  itemLabel="Seleccione..." itemValue=""/>
+                                        <f:selectItems value="" var="p"
+                                                       itemLabel="#{p.idProducto} - #{p.nombre}" itemValue="#{p}"/>
+                                    </p:selectOneMenu>
+                                    <p:outputLabel id="lblpromocion" value="Promocion" for="txtPromocion"/>
+                                    <p:selectOneMenu id="txtPromocion" value="" required="true" 
+                                                     requiredMessage="Seleccione" converter="omnifaces.SelectItemsConverter" >
+                                        <f:selectItem  itemLabel="Seleccione..." itemValue=""/>
+                                        <f:selectItems value="" var="pro"
+                                                       itemLabel="#{pro.idPromocion} - #{pro.nombre}" itemValue="#{pro}"/>
+                                    </p:selectOneMenu>
+                                    <p:outputLabel id="lblestado" value="Estado" for="txtEstado"/>
+                                    <p:inputText id="txtEstado" value="" required="true"
+                                                 requiredMessage="Ingrese estado" maxlength="45"/>
                                 </h:panelGrid>
                                 <p:commandButton  id="btnGuardar" value="Guardar" icon="ui-icon-disk"  
                                                   update="msj2 " 

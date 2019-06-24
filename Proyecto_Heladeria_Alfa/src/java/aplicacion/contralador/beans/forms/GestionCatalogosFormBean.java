@@ -13,7 +13,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import org.primefaces.event.RowEditEvent;
 
@@ -50,10 +49,15 @@ public class GestionCatalogosFormBean implements Serializable {
     public GestionCatalogosFormBean() {
     }
     public void crearCatalogo() {
-        byte estado = 1;
-        catalogo.setEstado(estado);
-        catalogoBean.crearCatalogo(catalogo);
-        catalogo = new Catalogo();
+        catalogoBean.crearCatalogo();
+        obtenerListaDeCatalogos();
+        FacesMessage msg = new FacesMessage("Catalogo creado", "");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+    public void eliminarCatalogo(Catalogo catalogoAEliminar){
+        catalogoBean.eliminarCatalogo(catalogoAEliminar);
+        FacesMessage msg = new FacesMessage("Catalogo eliminado", "");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
         obtenerListaDeCatalogos();
     }
     public void obtenerListaDeCatalogos() {
@@ -69,8 +73,11 @@ public class GestionCatalogosFormBean implements Serializable {
     }
 
     public void onRowEdit(RowEditEvent event) {
+        Catalogo catalogoModificado= ((Catalogo) event.getObject());
+        catalogoBean.modificarCatalogo(catalogoModificado);
         FacesMessage msg = new FacesMessage("Catalogo modificado", "");
         FacesContext.getCurrentInstance().addMessage(null, msg);
+        obtenerListaDeCatalogos();
     }
 
     public void onRowCancel(RowEditEvent event) {

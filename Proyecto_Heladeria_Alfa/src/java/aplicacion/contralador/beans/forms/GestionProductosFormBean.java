@@ -25,7 +25,7 @@ import org.primefaces.event.RowEditEvent;
  */
 @ManagedBean
 @SessionScoped
-public class GestionProductoFormBean implements Serializable {
+public class GestionProductosFormBean implements Serializable {
 
     @ManagedProperty(value = "#{productoBean}")
     private ProductoBean productoBean;
@@ -33,23 +33,23 @@ public class GestionProductoFormBean implements Serializable {
     @ManagedProperty(value = "#{tipoHeladoBean}")
     private TipoHeladoBean tipoHeladoBean;
 
-    List<Producto> productos;
-    List<TipoHelado> tiposDeHelados;
+    List<Producto> listaDeProductos;
+    List<TipoHelado> listaDeTiposDeProducto;
 
     @PostConstruct
     public void init() {
-        obtenerProductos();
-        obtenerTiposDeHelados();
+        obtenerListaDeProductos();
+        obtenerListaDeTipos();
 
     }
 
-    public GestionProductoFormBean() {
+    public GestionProductosFormBean() {
 
     }
 
     public void crearProducto() {
         productoBean.crearProducto();
-        obtenerProductos();
+        obtenerListaDeProductos();
         FacesMessage msg = new FacesMessage("Producto creado", "");
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
@@ -59,24 +59,21 @@ public class GestionProductoFormBean implements Serializable {
         FacesMessage msg = new FacesMessage("Producto eliminado", "");
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
-
-    public void obtenerProductos() {
-        productos = productoBean.obtenerProductos();
-
-    }
-
-    public void obtenerTiposDeHelados() {
-        tiposDeHelados = tipoHeladoBean.obtenerTiposDeHelados();
-    }
-
+    
     public void onRowEdit(RowEditEvent event) {
-        Producto productoModificado = ((Producto) event.getObject());
+        Producto productoModificado= ((Producto) event.getObject());
         productoBean.modificarProducto(productoModificado);
-
         FacesMessage msg = new FacesMessage("Producto modificado", "");
         FacesContext.getCurrentInstance().addMessage(null, msg);
+        obtenerListaDeProductos();
+    }
+    public void obtenerListaDeProductos() {
+        listaDeProductos = productoBean.obtenerProductos();
     }
 
+    public void obtenerListaDeTipos(){
+        listaDeTiposDeProducto = tipoHeladoBean.obtenerTiposDeHelados();
+    }
     public void onRowCancel(RowEditEvent event) {
         FacesMessage msg = new FacesMessage("Edicion cancelada", "");
         FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -98,20 +95,24 @@ public class GestionProductoFormBean implements Serializable {
         this.tipoHeladoBean = tipoHeladoBean;
     }
 
-    public List<Producto> getProductos() {
-        return productos;
+    public List<Producto> getListaDeProductos() {
+        return listaDeProductos;
     }
 
-    public void setProductos(List<Producto> productos) {
-        this.productos = productos;
+    public void setListaDeProductos(List<Producto> listaDeProductos) {
+        this.listaDeProductos = listaDeProductos;
     }
 
-    public List<TipoHelado> getTiposDeHelados() {
-        return tiposDeHelados;
+    public List<TipoHelado> getListaDeTiposDeProducto() {
+        return listaDeTiposDeProducto;
     }
 
-    public void setTiposDeHelados(List<TipoHelado> tiposDeHelados) {
-        this.tiposDeHelados = tiposDeHelados;
+    public void setListaDeTiposDeProducto(List<TipoHelado> listaDeTiposDeProducto) {
+        this.listaDeTiposDeProducto = listaDeTiposDeProducto;
     }
 
+    
+
+
+    
 }

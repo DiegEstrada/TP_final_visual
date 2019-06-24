@@ -18,7 +18,7 @@ import javax.faces.bean.SessionScoped;
 
 /**
  *
- * @author LENOVO
+ * @author Grupo Alfa
  */
 @ManagedBean
 @SessionScoped

@@ -27,7 +27,7 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean
 @SessionScoped
-public class crearProductoFormBean implements Serializable{
+public class crearProductoFormBean implements Serializable{ 
     private ITipoHeladoDao tipoHeladoDao;
     private IProductoDao productoDao;
     private List<Producto> listaProducto;

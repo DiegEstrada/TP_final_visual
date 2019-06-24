@@ -47,6 +47,7 @@ public class GestionCatalogosFormBean implements Serializable {
     }
 
     public GestionCatalogosFormBean() {
+        
     }
     public void crearCatalogo() {
         catalogoBean.crearCatalogo();

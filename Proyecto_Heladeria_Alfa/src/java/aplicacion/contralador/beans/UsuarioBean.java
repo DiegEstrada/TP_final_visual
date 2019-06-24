@@ -24,17 +24,21 @@ import javax.faces.bean.ViewScoped;
 public class UsuarioBean implements Serializable{
 
     private IUsuarioDao usuarioDao;
-    
+    private Usuario usuario;
 
     /**
      * Creates a new instance of UsuarioBean
      */
     public UsuarioBean() {
         usuarioDao = new UsuarioDaoImp();
+        usuario=new Usuario();
     }
 
-    public void crearUsuario(Usuario usuarioACrear) {
-        usuarioDao.create(usuarioACrear);
+    public void crearUsuario() {
+        byte estado = 1;
+        usuario.setEstado(estado);
+        usuarioDao.create(usuario);
+        usuario = new Usuario();
     }
     public void modificarUsuario(Usuario usuarioAModificar){
         usuarioDao.update(usuarioAModificar);
@@ -45,25 +49,7 @@ public class UsuarioBean implements Serializable{
         usuarioDao.delete(usuarioAEliminar);
     }
     
-    /*public void registrarUsuarioComun(Usuario newUsuario){
-        byte estado=1;
-        TipoUsuario tipoUsuario = new TipoUsuario();
-        tipoUsuario.setIdTipoUsuario(1);
-        tipoUsuario.setNombre("comun");
-        newUsuario.setEstado(estado);
-        newUsuario.setTipoUsuario(tipoUsuario);
-        usuarioDao.create(newUsuario);
-    }
-    
-    public void registrarUsuarioAdministrador(Usuario newUsuario){
-        byte estado=1;
-        TipoUsuario tipoUsuario = new TipoUsuario();
-        tipoUsuario.setIdTipoUsuario(2);
-        tipoUsuario.setNombre("administrador");
-        newUsuario.setEstado(estado);
-        newUsuario.setTipoUsuario(tipoUsuario);
-        usuarioDao.create(newUsuario);
-    }*/
+
     
     public List<Usuario> obtenerUsuarios() {
         return usuarioDao.obtenerUsuarios();
@@ -78,5 +64,14 @@ public class UsuarioBean implements Serializable{
         this.usuarioDao = usuarioDao;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    
     
 }

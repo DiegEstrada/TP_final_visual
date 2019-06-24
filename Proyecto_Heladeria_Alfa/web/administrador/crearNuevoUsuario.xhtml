@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../resources/template/template.xhtml">
+
+            <ui:define name="content">
+                <!-- container -->
+                <div class="container">
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+
+                    <ol class="breadcrumb">
+                        <li><a href="inicio.xhtml">Home</a></li>
+                        <li class="active">Gestion de Catalogo</li>
+                    </ol>
+
+                    <div class="row">
+
+                        <!-- Article main content -->
+                        <article class="col-xs-12 maincontent">
+                            <header class="page-header">
+                                <h1 class="page-title">Gestion de Catalogo</h1>
+                            </header>
+
+                            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+
+                                        <h:form id="frmNuevoUsuario" >
+                                            <p:growl id="msj1"/>
+                                            <h:panelGrid id="tblNuevoUsuario" columns="2">
+                                                <p:outputLabel id="lblnombre" value="Nombre" for="txtNombre"/>
+                                                <p:inputText id="txtNombre" value="#{gestionUsuariosFormBean.usuarioBean.usuario.nombre}" required="true"
+                                                             requiredMessage="Ingrese nombre" maxlength="13"/>
+                                                <p:outputLabel id="lblapellido" value="Apellido" for="txtApellido"/>
+                                                <p:inputText id="txtApellido" value="#{gestionUsuariosFormBean.usuarioBean.usuario.apellido}" required="true"
+                                                             requiredMessage="Ingrese apellido" maxlength="13"/>
+                                                <p:outputLabel id="lbldni" value="Dni" for="txtDni"/>
+                                                <p:inputNumber id="txtDni" value="#{gestionUsuariosFormBean.usuarioBean.usuario.dni}" required="true"
+                                                               requiredMessage="Ingrese dni" />
+                                                <p:outputLabel id="lblcorreo" value="Correo" for="txtCorreo"/>
+                                                <p:inputText id="txtCorreo" value="#{gestionUsuariosFormBean.usuarioBean.usuario.correo}" required="true"
+                                                             requiredMessage="Ingrese correo" maxlength="13"/>
+                                                <p:outputLabel id="lblcalendario" value="Fecha Nacimiento" for="calendario"/>
+                                                <p:calendar id="calendario" value="#{gestionUsuariosFormBean.usuarioBean.usuario.fechaDeNacimiento}" required="true"
+                                                            requiredMessage="Ingrese fecha nacimiento" effect="fold" />
+                                                
+                                                <p:outputLabel id="lblnombreusuario" value="Usuario" for="txtUsuario"/>
+                                                <p:inputText id="txtUsuario" value="#{gestionUsuariosFormBean.usuarioBean.usuario.username}" required="true"
+                                                             requiredMessage="Ingrese Usuario" maxlength="13"/>
+                                                <p:outputLabel id="lblpassword" value="Password" for="txtPassword"/>
+                                                <p:password id="txtPassword" value="#{gestionUsuariosFormBean.usuarioBean.usuario.password}" required="true"
+                                                            requiredMessage="Ingrese password" maxlength="13"/>
+                                                <p:outputLabel id="lbltipousuario" value="Tipo de Usuario" for="txtUs"/>
+                                                <h:selectOneMenu id="txtUs" value="#{gestionUsuariosFormBean.usuarioBean.usuario.tipoUsuario}" style="width:100%"
+                                                                 converter="omnifaces.SelectItemsConverter">
+                                                    <f:selectItems value="#{gestionUsuariosFormBean.listaTipoDeUsuarios}" var="tipo" itemLabel="#{tipo.nombre}" itemValue="#{tipo}"/>
+                                                </h:selectOneMenu>
+
+
+                                                <p:commandButton id="btnregistro" value="Registrar"
+                                                                 actionListener="#{gestionUsuariosFormBean.crearUsuario()}"
+                                                                 icon="ui-icon-disk"
+                                                                 action="/administrador/gestionCUsuario?faces-redirect=true">
+                                                </p:commandButton>
+                                                <p:commandButton  id="btnCancelar" value="Cancelar" icon="ui-icon-close" 
+                                                                  action="/administrador/gestionUsuario"/><!---->
+                                            </h:panelGrid>
+                                            <p:commandButton id="btnImprimirUsuario"
+
+                                        </h:form>
+                                        
+                                        
+                                        <h:form id="frmDlgConf">
+                                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                                <p:commandButton value="SI" type="button" styleClass="ui-confirmdialog-yes" icon="" />
+                                                <p:commandButton value="NO" type="button" styleClass="ui-confirmdialog-no" icon="" />
+                                            </p:confirmDialog>      
+                                        </h:form>   
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>	<!-- /container -->
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

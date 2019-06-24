@@ -20,7 +20,7 @@
 
                     <ol class="breadcrumb">
                         <li><a href="inicio.xhtml">Home</a></li>
-                        <li class="active">Gestion de Catalogo</li>
+                        <li class="active">Gestion de Usuario</li>
                     </ol>
 
                     <div class="row">
@@ -28,68 +28,86 @@
                         <!-- Article main content -->
                         <article class="col-xs-12 maincontent">
                             <header class="page-header">
-                                <h1 class="page-title">Gestion de Catalogo</h1>
+                                <h1 class="page-title">Gestion de Usuario</h1>
                             </header>
 
                             <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
                                 <div class="panel panel-default">
                                     <div class="panel-body">
-                                        <h3 class="thin text-center">Registrar Catalogo</h3>
-                                        <h:form id="frmCatalogo">
+                                        <h3 class="thin text-center">Registrar Usuario</h3>
+                                        <h:form id="frmUsuario">
                                             <p:growl id="msgs" showDetail="true"/>
 
-                                            <p:dataTable id="tblGestionCatalogos" var="cat" value="#{gestionCatalogosFormBean.catalogos}" editable="true" style="margin-bottom:20px">
+                                            <p:dataTable id="tblGestionUsuarios" var="usu" value="#{gestionUsuariosFormBean.listaUsuarios}" editable="true" style="margin-bottom:20px">
                                                 <f:facet name="header">
-                                                    Catalogos
+                                                    Usuarios
                                                 </f:facet>
 
-                                                <p:ajax event="rowEdit" listener="#{gestionCatalogosFormBean.onRowEdit}" update=":frmCatalogo:msgs" />
-                                                <p:ajax event="rowEditCancel" listener="#{gestionCatalogosFormBean.onRowCancel}" update=":frmCatalogo:msgs" />
+                                                <p:ajax event="rowEdit" listener="#{gestionUsuariosFormBean.onRowEdit}" update=":frmUsuario:msgs" />
+                                                <p:ajax event="rowEditCancel" listener="#{gestionUsuariosFormBean.onRowCancel}" update=":frmUsuario:msgs" />
 
                                                 <p:column headerText="Nombre">
                                                     <p:cellEditor>
-                                                        <f:facet name="output"><h:outputText value="#{cat.nombre}" /></f:facet>
-                                                        <f:facet name="input"><p:inputText id="modelInput" value="#{cat.nombre}" style="width:100%"/></f:facet>
+                                                        <f:facet name="output"><h:outputText value="#{usu.nombre}" /></f:facet>
+                                                        <f:facet name="input"><p:inputText id="modelInput1" value="#{usu.nombre}" style="width:100%"/></f:facet>
                                                     </p:cellEditor>
                                                 </p:column>
 
-                                                <p:column headerText="Producto">
+                                                <p:column headerText="Apellido">
                                                     <p:cellEditor>
-                                                        <f:facet name="output"><h:outputText value="#{cat.producto.nombre}" /></f:facet>
-                                                        <f:facet name="input">
-                                                            <h:selectOneMenu value="#{cat.producto}" style="width:100%"
-                                                                             converter="omnifaces.SelectItemsConverter">
-                                                                <f:selectItems value="#{gestionCatalogosFormBean.productos}" var="pro" itemLabel="#{pro.nombre}" itemValue="#{pro}" />
-                                                            </h:selectOneMenu>
+                                                        <f:facet name="output"><h:outputText value="#{usu.nombre}" /></f:facet>
+                                                        <f:facet name="input"><p:inputText id="modelInput2" value="#{usu.apellido}" style="width:100%"/></f:facet>
+                                                    </p:cellEditor>
+                                                </p:column>
+                                                <p:column headerText="Dni">
+                                                    <p:cellEditor>
+                                                        <f:facet name="output"><h:outputText value="#{usu.dni}" /></f:facet>
+                                                        <f:facet name="input"><p:inputText id="modelInput3" value="#{usu.nombre}" style="width:100%"/></f:facet>
+                                                    </p:cellEditor>
+                                                </p:column>
+                                                <p:column headerText="Fecha de Nacimiento">
+                                                    <p:cellEditor>
+                                                        <f:facet name="output"><h:outputText value="#{usu.fechaDeNacimiento}" />
+                                                        </f:facet>
+                                                        <f:facet name="input"><p:inputText id="modelInput4" value="#{usu.fechaDeNacimiento}" style="width:100%"/>
                                                         </f:facet>
                                                     </p:cellEditor>
                                                 </p:column>
-                                                <p:column headerText="Promocion">
+                                                <p:column headerText="Nombre de Usuario">
                                                     <p:cellEditor>
-                                                        <f:facet name="output"><h:outputText value="#{cat.promocion.nombre} -#{cat.promocion.descuento}%" /></f:facet>
-                                                        <f:facet name="input">
-                                                            <h:selectOneMenu value="#{cat.promocion}" style="width:100%"
-                                                                             converter="omnifaces.SelectItemsConverter">
-                                                                <f:selectItems value="#{gestionCatalogosFormBean.promociones}" var="prom" itemLabel="#{prom.nombre} -#{prom.descuento}%" itemValue="#{prom}" />
-                                                            </h:selectOneMenu>
-                                                        </f:facet>
+                                                        <f:facet name="output"><h:outputText value="#{usu.username}" /></f:facet>
+                                                        <f:facet name="input"><p:inputText id="modelInput5" value="#{usu.username}" style="width:100%"/></f:facet>
                                                     </p:cellEditor>
                                                 </p:column>
-                                                <p:column >
+                                                <p:column headerText="Correo Electronico">
+                                                    <p:cellEditor>
+                                                        <f:facet name="output"><h:outputText value="#{usu.correo}" /></f:facet>
+                                                        <f:facet name="input"><p:inputText id="modelInput6" value="#{usu.correo}" style="width:100%"/></f:facet>
+                                                    </p:cellEditor>
+                                                </p:column>
+                                                <p:column headerText="eliminar">
                                                     <p:commandButton icon="ui-icon-trash"
-                                                                     actionListener="#{gestionCatalogosFormBean.eliminarCatalogo(cat)}"
-                                                                     update="frmCatalogo:tblGestionCatalogos"/>
+                                                                     actionListener="#{gestionUsuariosFormBean.eliminarUsuario(usu)}"
+                                                                     update="frmUsuario:tblGestionUsuarios"/>
                                                 </p:column>
 
                                                 <p:column style="width:35px">
                                                     <p:rowEditor />
                                                 </p:column>
                                             </p:dataTable>
-                                            <p:commandButton id="btnCrearCatalogo"
-                                                             value="Crear catalogo"
-                                                             action="/administrador/crearNuevoCatalogo?faces-redirect=true"/>
+                                            <p:commandButton
+                                                value="Imprimir Usuarios"
+                                                actionListener="#{gestionUsuariosFormBean.listarArrayUsuarioPdf()}"
+                                                ajax="false"
+                                                resetValues="true"/>
+
+                                            <p:commandButton id="btnCrearUsuario"
+                                                             value="Crear Usuario"
+                                                             action="/administrador/crearNuevoUsuario?faces-redirect=true"/>
 
                                         </h:form>
+
+
 
                                         <h:form id="frmDlgConf">
                                             <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
@@ -103,20 +121,22 @@
                         </article>
                         <!-- /Article -->
 
+
+
                         <!--INICIO DIALOG MODIFICAR-->
                         <h:form id ="dialogo">
                             <p:growl id="msj2"/>
-                            <p:dialog id="dlgCatalogo" header="Modificar" widgetVar="dlg" height="400" modal="true">
+                            <p:dialog id="dlgUsuario" header="Modificar" widgetVar="dlg" height="400" modal="true">
                                 <h:panelGrid columns="2" cellpadding="6">
                                     <p:outputLabel id="lblnombre" value="Nombre" for="txtNombre"/>
                                     <p:inputText id="txtNombre" value="" required="true"
                                                  requiredMessage="Ingrese Nombre" maxlength="45"/>
-                                    <p:outputLabel id="lblproducto" value="Producto" for="txtProducto"/>
-                                    <p:selectOneMenu id="txtProducto" value="" required="true" 
+                                    <p:outputLabel id="lbltipo" value="Producto" for="txtTipo"/>
+                                    <p:selectOneMenu id="txtTipo" value="" required="true" 
                                                      requiredMessage="Seleccione" converter="omnifaces.SelectItemsConverter" >
                                         <f:selectItem  itemLabel="Seleccione..." itemValue=""/>
-                                        <f:selectItems value="" var="p"
-                                                       itemLabel="#{p.idProducto} - #{p.nombre}" itemValue="#{p}"/>
+                                        <f:selectItems value="#{gestionUsuariosFormBean.listaTipoDeUsuarios}" var="t"
+                                                       itemLabel="#{t.nombre}" itemValue="#{t}"/>
                                     </p:selectOneMenu>
                                     <p:outputLabel id="lblpromocion" value="Promocion" for="txtPromocion"/>
                                     <p:selectOneMenu id="txtPromocion" value="" required="true" 

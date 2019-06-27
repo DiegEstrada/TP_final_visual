@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../resources/template/template1.xhtml">
+
+            <ui:define name="content">
+               
+        <h:form id="form">
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+           <br/>
+           <br/>
+           <br/>
+            
+
+            <p:carousel value="#{carouselHeladoFomrBean.catalogos}" headerText="Helado de agua" var="cat" itemStyle="text-align:center" responsive="true">
+                <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+                    <f:facet name="header">
+                        <h:graphicImage url="../demo/images/car/#{cat.producto.nombre}.png" style="width: 75px;"/>
+                    </f:facet>
+
+                    <h:outputText value="Nombre:" />
+                    <h:outputText value="#{cat.nombre}" />
+
+                                        
+                    <h:outputText value="Precio: " />
+                    <h:outputText value="#{cat.producto.precio}" />
+
+                 
+                </p:panelGrid>
+
+
+            </p:carousel>
+
+
+        </h:form>       
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

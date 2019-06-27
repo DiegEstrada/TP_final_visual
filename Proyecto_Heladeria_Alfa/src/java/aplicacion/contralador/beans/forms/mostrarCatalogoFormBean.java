@@ -24,24 +24,21 @@ import javax.faces.bean.SessionScoped;
 public class mostrarCatalogoFormBean  implements Serializable{
          @ManagedProperty(value = "#{catalogoBean}")
          private CatalogoBean catalogoBean;
-        
-        
-        List<Catalogo> catalogos;
-        Catalogo catalogo;
+         
+        private List<Catalogo> catalogos;
+         
         
         @PostConstruct
         public void init() {
-        //catalogo = new Catalogo();
-        //catalogoBean.crearCatalogo(catalogo);
         obtenerListaDeCatalogos();
+        
         }      
 
     /**
      * Creates a new instance of mostrarCatalogoFormBean
      */
     public mostrarCatalogoFormBean() {
-         catalogos = new ArrayList<>(); 
-         catalogo=new Catalogo();
+         
     }
 
     public CatalogoBean getCatalogoBean() {
@@ -59,15 +56,7 @@ public class mostrarCatalogoFormBean  implements Serializable{
     public void setCatalogos(List<Catalogo> catalogos) {
         this.catalogos = catalogos;
     }
-
-    public Catalogo getCatalogo() {
-        return catalogo;
-    }
-
-    public void setCatalogo(Catalogo catalogo) {
-        this.catalogo = catalogo;
-    }
-
+    
     private void obtenerListaDeCatalogos() {
          catalogos = catalogoBean.obtenerCatalogos();
     }

@@ -1,0 +1,186 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Inicio</title>
+    </h:head>
+    <h:body>
+
+        <p:panel id="pnlBotones" header=" ABM de un Libro">
+            <h:form id="frmBotones">
+                <h:panelGrid id="pnlGrid" columns="7">
+                    <p:commandButton id="btnAgregar" value="Agregar Libro" type="button" onclick="PF('dlgAgregar').show();" /> 
+                    <p:commandButton id="btnMostrar" value="Mostrar Lista" type="button" onclick="PF('dlgMostrar').show();" />
+                </h:panelGrid>
+            </h:form>
+        </p:panel>
+
+
+
+        <!--INICIO DIALOG UTILIZADO PARA EL ALTA DE UN NUEVO LIBRO-->
+        <h:form id="frmAlta">
+            <p:dialog header="Agregar Un Libro" widgetVar="dlgAgregar" showEffect="explode" hideEffect="explode" height="400">
+                <h:form id="frmLibro" >
+                    <p:growl id="msj1"/>
+                    <h:panelGrid id="tblLibro" columns="2">
+                        <p:outputLabel id="lblodigo" value="Codigo Libro" for="txtCodigo"/>
+                        <p:inputNumber id="txtCodigo" value="#{libroFormBean.libro.codigo}" 
+                                       required="true" decimalPlaces="0" requiredMessage="Ingrese Codigo"
+                                       thousandSeparator="" maxlength="5"/>
+                        <p:outputLabel id="lblIsbn" value="Isbn Libro" for="txtIsbn"/>
+                        <p:inputText id="txtIsbn" value="#{libroFormBean.libro.isbn}" required="true"
+                                     requiredMessage="Ingrese Isbn" />
+                        <p:outputLabel id="lblTitulo" value="Titulo" for="txtTitulo"/>
+                        <p:inputText id="txtTitulo" value="#{libroFormBean.libro.titulo}" required="true"
+                                     requiredMessage="Ingrese Titulo" maxlength="13"/>
+
+                        <p:outputLabel id="lblCantidad" value="Cantidad de Paginas" for="txtCant"/>
+                        <p:inputNumber id="txtCant" value="#{libroFormBean.libro.cantidadPaginas}" required="true"
+                                       requiredMessage="Ingrese Cantidad de Paginas" decimalPlaces="0" decimalSeparator="0"/>
+                        <p:outputLabel id="lblAutor" value="Autor" for="txtAutor"/>
+                        <p:selectOneMenu id="txtAutor" value="#{libroFormBean.libro.autor}" required="true" 
+                                         requiredMessage="Elija Autor" converter="omnifaces.SelectItemsConverter" >
+                            <f:selectItem  itemLabel="Seleccione..." itemValue=""/>
+                            <f:selectItems value="#{libroFormBean.autorBean.listaDeAutores}" var="a"
+                                           itemLabel="#{a.apellido} #{a.nombre}" itemValue="#{a}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel id="lblTematica" value="Tematica" for="txtTematica"/>
+                        <p:inputText id="txtTematica" value="#{libroFormBean.libro.tematica}" required="true"
+                                     requiredMessage="Ingrese Tematica"/>
+                        <p:outputLabel id="lblFcha" value="Fecha De Edicion" for="fecha"/>
+                        <p:calendar id="fecha" value="#{libroFormBean.libro.fechaEdicion}" showOn="button"/>
+
+                        <p:commandButton id="btnregistro" value="Registrar"
+                                         actionListener="#{libroFormBean.agregarUnLibro()}"
+                                         update="msj1 frmAlta frmTabla:tbldatos">
+                            <p:confirm header="Confirmacion" message="¿Estas Seguro?"/>
+                        </p:commandButton>
+                        <p:commandButton  id="btnCancelar" value="Cancelar" icon="ui-icon-close" immediate="true" onclick="PF('dlgAgregar').hide()"/>
+                    </h:panelGrid>
+                </h:form>
+            </p:dialog> 
+        </h:form>
+
+<!--FIN DIALOG UTILIZADO PARA EL ALTA DE UN NUEVO LIBRO-->
+
+
+<!--INICIO CONFIRMACION UTILIZADO PARA EL ABM DE UN NUEVO LIBRO-->
+<h:form id="frmDlgConf">
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" >
+                <p:commandButton value="SI" type="button" styleClass="ui-confirmdialog-yes" icon="" />
+                <p:commandButton value="NO" type="button" styleClass="ui-confirmdialog-no" icon="" />
+            </p:confirmDialog>      
+</h:form>
+<!--FIN CONFIRMACION UTILIZADO PARA EL ABM DE UN NUEVO LIBRO-->
+
+
+            
+<!--INICIO DIALOG UTILIZADO VER LA LISTA DE LIBROS-->
+<h:form id="frmTabla">
+        <p:dialog header="Lista De Libros" widgetVar="dlgMostrar" showEffect="explode" hideEffect="explode" height="200">
+                            <center>
+                    <p:commandButton id="OrdenarDescendente" 
+                                     icon="ui-icon-arrowthick-1-s"
+                                     value="Ordenar "
+                                     actionListener="#{libroFormBean.ordenarLibroDescendente()}"
+                                     update="tbldatos"
+                                     />
+                    <p:commandButton id="OrdenarAscendente" 
+                                     icon="ui-icon-arrowthick-1-n"
+                                     value="Ordenar "
+                                     actionListener="#{libroFormBean.ordenarLibroAscendente()}"
+                                     update="tbldatos"/>
+                </center>
+            <p:dataTable id="tbldatos" value="#{libroFormBean.libroBean.libros}"
+                         emptyMessage=" "
+                         var="a">
+                <p:column headerText="Codigo Libro">
+                    <p:outputLabel value="#{a.codigo}"/>
+                </p:column>
+                <p:column headerText="Isbn Libro">
+                    <p:outputLabel value="#{a.isbn}"/>
+                </p:column>
+                <p:column headerText="Titulo">
+                    <p:outputLabel value="#{a.titulo}"/>
+                </p:column>
+                <p:column headerText="Cantidad de Paginas">
+                    <p:outputLabel value="#{a.cantidadPaginas}"/>
+                </p:column>
+                <p:column headerText="Autor">
+                    <p:outputLabel value="#{a.autor.apellido} #{a.autor.nombre}"/>
+                </p:column>
+                <p:column headerText="Tematica">
+                    <p:outputLabel value="#{a.tematica}"/>
+                </p:column>
+                <p:column headerText="Fecha Edicion">
+                    <p:outputLabel value="#{a.fechaEdicion}">
+                        <f:convertDateTime pattern="dd-MM-yyyy" />
+                    </p:outputLabel> 
+                </p:column>
+                <p:column headerText="Editar"  style="text-align: center">
+                    <p:commandButton icon="ui-icon-pencil" value="Editar" actionListener="#{libroFormBean.leer(a)}"  oncomplete="PF('dlg').show();" update="dialogo"/>
+                </p:column>
+                <p:column headerText="Eliminar" style="text-align: center">
+                <p:commandButton icon="ui-icon-closethick" 
+                                         value="Elimiar" 
+                                         actionListener="#{libroFormBean.eliminarLibro(a)}"  
+                                         update="dialogo tbldatos">
+                    <p:confirm header="Confirmacion" message="¿Estas Seguro?"/>
+                        </p:commandButton>    
+                </p:column>
+                
+            </p:dataTable>
+        </p:dialog> 
+    </h:form>
+<!--FIN DIALOG UTILIZADO VER LA LISTA DE LIBROS-->
+
+
+
+
+<h:form id ="dialogo">
+    <p:growl id="msj2"/>
+                <p:dialog id="dlgLibro" header="Modificar" widgetVar="dlg" >
+                    <h:panelGrid columns="2" cellpadding="6">
+                        <h:outputLabel  value="Codigo : " />
+                        <p:inputText id="txtCodigoM" value="#{libroFormBean.libro.codigo}" disabled="true" />
+
+                        <h:outputLabel value="Isbn :" />
+                        <p:inputText id="txtIsbnM" value="#{libroFormBean.libro.isbn}" />
+                        
+                        <h:outputLabel value="Titulo :" />
+                        <p:inputText id="txtTituloM" value="#{libroFormBean.libro.titulo}" />
+                        
+                        <h:outputLabel value="Cantidad de Paginas :" />
+                        <p:inputText id="txtCantM" value="#{libroFormBean.libro.cantidadPaginas}" />
+                        
+                        <h:outputLabel value="Autor :" />
+                        <p:selectOneMenu id="txtAutor" value="#{libroFormBean.libro.autor}" required="true" 
+                                         requiredMessage="Elija Autor" converter="omnifaces.SelectItemsConverter" >
+                            <f:selectItem  itemLabel="Seleccione..." itemValue=""/>
+                            <f:selectItems value="#{libroFormBean.autorBean.listaDeAutores}" var="a"
+                                           itemLabel="#{a.apellido} #{a.nombre}" itemValue="#{a}"/>
+                        </p:selectOneMenu>
+                        
+                        <h:outputLabel value="Tematica :" />
+                        <p:inputText id="txtTematicaM" value="#{libroFormBean.libro.tematica}" />
+                        
+                        <h:outputLabel value="Fecha de Edicion :" />
+                        <p:calendar id="fechaM" value="#{libroFormBean.libro.fechaEdicion}" showOn="button"/>
+
+                    </h:panelGrid>
+                    <p:commandButton  id="btnGuardar" value="Guardar" icon="ui-icon-disk"  
+                                      actionListener="#{libroFormBean.modificarUnLibro()}" update="msj2 frmTabla:tbldatos" 
+                                      onclick="PF('dlg').hide()">
+                    <p:confirm header="Confirmacion" message="¿Estas Seguro?"/>
+                    </p:commandButton>
+                    <p:commandButton  id="btnCancelar" value="Cancelar" icon="ui-icon-close" immediate="true" onclick="PF('dlg').hide()"/>
+
+                </p:dialog>
+            </h:form>
+
+    </h:body>
+</html>
+

@@ -31,7 +31,7 @@ public class TestCrearCatalogo {
         IPromocionDao promocionDao= new PromocionDaoImp();
         byte estado=1;
         Catalogo catalogo= new Catalogo();
-        catalogo.setNombre("Agua anana");
+        catalogo.setNombre("leceh de coco");
         catalogo.setProducto(productoDao.obtenerProductos().get(0));
         catalogo.setPromocion(promocionDao.obtenerPromociones().get(0));
         catalogo.setEstado(estado);

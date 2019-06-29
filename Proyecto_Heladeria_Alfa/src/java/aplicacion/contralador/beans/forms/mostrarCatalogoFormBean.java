@@ -26,11 +26,22 @@ public class mostrarCatalogoFormBean  implements Serializable{
          private CatalogoBean catalogoBean;
          
         private List<Catalogo> catalogos;
+        private List<Catalogo> tipoAgua;
+        private List<Catalogo> tipoCrema;
+        private List<Catalogo> tipoLeche;
+        private List<Catalogo> tipoGranizado;
          
         
         @PostConstruct
         public void init() {
+            tipoLeche=new ArrayList<>();
+            
         obtenerListaDeCatalogos();
+       
+        obtenerCatalogoPorAgua();
+        obtenerCatalogoPorCrema();
+        obtenerCatalogoPorGranizado();
+        obtenerCatalogoPorLeche();
         
         }      
 
@@ -38,7 +49,7 @@ public class mostrarCatalogoFormBean  implements Serializable{
      * Creates a new instance of mostrarCatalogoFormBean
      */
     public mostrarCatalogoFormBean() {
-         
+          
     }
 
     public CatalogoBean getCatalogoBean() {
@@ -58,8 +69,99 @@ public class mostrarCatalogoFormBean  implements Serializable{
     }
     
     private void obtenerListaDeCatalogos() {
-         catalogos = catalogoBean.obtenerCatalogos();
+         this.catalogoBean.obtenerCatalogos();
     }
     
+  
+     private void obtenerCatalogoPorLeche(){
+       
+        for(int i = 0; i < catalogoBean.obtenerCatalogos().size(); i++){
+            if(catalogoBean.obtenerCatalogos().get(i).getProducto().getTipoHelado().getNombre().equalsIgnoreCase("Helado de Leche")){
+                tipoLeche.add(catalogoBean.obtenerCatalogos().get(i));
+            }
+        }
+        
+    }
+     private void obtenerCatalogoPorAgua(){
+       
+        for(int i = 0; i < catalogoBean.obtenerCatalogos().size(); i++){
+            if(catalogoBean.obtenerCatalogos().get(i).getProducto().getTipoHelado().getNombre().equalsIgnoreCase("Helado de Agua")){
+                tipoLeche.add(catalogoBean.obtenerCatalogos().get(i));
+            }
+        }
+    }
+     private void obtenerCatalogoPorCrema(){
+       
+        for(int i = 0; i < catalogoBean.obtenerCatalogos().size(); i++){
+            if(catalogoBean.obtenerCatalogos().get(i).getProducto().getTipoHelado().getNombre().equalsIgnoreCase("Helado de Crema")){
+                tipoLeche.add(catalogoBean.obtenerCatalogos().get(i));
+            }
+        }
+    }
+    private void obtenerCatalogoPorGranizado(){
+       
+        for(int i = 0; i < catalogoBean.obtenerCatalogos().size(); i++){
+            if(catalogoBean.obtenerCatalogos().get(i).getProducto().getTipoHelado().getNombre().equalsIgnoreCase("Granizado")){
+                tipoLeche.add(catalogoBean.obtenerCatalogos().get(i));
+            }
+        }
+    }
+    
+
+    /**
+     * @return the tipoAgua
+     */
+    public List<Catalogo> getTipoAgua() {
+        return tipoAgua;
+    }
+
+    /**
+     * @param tipoAgua the tipoAgua to set
+     */
+    public void setTipoAgua(List<Catalogo> tipoAgua) {
+        this.tipoAgua = tipoAgua;
+    }
+
+    /**
+     * @return the tipoCrema
+     */
+    public List<Catalogo> getTipoCrema() {
+        return tipoCrema;
+    }
+
+    /**
+     * @param tipoCrema the tipoCrema to set
+     */
+    public void setTipoCrema(List<Catalogo> tipoCrema) {
+        this.tipoCrema = tipoCrema;
+    }
+
+    /**
+     * @return the tipoLeche
+     */
+    public List<Catalogo> getTipoLeche() {
+        return tipoLeche;
+    }
+
+    /**
+     * @param tipoLeche the tipoLeche to set
+     */
+    public void setTipoLeche(List<Catalogo> tipoLeche) {
+        this.tipoLeche = tipoLeche;
+    }
+
+    /**
+     * @return the tipoGranizado
+     */
+    public List<Catalogo> getTipoGranizado() {
+        return tipoGranizado;
+    }
+
+    /**
+     * @param tipoGranizado the tipoGranizado to set
+     */
+    public void setTipoGranizado(List<Catalogo> tipoGranizado) {
+        this.tipoGranizado = tipoGranizado;
+    }
     
 }

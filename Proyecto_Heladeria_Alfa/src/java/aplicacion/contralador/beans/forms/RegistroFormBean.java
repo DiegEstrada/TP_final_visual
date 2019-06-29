@@ -29,7 +29,7 @@ public class RegistroFormBean implements Serializable {
     @PostConstruct
     public void init() {
         usuario = new Usuario();
-    } 
+    }
 
     public RegistroFormBean() {
 
@@ -42,7 +42,7 @@ public class RegistroFormBean implements Serializable {
         tu.setNombre("comun");
         usuario.setEstado(estado);
         usuario.setTipoUsuario(tu);
-        //usuarioBean.crearUsuario(usuario);
+        usuarioBean.crearUsuario(usuario);
         usuario = new Usuario();
 
     }

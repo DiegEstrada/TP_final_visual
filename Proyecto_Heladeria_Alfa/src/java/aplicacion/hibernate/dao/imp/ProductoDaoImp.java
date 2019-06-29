@@ -5,38 +5,40 @@ import aplicacion.hibernate.dao.IProductoDao;
 import aplicacion.modelo.dominio.Producto;
 import aplicacion.modelo.dominio.Usuario;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Restrictions;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
- * @author GrupoAlfa
+ * @author LENOVO
  */
-public class ProductoDaoImp extends GenericDaoImp<Producto, Integer>implements IProductoDao,Serializable {
+public class ProductoDaoImp extends GenericDaoImp<Producto, Integer> implements IProductoDao, Serializable {
 
     @Override
     public List<Producto> obtenerProductos() {
-        List<Producto> productosActivos=new ArrayList<>();
         Session session = HibernateUtil.getSessionFactory().openSession();
-        Criteria criteria=session.createCriteria(Producto.class);
-        List<Producto> productos=criteria.list();
-        
-        
-        for(int x=0;x<productos.size();x++){
-          if(productos.get(x).getEstado()==1){
-          productosActivos.add(x, productos .get(x));
-          }
-        }
+        Criteria criteria = session.createCriteria(Producto.class);
+        List<Producto> productos = criteria.list();
         session.close();
-        return productosActivos; 
+        return productos;
+
     }
-    
+
+    public List<Producto> obtenerTipoProductos() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Criteria criteria = session.createCriteria(Producto.class);
+        criteria.add(Restrictions.like("Paleta de crema", 2));
+        List<Producto> producto =criteria.list();
+        session.close();
+        return producto;
+    }
+
 }

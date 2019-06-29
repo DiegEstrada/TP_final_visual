@@ -25,17 +25,15 @@ public class TestCrearUsuario {
      */
     public static void main(String[] args) {
         TipoUsuario tu = new TipoUsuario();
-        //ITipoUsuarioDao tipoUsuarioDao = new TipoUsuarioDaoImp();
-        //tu = tipoUsuarioDao.obtenerTipoUsuarios().get(0);
-        tu.setIdTipoUsuario(3);
-        tu.setNombre("empleado");
+        ITipoUsuarioDao tipoUsuarioDao = new TipoUsuarioDaoImp();
+        tu = tipoUsuarioDao.obtenerTipoUsuarios().get(0);
         byte estado = 1;
         IUsuarioDao usuarioDao= new UsuarioDaoImp();
-        Usuario usuarioTest = new Usuario(tu, "empleado", "empleado", "empleado", "empleado", "empleado@gmail.com", "39200034", new Date(), estado);
+        Usuario usuarioTest = new Usuario(tu, "comun", "comun", "comun", "comun", "comun@gmail.com", "39200034", new Date(), estado);
 
         usuarioDao.create(usuarioTest);
-        //System.out.println("NOMBRE DEL USUARIO: " + usuarioDao.obtenerUsuarios().get(usuarioDao.obtenerUsuarios().size() - 1).getUsername());
-        //System.out.println("NOMBRE DEL USUARIO: " + usuarioDao.obtenerUsuarios().get(usuarioDao.obtenerUsuarios().size() - 1).getPassword());
+        System.out.println("NOMBRE DEL USUARIO: " + usuarioDao.obtenerUsuarios().get(usuarioDao.obtenerUsuarios().size() - 1).getUsername());
+        System.out.println("NOMBRE DEL USUARIO: " + usuarioDao.obtenerUsuarios().get(usuarioDao.obtenerUsuarios().size() - 1).getPassword());
 
     }
 

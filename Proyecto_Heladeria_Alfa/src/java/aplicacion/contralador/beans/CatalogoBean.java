@@ -30,11 +30,8 @@ public class CatalogoBean implements Serializable {
         catalogo = new Catalogo();
     }
 
-    public void crearCatalogo() {
-        byte estado = 1;
-        catalogo.setEstado(estado);
-        catalogoDao.create(catalogo);
-        catalogo = new Catalogo();
+    public void crearCatalogo(Catalogo catalogoACrear) {
+        catalogoDao.create(catalogoACrear);
     }
 
     public void eliminarCatalogo(Catalogo catalogoAEliminar) {

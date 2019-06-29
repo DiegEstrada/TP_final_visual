@@ -5,11 +5,13 @@
  */
 package aplicacion.contralador.beans.forms;
 
+
 import aplicacion.contralador.beans.ProductoBean;
 import aplicacion.contralador.beans.TipoHeladoBean;
 import aplicacion.modelo.dominio.Producto;
 import aplicacion.modelo.dominio.TipoHelado;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;

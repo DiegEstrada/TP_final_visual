@@ -20,19 +20,14 @@ import javax.faces.bean.SessionScoped;
 public class PromocionBean implements Serializable {
 
     IPromocionDao promocionDao;
-    private Promocion promocion;
 
     public PromocionBean() {
         promocionDao = new PromocionDaoImp();
-        promocion=new Promocion();
     }
 
     public void crearPromocion(Promocion promocionACrear) {
         promocionDao.create(promocionACrear);
-        promocion=new Promocion();
     }
-
-    
 
     public void eliminarPromocion(Promocion promocionAEliminar) {
         promocionDao.delete(promocionAEliminar);
@@ -52,14 +47,6 @@ public class PromocionBean implements Serializable {
 
     public void setPromocionDao(IPromocionDao promocionDao) {
         this.promocionDao = promocionDao;
-    }
-
-    public Promocion getPromocion() {
-        return promocion;
-    }
-
-    public void setPromocion(Promocion promocion) {
-        this.promocion = promocion;
     }
 
 }

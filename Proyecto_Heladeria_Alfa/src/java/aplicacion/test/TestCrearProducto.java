@@ -35,10 +35,10 @@ public class TestCrearProducto {
         Producto producto= new Producto();
         
         producto.setAlmacen(almacen);                       //el almacen creado anteriormente lo pongo en el producto a crear
-        producto.setDescripcion("Helado de agua Sabor fresa");
+        producto.setDescripcion("Helado de fruta Sabor kiwi");
         producto.setEstado(estado);
-        producto.setNombre("Explosion roja");
-        producto.setPrecio(23.50);
+        producto.setNombre("helado3");
+        producto.setPrecio(20.00);
         producto.setTipoHelado(tipoHelado);                 //el tipo de helado obtenido anteriormente lo pongo en el producto a crear
         productoDao.create(producto);                   //el producto se guarda estando relacionado con su almacen y tipo de helado 
     

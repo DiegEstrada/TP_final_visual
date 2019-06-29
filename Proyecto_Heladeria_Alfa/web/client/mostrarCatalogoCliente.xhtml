@@ -24,7 +24,61 @@
            <br/>
             
 
-            <p:carousel value="#{carouselHeladoFomrBean.catalogos}" headerText="Helado de agua" var="cat" itemStyle="text-align:center" responsive="true">
+           <p:carousel value="#{mostrarCatalogoFormBean.tipoLeche}" headerText="Helado de Leche" var="cat" itemStyle="text-align:center" responsive="true">
+                <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+                    <f:facet name="header">
+                        <h:graphicImage url="../demo/images/car/#{cat.producto.nombre}.png" style="width: 75px;"/>
+                    </f:facet>
+
+                    <h:outputText value="Nombre:" />
+                    <h:outputText value="#{cat.nombre}" />
+
+                                        
+                    <h:outputText value="Precio: " />
+                    <h:outputText value="#{cat.producto.precio}" />
+
+                 
+                </p:panelGrid>
+
+
+            </p:carousel>
+           <p:carousel value="#{mostrarCatalogoFormBean.tipoGranizado}" headerText="Helado Granizado" var="cat" itemStyle="text-align:center" responsive="true">
+                <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+                    <f:facet name="header">
+                        <h:graphicImage url="../demo/images/car/#{cat.producto.nombre}.png" style="width: 75px;"/>
+                    </f:facet>
+
+                    <h:outputText value="Nombre:" />
+                    <h:outputText value="#{cat.nombre}" />
+
+                                        
+                    <h:outputText value="Precio: " />
+                    <h:outputText value="#{cat.producto.precio}" />
+
+                 
+                </p:panelGrid>
+
+
+            </p:carousel>
+           <p:carousel value="#{mostrarCatalogoFormBean.tipoAgua}" headerText="Helado de Agua" var="cat" itemStyle="text-align:center" responsive="true">
+                <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+                    <f:facet name="header">
+                        <h:graphicImage url="../demo/images/car/#{cat.producto.nombre}.png" style="width: 75px;"/>
+                    </f:facet>
+
+                    <h:outputText value="Nombre:" />
+                    <h:outputText value="#{cat.nombre}" />
+
+                                        
+                    <h:outputText value="Precio: " />
+                    <h:outputText value="#{cat.producto.precio}" />
+
+                 
+                </p:panelGrid>
+
+
+            </p:carousel>
+           <p:carousel value="#{mostrarCatalogoFormBean.tipoCrema}" headerText="Helado de Crema" var="cat" itemStyle="text-align:center" responsive="true">
                 <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                     <f:facet name="header">
                         <h:graphicImage url="../demo/images/car/#{cat.producto.nombre}.png" style="width: 75px;"/>

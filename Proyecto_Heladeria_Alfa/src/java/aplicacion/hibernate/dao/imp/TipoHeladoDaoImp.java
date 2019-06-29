@@ -12,6 +12,7 @@ import java.io.Serializable;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -26,6 +27,14 @@ public class TipoHeladoDaoImp implements ITipoHeladoDao, Serializable {
         List<TipoHelado> tipoHelados = criteria.list();
         session.close();
         return tipoHelados;
+    }
+    public List<TipoHelado> obtenerTipoProductos() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Criteria criteria = session.createCriteria(TipoHelado.class);
+        criteria.add(Restrictions.like("Paleta de crema", 2));
+        List<TipoHelado> producto =criteria.list();
+        session.close();
+        return producto;
     }
 
 }

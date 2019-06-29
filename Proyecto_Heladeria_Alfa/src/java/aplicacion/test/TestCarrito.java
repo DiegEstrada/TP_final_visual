@@ -9,6 +9,7 @@ import aplicacion.hibernate.dao.ICatalogoDao;
 import aplicacion.hibernate.dao.imp.CatalogoDaoImp;
 import aplicacion.modelo.dominio.Catalogo;
 import aplicacion.modelo.util.Carrito;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,8 +25,9 @@ public class TestCarrito {
         ICatalogoDao catalogoDao = new CatalogoDaoImp();
         Carrito carrito = new Carrito();
         List<Catalogo> listaDeCatalogo = catalogoDao.obtenerCatalogos();
+        List<Catalogo> tipoAgua = new ArrayList<>();
 
-        for (int i = 0; i < listaDeCatalogo.size(); i++) {                     //Agrega toda la lista de Catalogo al Carrito
+        /*for (int i = 0; i < listaDeCatalogo.size(); i++) {                     //Agrega toda la lista de Catalogo al Carrito
             carrito.agregarCatalogoAlCarrito(listaDeCatalogo.get(i));
         }
         for (int i = 0; i < carrito.getCarrito().size(); i++) {                //Muestra toda lista del carrito
@@ -36,8 +38,16 @@ public class TestCarrito {
                     + " - Precio con descuento: " + carrito.calcularPrecioConDescuento(carrito.getCarrito().get(i)));
         }
         
-        System.out.println("Total: " + carrito.calcularPrecioTotal());         //Muestra el precio total
+        System.out.println("Total: " + carrito.calcularPrecioTotal());  */
+ //Muestra el precio total
 
+        for(int i = 0; i < listaDeCatalogo.size(); i++){
+            if(listaDeCatalogo.get(i).getProducto().getTipoHelado().getNombre().equalsIgnoreCase("Helado de Leche")){
+                tipoAgua.add(listaDeCatalogo.get(i));
+            }
+        }
+        
+        System.out.println(tipoAgua.get(0).getProducto().getTipoHelado().getNombre());
     }
 
 }
